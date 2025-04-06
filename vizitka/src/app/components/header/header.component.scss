@@ -1,0 +1,159 @@
+$font-family: "Montserrat", sans-serif;
+$primary-color: #0077ff;
+$text-color: #ffffff;
+$background: black;
+
+.header {
+  position: relative;
+  width: 100vw;
+  max-height: 133.2px;
+  margin: 10px 0 0 0;
+  font: {
+    weight: 500;
+    size: 20px;
+  }
+  line-height: 100%;
+  color: $text-color;
+  background-color: transparent;
+
+  * {
+    font: inherit;
+    color: inherit;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 0;
+    left: 874px;
+    width: 847px;
+    height: 955px;
+    background: {
+      image: url("../../../assets/main_background.svg");
+      repeat: no-repeat;
+      position: right top;
+      size: 847px 980px;
+    }
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  &-navigation {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    max-width: 1217px;
+    gap: 0;
+  }
+
+  .header-box {
+    display: contents;
+  }
+
+  &-navigation-menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 30px 0 0 200px;
+    padding: 0;
+
+    a {
+      font-family: $font-family;
+      text-decoration: none;
+      white-space: nowrap;
+
+      &:hover {
+        color: $primary-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-logo {
+    user-select: none;
+    width: 93.5px;
+    margin: 0 65px 0 25px;
+  }
+
+  .discuss-button {
+    font: {
+      family: $font-family;
+      weight: 600;
+    }
+    width: 227px;
+    height: 50px;
+    padding: 10px 20px;
+    border: 2px solid $primary-color;
+    border-radius: 30px;
+    background: transparent;
+    margin-right: 20px;
+    margin-top: 17px;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: $primary-color;
+      cursor: pointer;
+    }
+  }
+
+  .telephone-number {
+    font-family: $font-family;
+    margin-top: 30px;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  @media (max-width: 992px) {
+    font-size: 16px;
+
+    &-navigation-menu {
+      gap: 15px;
+      margin-left: 30px;
+    }
+
+    .discuss-button {
+      height: 40px;
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &::after {
+      width: 60%;
+    }
+
+    &-navigation {
+      grid-template-columns: auto auto auto;
+    }
+
+    &-navigation-menu {
+      display: none;
+    }
+  }
+
+  @media (max-width: 576px) {
+    &-navigation {
+      grid-template-columns: auto auto auto;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+
+    &-logo {
+      width: 52.59px;
+      margin: 0 10px;
+    }
+
+    .discuss-button {
+      width: 130px;
+      height: 30px;
+      padding: 0;
+      font-size: 12px;
+      margin-right: 0;
+    }
+
+    .telephone-number {
+      font-size: 14px;
+      margin-top: 0;
+    }
+  }
+}
