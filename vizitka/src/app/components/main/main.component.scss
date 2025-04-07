@@ -5,27 +5,30 @@ $background: black;
 
 .main {
   position: relative;
-  height: 830px;
-  width: 100vw;
+  width: 100%;
+  min-height: min(830px, 100vh);
   color: $text-color;
   display: grid;
-  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr auto;
+  grid-template-columns: auto 600px;
   grid-template-areas:
     "column1 column2"
     "stack stack";
   z-index: 1;
   background-color: transparent;
+  box-sizing: border-box;
 }
 
 .column-1 {
   grid-area: column1;
-  margin-left: 200px;
+  margin-left: clamp(20px, 10vw, 200px);
+  z-index: -1;
 }
 
 .C_plusplus {
-  width: 120px;
+  max-width: 120px;
   height: 120px;
+  position: relative;
   top: 204.5px;
   left: 671px;
   animation-delay: 0.7s;
@@ -34,13 +37,13 @@ $background: black;
 h1 {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
-  font-size: 180px;
-  line-height: 145px;
+  font-size: clamp(48px, 12vw, 180px);
+  line-height: clamp(48px, 10vw, 145px);
   letter-spacing: -0.06em;
   text-transform: uppercase;
-  width: 652px;
-  height: 290px;
-  margin-top: 133px;
+  width: min(652px, 90%);
+  height: auto;
+  margin-top: clamp(30px, 10vw, 93px);
   margin-bottom: 0;
   overflow: hidden;
 }
@@ -48,22 +51,23 @@ h1 {
 .welcome {
   font-family: $font-family;
   font-weight: 300;
-  font-size: 24px;
-  width: 602px;
-  height: 87px;
-  margin-top: 20px;
+  font-size: clamp(16px, 2vw, 24px);
+  width: min(602px, 90%);
+  height: auto;
+  margin-top: clamp(10px, 2vw, 20px);
 }
 
 .order-button {
   font-family: $font-family;
   font-weight: 600;
-  font-size: 24px;
+  font-size: clamp(16px, 2vw, 24px);
   line-height: 100%;
-  margin-top: 20px;
-  left: 352px;
+  margin-top: clamp(10px, 2vw, 20px);
+  left: clamp(20px, 20vw, 352px);
   border-radius: 30px;
   padding: 20px 40px;
-  height: 60px;
+  height: auto;
+  max-height: 60px;
   gap: 10px;
   background-color: $primary-color;
   color: $text-color;
@@ -77,14 +81,12 @@ h1 {
 
 .column-2 {
   grid-area: column2;
-}
-
-.main_background {
-  position: absolute;
+  position: relative;
+  height: min(600px, 50vh);
+  margin-top: 50px;
 }
 
 .levitate-image {
-  grid-area: column2;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -98,39 +100,30 @@ h1 {
 }
 
 .levitate-image_С {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -ms-touch-action: none;
-  touch-action: none;
-  pointer-events: none;
-  position: absolute;
-  animation: levitate 3s ease-in-out infinite alternate;
-  transform: rotate(var(--rotation));
+  @extend .levitate-image;
 }
 
 .Python {
-  width: 150px;
-  height: 150px;
-  top: 300px;
-  left: 53px;
+  width: clamp(100px, 12vw, 150px);
+  height: clamp(100px, 12vw, 150px);
+  top: clamp(100px, 20vw, 220px);
+  left: clamp(20px, 5vw, 0px);
   animation-delay: 0s;
 }
 
 .VS {
-  width: 110px;
-  height: 110px;
-  top: 450px;
-  left: 160px;
+  width: clamp(80px, 10vw, 110px);
+  height: clamp(80px, 10vw, 110px);
+  top: clamp(150px, 25vw, 450px);
+  left: clamp(50px, 10vw, 160px);
   animation-delay: 1.5s;
 }
 
 .SQL {
-  width: 75px;
-  height: 75px;
-  top: 600px;
-  left: 63px;
+  width: clamp(60px, 7vw, 75px);
+  height: clamp(60px, 7vw, 75px);
+  top: clamp(200px, 35vw, 600px);
+  left: clamp(20px, 5vw, 63px);
   animation-delay: 1s;
 }
 
@@ -141,7 +134,7 @@ h1 {
   user-select: none;
   -ms-touch-action: none;
   touch-action: none;
-  height: 60px;
+  height: clamp(50px, 6vw, 60px);
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -150,6 +143,7 @@ h1 {
   background-color: #ffffff1a;
   backdrop-filter: blur(9.9px);
   grid-area: stack;
+  margin-top: 30px;
 }
 
 .stack {
@@ -169,10 +163,10 @@ h1 {
 }
 
 span {
-  margin: 0 2vw;
+  margin: 0 clamp(10px, 2vw, 20px);
   font-family: $font-family;
   font-weight: 400;
-  font-size: 24px;
+  font-size: clamp(14px, 2vw, 24px);
   line-height: 107%;
   letter-spacing: -1.9%;
   color: $text-color;
