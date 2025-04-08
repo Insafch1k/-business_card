@@ -1,1 +1,63 @@
-<p>contacts works!</p>
+<div class="contacts">
+  <h2>Контакты</h2>
+  <div class="contacts-box">
+    <div class="contacts_column-1">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <input
+          type="text"
+          class="text-field name_field"
+          placeholder="Имя*"
+          formControlName="name"
+        />
+        <input
+          type="text"
+          class="text-field phone_number_field"
+          placeholder="Телефон*"
+          formControlName="phone"
+        />
+        <textarea
+          class="text-field comment_field"
+          placeholder="Текст"
+          formControlName="text"
+        ></textarea>
+        <button
+          class="bid-button"
+          type="submit"
+          [disabled]="isSending || contactForm.invalid"
+        >
+          {{ isSending ? "Отправка..." : "Оставить заявку" }}
+        </button>
+        <div *ngIf="isSuccess" class="success-message">
+          Сообщение успешно отправлено!
+        </div>
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </div>
+    <div class="contacts_column-2">
+      <img
+        src="../../../assets/Contacts/Whatsapp.svg"
+        alt="ватсап"
+        class="levitate-image Whatsapp"
+      />
+      <img
+        src="../../../assets/Contacts/Telegram.svg"
+        alt="телеграм"
+        class="levitate-image Telegram"
+      />
+      <div class="Danis contacts_text">Данис Хамидуллин</div>
+      <div class="Danis_contacts">
+        <div class="contact-line contacts_text">CEO</div>
+        <div class="contact-line">
+          <span class="label contacts_text">phone:</span>
+          <span class="value contacts_text"> +7 (905) 026 21 62</span>
+        </div>
+        <div class="contact-line">
+          <span class="label contacts_text"> tg:</span>
+          <span class="value contacts_text"> &#64;DemlerIT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,200 @@
+.contacts {
+  margin-left: 150px;
+}
+
+h2 {
+  position: relative;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 145px;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 0;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+.contacts-box {
+  font-family: "Montserrat", sans-serif;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: 715px;
+}
+
+.contacts_column-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 132px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 450px;
+  max-width: 100%;
+}
+
+.text-field {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 100%;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: 450px;
+  border-bottom: 2px solid #676767;
+  padding: 20px;
+  gap: 10px;
+  max-width: 450px;
+  color: #fff;
+
+  &::placeholder {
+    color: #999;
+    font-family: Montserrat, sans-serif;
+    font-weight: 200;
+    font-size: 24px;
+    line-height: 100%;
+  }
+
+  &:focus::placeholder {
+    color: #ccc;
+    opacity: 0.7;
+  }
+}
+
+.name_field {
+  height: 60px;
+}
+
+.phone_field {
+  height: 60px;
+}
+
+.comment_field {
+  height: 200px;
+  resize: none;
+  overflow: hidden;
+}
+
+.bid-button {
+  font: {
+    family: Space Grotesk, sans-serif;
+    weight: 500;
+  }
+  height: 50px;
+  padding: 10px 20px;
+  border: 2px solid #0077ff;
+  border-radius: 30px;
+  background: transparent;
+  margin-top: clamp(10px, 1.5vw, 20px);
+  white-space: nowrap;
+  font-size: 20px;
+  color: #fff;
+  width: 450px;
+  &:hover {
+    background-color: #0077ff;
+    cursor: pointer;
+  }
+}
+
+.contacts_column-2 {
+  background-image: url("../../../assets/Contacts/Danis.svg");
+  position: right top;
+  size: contain;
+  background-repeat: no-repeat;
+  margin-left: 168px;
+}
+
+.levitate-image {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-touch-action: none;
+  touch-action: none;
+  pointer-events: none;
+  position: absolute;
+  animation: levitate 3s ease-in-out infinite alternate;
+}
+
+.Whatsapp {
+  position: relative;
+  left: 100px;
+  animation-delay: 1.5s;
+}
+
+.Telegram {
+  position: relative;
+  left: -100px;
+  top: 150px;
+  animation-delay: 0.5s;
+}
+
+.contacts_text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 100%;
+}
+
+.Danis {
+  position: relative;
+  text-align: center;
+  margin-top: 180px;
+  width: 260px;
+  padding: 10px;
+  gap: 5px;
+  border-radius: 15px;
+  color: #fff;
+  background-color: #0077ff;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -35px;
+    right: -35px;
+    width: 40px;
+    height: 40px;
+    background-image: url("../../../assets/Contacts/arrow.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2;
+  }
+}
+
+.label {
+  color: #e32966;
+}
+
+.value {
+  font-weight: 400;
+}
+
+.Danis_contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 260px;
+  height: auto;
+  top: 5672px;
+  left: 995px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+@keyframes levitate {
+  0% {
+    transform: translateY(0) ;
+  }
+  100% {
+    transform: translateY(-20px) ;
+  }
+}

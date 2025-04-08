@@ -1,0 +1,11 @@
+{
+  "/api/telegram": {
+    "target": "https://api.telegram.org",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api/telegram": "/bot7825086890:AAHKb98bzxvzRPaydcFkPZiXv1QxZTSUuQA"
+    },
+    "logLevel": "debug"
+  }
+}

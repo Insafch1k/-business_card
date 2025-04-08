@@ -1,1 +1,27 @@
-<p>projects works!</p>
+<h2>Проекты</h2>
+<div class="projects">
+  <p class="project-description">{{ currentProject.description }}</p>
+
+  <div class="gallery-container">
+    <button class="nav-button prev-button" (click)="prev()">‹</button>
+
+    <div class="projects-window">
+      <img
+        [src]="currentProject.image"
+        [alt]="currentProject.title"
+        class="project-image"
+      />
+    </div>
+
+    <button class="nav-button next-button" (click)="next()">›</button>
+  </div>
+
+  <div class="dots-container">
+    <div
+      *ngFor="let dot of projects; let i = index"
+      class="dot"
+      [class.active]="i === currentIndex"
+      (click)="goTo(i)"
+    ></div>
+  </div>
+</div>
