@@ -1,10 +1,6 @@
 .footer {
   border-top: 4px solid #2b2b2b;
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-
   font-family: "Montserrat", sans-serif;
   background-color: black;
   color: #ecf0f1;
@@ -58,7 +54,7 @@
         transition: color 0.3s;
 
         &:hover {
-          color: darkgrey;
+          color: #0077FF;
         }
       }
     }
