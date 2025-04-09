@@ -85,13 +85,12 @@ export class TeamComponent {
       category: 'Frontend\ndevelopers',
       photo: 'assets/team/тагир.JPG'
     },
-
   ];
 
   get filteredMembers(): TeamMember[] {
     // Если не выбрана категория или категория null - показываем всех
     if (!this.activeCategory) {
-      return this.teamMembers;
+      return this.teamMembers.slice(0, 8);
     }
     return this.teamMembers.filter(member => member.category === this.activeCategory);
   }
