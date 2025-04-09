@@ -9,7 +9,18 @@
       <img
         [src]="currentProject.image"
         [alt]="currentProject.title"
-        class="project-image"
+        class="project-image current"
+        [class.animate-out]="isAnimating"
+        [class.slide-left]="direction === 'left'"
+        [class.slide-right]="direction === 'right'"
+      />
+      <img
+        [src]="currentProject.image"
+        [alt]="currentProject.title"
+        class="project-image current"
+        *ngIf="isAnimating"
+        [class.slide-left]="direction === 'left'"
+        [class.slide-right]="direction === 'right'"
       />
     </div>
 

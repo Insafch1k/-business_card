@@ -17,6 +17,7 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ContactsMenuComponent } from './components/contacts-menu/contacts-menu.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProjectsComponent,
     ContactsComponent,
     QuestionsComponent,
+    ContactsMenuComponent,
   ],
   imports: [
     BrowserModule,

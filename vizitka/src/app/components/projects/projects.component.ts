@@ -16,7 +16,7 @@ export class ProjectsComponent {
     {
       image: '../../../assets/Projects/nedvizhka.svg',
       title: 'Nedvizhka',
-      description: 'Telegram app по поиску недвижимости',
+      description: 'Telegram App по поиску недвижимости',
     },
     {
       image: '../../../assets/Projects/klinika.svg',
@@ -31,21 +31,55 @@ export class ProjectsComponent {
   ];
 
   currentIndex = 0;
+  nextIndex = 1;
+  direction: 'left' | 'right' = 'right';
+  isAnimating = false;
 
   get currentProject(): Project {
     return this.projects[this.currentIndex];
   }
 
+  get nextProject(): Project {
+    return this.projects[this.nextIndex];
+  }
+
   next(): void {
-    this.currentIndex = (this.currentIndex + 1) % this.projects.length;
+    if (this.isAnimating) return;
+
+    this.direction = 'right';
+    this.nextIndex = (this.currentIndex + 1) % this.projects.length;
+    this.isAnimating = true;
+
+    setTimeout(() => {
+      this.currentIndex = this.nextIndex;
+      this.isAnimating = false;
+    }, 500);
   }
 
   prev(): void {
-    this.currentIndex =
+    if (this.isAnimating) return;
+
+    this.direction = 'left';
+    this.nextIndex =
       (this.currentIndex - 1 + this.projects.length) % this.projects.length;
+    this.isAnimating = true;
+
+    setTimeout(() => {
+      this.currentIndex = this.nextIndex;
+      this.isAnimating = false;
+    }, 500);
   }
 
   goTo(index: number): void {
-    this.currentIndex = index;
+    if (this.isAnimating || index === this.currentIndex) return;
+
+    this.direction = index > this.currentIndex ? 'right' : 'left';
+    this.nextIndex = index;
+    this.isAnimating = true;
+
+    setTimeout(() => {
+      this.currentIndex = index;
+      this.isAnimating = false;
+    }, 500);
   }
 }

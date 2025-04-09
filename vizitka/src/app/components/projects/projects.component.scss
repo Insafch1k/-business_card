@@ -14,14 +14,18 @@ h2 {
   text-transform: uppercase;
   color: #fff;
   margin: 0;
+  margin-left: 150px;
+  margin-top: 100px;
 }
 
 .project-description {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 400;
-  font-size: 24px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 145px;
+  letter-spacing: -0.06em;
   color: #fff;
-  margin: 10px 0 40px;
+  margin: 30px 0 20px;
   text-align: center;
 }
 
@@ -39,7 +43,8 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent; /* убрали #030303 */
+  background-color: transparent;
+  overflow: hidden;
 }
 
 .image-container {
@@ -56,12 +61,13 @@ h2 {
   max-width: 960px;
   max-height: 800px;
   object-fit: contain;
+  transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
 }
 
 .nav-button {
   width: 60px;
   height: 60px;
-  background-color: #E32966;
+  background-color: #e32966;
   border: none;
   border-radius: 50%;
   font-size: 30px;
@@ -71,10 +77,10 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  z-index: 1;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #bb013e;
   }
 }
 
@@ -85,15 +91,30 @@ h2 {
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background-color: #2B2B2B;
+  background-color: #2b2b2b;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &.active {
-    background-color: #E32966;
+    background-color: #e32966;
     transform: scale(1.2);
+  }
+
+  .slide-next {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  .slide-prev {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  .slide-current {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
