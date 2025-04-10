@@ -1,28 +1,28 @@
 <section class="team-section">
-    <h2 class="team-title">
-        <span class="first-word">НАША</span>
-        <span class="second-word"> КОМАНДА</span>
-      </h2>    
-    <div class="category-buttons">
-      <button 
-        *ngFor="let category of categories"
-        [class.active]="activeCategory === category.name"
-        (click)="setCategory(category.name)"
-      >
-        <img [src]="category.icon" alt="" class="category-icon">
-        {{category.name}}
+  <h2 class="team-title">
+    <span class="first-word">НАША</span>
+    <span class="second-word"> КОМАНДА</span>
+  </h2>
+  <div class="category-buttons">
+    <button
+      *ngFor="let category of categories"
+      [class.active]="activeCategory === category.name"
+      (click)="setCategory(category.name)"
+    >
+      <img [src]="category.icon" alt="" class="category-icon" />
+      {{ category.name }}
     </button>
-    </div>
-    
-    <div class="team-grid">
-      <div class="team-member" *ngFor="let member of filteredMembers">
-        <div class="member-photo">
-          <img [src]="member.photo" [alt]="member.name">
-          <div class="member-info">
-            <h3 [innerHTML]="member.name"></h3>
-            <p>{{ member.position }}</p>
-          </div>
+  </div>
+
+  <div class="team-grid">
+    <div class="team-member" *ngFor="let member of filteredMembers">
+      <div class="member-photo">
+        <img [src]="member.photo" [alt]="member.name" />
+        <div class="member-info">
+          <h3 [innerHTML]="member.name"></h3>
+          <p>{{ member.position }}</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
