@@ -3,7 +3,13 @@
   <p class="project-description">{{ currentProject.description }}</p>
 
   <div class="gallery-container">
-    <button class="nav-button prev-button" (click)="prev()">‹</button>
+    <button class="nav-button prev-button" (click)="prev()">
+      <img
+        src="../../../assets/Projects/prev_btn.svg"
+        alt="предыдущий проект"
+        class="prev_arrow"
+      />
+    </button>
 
     <div class="projects-window">
       <img
@@ -13,7 +19,9 @@
       />
     </div>
 
-    <button class="nav-button next-button" (click)="next()">›</button>
+    <button class="nav-button next-button" (click)="next()">
+      <img src="../../../assets/Projects/next_btn.svg" alt="следующий проект" />
+    </button>
   </div>
 
   <div class="dots-container">
@@ -24,4 +32,12 @@
       (click)="goTo(i)"
     ></div>
   </div>
+  <a
+    [href]="currentProject.link"
+    class="go-to-project_btn"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Перейти к проекту</a
+  >
 </div>

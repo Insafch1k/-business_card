@@ -4,6 +4,7 @@ interface Project {
   image: string;
   title: string;
   description: string;
+  link: string;
 }
 
 @Component({
@@ -17,16 +18,19 @@ export class ProjectsComponent {
       image: '../../../assets/Projects/nedvizhka.svg',
       title: 'Nedvizhka',
       description: 'Telegram App по поиску недвижимости',
+      link: 'https://clinika03.ru/main',
     },
     {
       image: '../../../assets/Projects/klinika.svg',
       title: 'Klinika 03',
       description: 'Сайт для "Клиника 03"',
+      link: 'https://clinika03.ru/main',
     },
     {
       image: '../../../assets/Projects/hidra.svg',
       title: 'Zilant Hydro',
       description: 'Проектирование схем водоснабжения "Zilant Hydro"',
+      link: 'https://clinika03.ru/main',
     },
   ];
 
