@@ -1,6 +1,6 @@
 <header class="header">
-  <div class="header-navigation">
-    <div class="header-box">
+  <div class="container">
+    <div class="header-navigation">
       <ul class="header-navigation-menu">
         <li><a routerLink="/team">Команда</a></li>
         <li><a routerLink="/services">Услуги</a></li>
@@ -8,13 +8,19 @@
         <li><a routerLink="/questions">Вопросы</a></li>
         <li><a routerLink="/contacts">Контакты</a></li>
       </ul>
+      <img src="assets/icons/logo.svg" alt="Логотип" class="header-logo" />
+
+      <button (click)="openContactsMenu()" class="discuss-button">
+        Обсудить проект
+      </button>
+      <a href="tel:+7 (917) 464  55-32" class="telephone-number"
+        >+7 (917) 464 55-32</a
+      >
+      <img
+        src="../../../assets/Header/burger.svg"
+        alt="бургер-меню"
+        class="mobile-burger-menu"
+      />
     </div>
-    <img src="assets/icons/logo.svg" alt="Логотип" class="header-logo" />
-    <button (click)="openContactsMenu()" class="discuss-button">
-      Обсудить проект
-    </button>
-    <a href="tel:+7 (917) 464  55-32" class="telephone-number"
-      >+7 (917) 464 55-32</a
-    >
   </div>
 </header>

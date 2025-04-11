@@ -8,6 +8,7 @@ $background: black;
   width: 100%;
   max-height: 133.2px;
   margin: 10px 0 0 0;
+  padding: 0 20px;
   font: {
     weight: 500;
     size: clamp(16px, 2vw, 20px);
@@ -28,10 +29,10 @@ $background: black;
     top: -10px;
     right: 0;
     left: 874px;
-    width: 847px;
-    height: 955px;
+    max-width: 847px;
+    max-height: 955px;
     background: {
-      image: url("../../../assets/Main/main_background.svg");
+      image: url("../../../assets/Header/main_background.svg");
       repeat: no-repeat;
       position: right top;
       size: contain;
@@ -106,43 +107,80 @@ $background: black;
     font-size: 20px;
   }
 
-  @media (max-width: 768px) {
+  .mobile-burger-menu {
+    display: none;
+  }
+
+  @media (max-width: 992px) {
     &::after {
       width: 60%;
     }
 
-    &-navigation {
-      grid-template-columns: auto auto auto;
+    &-navigation-menu {
+      font-size: 16px;
+      display: none;
+    }
+
+    .discuss-button {
+      font-size: 16px;
+    }
+
+    .telephone-number {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 756px) {
+    &::after {
+      width: 60%;
     }
 
     &-navigation-menu {
+      font-size: 16px;
       display: none;
+    }
+
+    .discuss-button {
+      font-size: 16px;
+    }
+
+    .telephone-number {
+      font-size: 16px;
     }
   }
 
   @media (max-width: 576px) {
+    .header {
+      margin: 10px 0 0 0;
+    }
     &-navigation {
       grid-template-columns: auto auto auto;
-      justify-content: space-between;
+      // justify-content: space-between;
       padding: 0 10px;
+    }
+
+    .discuss-button {
+      display: none;
+    }
+
+    .telephone-number {
+      font-size: 12px;
+      order: 1;
+      margin-top: 27px;
     }
 
     &-logo {
       width: 52.59px;
-      margin: 0 10px;
+      margin-left: 34px;
+      order: 2;
     }
 
-    .discuss-button {
-      width: 130px;
-      height: 30px;
-      padding: 0;
-      font-size: 12px;
-      margin-right: 0;
-    }
-
-    .telephone-number {
-      font-size: 14px;
-      margin-top: 0;
+    .mobile-burger-menu {
+      display: block;
+      position: absolute;
+      order: 3;
+      top: 28px;
+      right: 20px;
     }
   }
 }
