@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 interface TeamMember {
   id: number;
@@ -10,93 +11,129 @@ interface TeamMember {
 
 interface Category {
   name: string;
+  displayName: string; //поле для HTML-форматирования
   icon: string;
 }
 
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
-  styleUrls: ['./team.component.scss']
+  styleUrls: ['./team.component.scss'],
 })
 export class TeamComponent {
+  constructor(private sanitizer: DomSanitizer) {}
+
   categories: Category[] = [
-    { name: 'Backend\ndevelopers', icon: 'assets/icons/back.svg' },
-    { name: 'ML\ndevelopers', icon: 'assets/icons/ml.svg' },
-    { name: 'UX/UI\ndesigners', icon: 'assets/icons/uxui.svg' },
-    { name: 'CEO', icon: 'assets/icons/ceo.svg' },
-    { name: 'Frontend\ndevelopers', icon: 'assets/icons/front.svg' }
+    {
+      name: 'Backend developers',
+      displayName: 'Backend<br>developers',
+      icon: 'assets/icons/back.svg',
+    },
+    {
+      name: 'ML developers',
+      displayName: 'ML<br>developers',
+      icon: 'assets/icons/ml.svg',
+    },
+    {
+      name: 'UX/UI designers',
+      displayName: 'UX/UI<br>designers',
+      icon: 'assets/icons/uxui.svg',
+    },
+    { name: 'CEO', displayName: 'CEO', icon: 'assets/icons/ceo.svg' },
+    {
+      name: 'Frontend developers',
+      displayName: 'Frontend<br>developers',
+      icon: 'assets/icons/front.svg',
+    },
   ];
-  activeCategory: string | null = null; // Никакая категория не выбрана изначально
+  activeCategory: string | null = null;
 
   teamMembers: TeamMember[] = [
     {
       id: 1,
       name: 'Ахмедшин<br>Ратмир',
       position: 'Backend Developer',
-      category: 'Backend\ndevelopers',
-      photo: 'assets/team/ратмир.JPG'
+      category: 'Backend developers',
+      photo: 'assets/team/ratmir.png',
     },
     {
       id: 2,
       name: 'Шаймарданов<br>Марат',
       position: 'Backend Developer',
-      category: 'Backend\ndevelopers',
-      photo: 'assets/team/марат.JPG'
+      category: 'Backend developers',
+      photo: 'assets/team/marat.png',
     },
     {
       id: 3,
       name: 'Ахмадуллина<br>Александра',
       position: 'Frontend Developer',
-      category: 'Frontend\ndevelopers',
-      photo: 'assets/team/равиль.JPG'
+      category: 'Frontend developers',
+      photo: 'assets/team/sasha.png',
     },
     {
       id: 4,
       name: 'Салахов<br>Тагир',
       position: 'Frontend Developer',
-      category: 'Frontend\ndevelopers',
-      photo: 'assets/team/тагир.JPG'
+      category: 'Frontend developers',
+      photo: 'assets/team/tagir.png',
     },
     {
       id: 5,
       name: 'Ахмедшин<br>Ратмир',
       position: 'Backend Developer',
-      category: 'Backend\ndevelopers',
-      photo: 'assets/team/ратмир.JPG'
+      category: 'Backend developers',
+      photo: 'assets/team/ratmir.png',
     },
     {
       id: 6,
       name: 'Шаймарданов<br>Марат',
       position: 'Backend Developer',
-      category: 'Backend\ndevelopers',
-      photo: 'assets/team/марат.JPG'
+      category: 'Backend developers',
+      photo: 'assets/team/marat.png',
     },
     {
       id: 7,
       name: 'Ахмадуллина<br>Александра',
       position: 'Frontend Developer',
-      category: 'Frontend\ndevelopers',
-      photo: 'assets/team/равиль.JPG'
+      category: 'Frontend developers',
+      photo: 'assets/team/sasha.png',
     },
     {
       id: 8,
       name: 'Салахов<br>Тагир',
       position: 'Frontend Developer',
-      category: 'Frontend\ndevelopers',
-      photo: 'assets/team/тагир.JPG'
+      category: 'Frontend developers',
+      photo: 'assets/team/tagir.png',
     },
   ];
 
   get filteredMembers(): TeamMember[] {
-    // Если не выбрана категория или категория null - показываем всех
     if (!this.activeCategory) {
       return this.teamMembers.slice(0, 8);
     }
-    return this.teamMembers.filter(member => member.category === this.activeCategory);
+    return this.teamMembers.filter(
+      (member) => member.category === this.activeCategory
+    );
   }
 
   setCategory(category: string): void {
-    // Переключаем категорию при клике
     this.activeCategory = this.activeCategory === category ? null : category;
+  }
+
+  //для  вывода HTML
+  safeHtml(html: string) {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+
+  ngAfterViewInit() {
+    this.checkItemsCount();
+  }
+  
+  checkItemsCount() {
+    const grid = document.querySelector('.team-grid');
+    if (!grid) return;
+  
+    const items = grid.querySelectorAll('.team-member');
+    grid.classList.toggle('odd', items.length % 2 !== 0);
   }
 }
