@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, ChangeDetectorRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 interface TeamMember {
@@ -21,7 +21,8 @@ interface Category {
   styleUrls: ['./team.component.scss'],
 })
 export class TeamComponent {
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer,   private changeDetector: ChangeDetectorRef
+  ) {}
 
   categories: Category[] = [
     {
@@ -84,13 +85,8 @@ export class TeamComponent {
       category: 'Backend developers',
       photo: 'assets/team/ratmir.png',
     },
-    {
-      id: 6,
-      name: 'Шаймарданов<br>Марат',
-      position: 'Backend Developer',
-      category: 'Backend developers',
-      photo: 'assets/team/marat.png',
-    },
+
+
     {
       id: 7,
       name: 'Ахмадуллина<br>Александра',
@@ -105,7 +101,82 @@ export class TeamComponent {
       category: 'Frontend developers',
       photo: 'assets/team/tagir.png',
     },
+    {
+      id: 9,
+      name: 'Ахмадуллина<br>Александра',
+      position: 'Frontend Developer',
+      category: 'Frontend developers',
+      photo: 'assets/team/sasha.png',
+    },
+    {
+      id: 10,
+      name: 'Салахов<br>Тагир',
+      position: 'Frontend Developer',
+      category: 'Frontend developers',
+      photo: 'assets/team/tagir.png',
+    },
+    {
+      id: 11,
+      name: 'Ахмадуллина<br>Александра',
+      position: 'Frontend Developer',
+      category: 'Frontend developers',
+      photo: 'assets/team/sasha.png',
+    },
+    {
+      id: 12,
+      name: 'Салахов<br>Тагир',
+      position: 'Frontend Developer',
+      category: 'Frontend developers',
+      photo: 'assets/team/tagir.png',
+    },
+    {
+      id: 13,
+      name: 'Ахмадуллина<br>Александра',
+      position: 'Frontend Developer',
+      category: 'Frontend developers',
+      photo: 'assets/team/sasha.png',
+    },
+    {
+      id: 14,
+      name: 'Салахов<br>Тагир',
+      position: 'Frontend Developer',
+      category: 'Frontend developers',
+      photo: 'assets/team/tagir.png',
+    },
+    {
+      id: 15,
+      name: 'Ашот<br>Тагир',
+      position: 'UX/UI designer',
+      category: 'UX/UI designers',
+      photo: 'assets/team/tagir.png',
+    },
+    {
+      id: 16,
+      name: 'Ашот<br>Тагир',
+      position: 'CEO',
+      category: 'CEO',
+      photo: 'assets/team/tagir.png',
+    },
+    {
+      id: 17,
+      name: 'Ашот<br>Тагир',
+      position: 'CEO',
+      category: 'CEO',
+      photo: 'assets/team/tagir.png',
+    },
   ];
+
+  // Добавляем метод isMobile в компонент
+isMobile(): boolean {
+  return window.innerWidth <= 576;
+}
+
+// Добавляем обработчик изменения размера окна
+@HostListener('window:resize', ['$event'])
+onResize(event: any) {
+  // Принудительно запускаем обнаружение изменений
+  this.changeDetector.detectChanges();
+}
 
   get filteredMembers(): TeamMember[] {
     if (!this.activeCategory) {
@@ -114,6 +185,30 @@ export class TeamComponent {
     return this.teamMembers.filter(
       (member) => member.category === this.activeCategory
     );
+  }
+
+  getGridStyle(): any {
+    const membersCount = this.filteredMembers.length;
+    
+    // Для десктопа (1-4 участника)
+    if (!this.isMobile() && membersCount <= 4) {
+      return {
+        'grid-template-rows': '1fr',
+        'grid-auto-columns': 'max(150px, calc(25% - 15px))'
+      };
+    }
+    
+    // Для мобильных (1-2 участника)
+    if (this.isMobile() && membersCount <= 2) {
+      return {
+        'grid-template-rows': '1fr',
+        'grid-auto-columns': 'max(150px, calc(25% - 10px))'
+      };
+    }
+    
+    return {
+      'grid-auto-columns': 'max(150px, calc(25% - 15px))'
+    };
   }
 
   setCategory(category: string): void {

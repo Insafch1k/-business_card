@@ -1,3 +1,4 @@
+<!-- Обновляем шаблон -->
 <section id="team" class="team-section">
   <h2 class="team-title">
     <span class="first-word">НАША</span>
@@ -13,7 +14,10 @@
       <span [innerHTML]="safeHtml(category.displayName)"></span>
     </button>
   </div>
-  <div class="team-grid">
+  <div class="team-grid" 
+  [class.single-row]="!isMobile() && filteredMembers.length <= 4"
+  [class.single-row-mobile]="isMobile() && filteredMembers.length <= 2"
+  [ngStyle]="getGridStyle()">
     <div class="team-member" *ngFor="let member of filteredMembers">
       <div class="member-photo">
         <img [src]="member.photo" [alt]="member.name">

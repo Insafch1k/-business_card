@@ -1,38 +1,37 @@
-/* Основные настройки секции */
+/* Обновляем стили для сетки */
 .team-section {
   padding: 100px 20px;
   max-width: 1216px;
   margin: 0 auto 0;
   box-sizing: border-box;
+  overflow: hidden; /* Скрываем горизонтальный скролл секции */
 }
 
-/* Заголовок секции */
 .team-title {
-  text-align: left; //по левому краю
-  font-size: clamp(32px, 7vw, 96px); //будет меньяться от 32 до 96
+  text-align: left;
+  font-size: clamp(32px, 7vw, 96px);
   font-family: "Space Grotesk", sans-serif;
-  margin: 0 0 20px; // топ бока низ
-  line-height: 1.3; //междустрочный
+  margin: 0 0 20px;
+  line-height: 1.3;
 
   .first-word {
-    color: white; //наша
+    color: white;
   }
 
   .second-word {
-    color: #e32966; //команда
+    color: #e32966;
   }
 }
 
-/* Контейнер с кнопками категорий */
 .category-buttons {
-  display: flex; //делает контейнер флекс боксом для гибкости
-  justify-content: flex-start; //прижимает к началу - левый край
-  gap: 20px; //между элементами
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
   margin-bottom: 40px;
-  flex-wrap: nowrap; //запрещает переход на новую строку
+  flex-wrap: nowrap;
 
   @media (max-width: 992px) {
-    flex-wrap: wrap; //разрешает переход на новую строку
+    flex-wrap: wrap;
   }
 
   @media (max-width: 576px) {
@@ -50,14 +49,14 @@
     font-size: clamp(12px, 1.5vw, 20px);
     line-height: 1.09;
     cursor: pointer;
-    transition: all 0.3s; //анимирует
+    transition: all 0.3s;
     font-weight: 500;
     display: flex;
-    flex-direction: column; //расположение элементов внутри кнопки
-    align-items: center; //выравнивание по центру горизонтали
-    justify-content: center; //выравнивание по центру вертикали
-    width: clamp(150px, 18vw, 227px); //высота кнопки
-    aspect-ratio: 1; //кнопка квадратная
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: clamp(150px, 18vw, 227px);
+    aspect-ratio: 1;
     color: #e32966;
 
     @media (max-width: 576px) {
@@ -81,68 +80,67 @@
 
   .category-icon {
     width: clamp(80px, 9vw, 130px);
-    height: auto; //чтобы картинка иконки не сжималась
+    height: auto;
     margin-bottom: 8px;
     transition: filter 0.3s;
   }
 }
 
-/** сетка **/
+/* Обновленная сетка для десктопов */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 колонки на десктопе */
-  gap: 20px;
+  grid-template-rows: repeat(2, 1fr); /* 2 строки по умолчанию */
+  grid-auto-columns: max(150px, calc(25% - 15px)); /* Минимум 150px или 25% ширины */
+  grid-auto-flow: column;
+  gap: 20px; /* Фиксированный отступ */
+  overflow-x: auto; /* Горизонтальный скролл */
+  padding-bottom: 20px;
+  scroll-snap-type: x proximity;
+  width: 100%;
 
-  /* Мобильные (например, 576px и меньше) - 2 колонки с горизонтальным скроллом */
+  /* Скрытие скроллбара */
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Для 1-4 участников (одна строка) */
+  &.single-row {
+    grid-template-rows: 1fr;
+    grid-auto-columns: max(150px, calc(25% - 15px));
+  }
+
+  /* Для мобильных */
   @media (max-width: 576px) {
-    grid-template-columns: repeat(5, 1fr); /*колонки на мобилкe */
-    overflow-x: auto;
-    padding-bottom: 10px; /* место для скролла */
+    grid-auto-columns: max(150px, calc(25% - 10px)); /* Минимум 150px или 50% ширины */
 
-    /* Скрываем скроллбар */
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
+    &.single-row-mobile {
+      grid-template-rows: 1fr;
+      grid-auto-columns: max(150px, calc(25% - 10px));
     }
   }
 }
 
-/* Карточка участника */
 .team-member {
   position: relative;
   scroll-snap-align: start;
-
-  @media (max-width: 576px) {
-    flex: 0 0 calc(50% - 6px);
-    min-width: 150px; /* фиксированная ширина для мобильных */
-  }
+  min-width: 150px; /* Абсолютный минимум */
 
   .member-photo {
     position: relative;
     width: 100%;
-    padding-bottom: 150%;
+    min-width: 150px; /* Дублируем минимум */
+    padding-bottom: 150%; /* Сохранение пропорций 1:1 */
     overflow: hidden;
     border-radius: 20px;
-    transition: transform 0.3s;
-
-    @media (max-width: 992px) {
-      padding-bottom: 140%;
-    }
-
-    @media (max-width: 576px) {
-      height: 224px;
-      width: 150px;
-      padding-bottom: 0; /* убираем padding-bottom так как задали фиксированную высоту */
-      border-radius: 15px;
-    }
 
     img {
       position: absolute;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s;
     }
+
 
     .member-info {
       font-family: "Montserrat", sans-serif;
@@ -158,7 +156,6 @@
       transition: transform 0.3s;
       text-align: center;
       border-radius: 20px;
-
       font-size: clamp(10px, 1.5vw, 19px);
 
       @media (max-width: 576px) {
@@ -176,8 +173,6 @@
         margin: 0;
         font-weight: 300;
         opacity: 0.9;
-        @media (max-width: 576px) {
-        }
       }
     }
 
@@ -197,5 +192,4 @@
       }
     }
   }
-
 }
