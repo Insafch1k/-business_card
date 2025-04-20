@@ -8,7 +8,7 @@ import { Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/co
 export class ServicesComponent implements OnInit, OnDestroy {
   @ViewChild('servicesTrack') servicesTrack!: ElementRef;
 
-  services = [
+  originalServices = [
     { id: 1, title: 'Создание сайта', image: 'assets/services/site.png', anchor: 'zakaz' },
     { id: 2, title: 'Разработка Telegram-бота', image: 'assets/services/bot.png', anchor: 'zakaz' },
     { id: 3, title: 'Разработка мобильного приложения', image: 'assets/services/mob.png', anchor: 'zakaz' },
@@ -16,19 +16,32 @@ export class ServicesComponent implements OnInit, OnDestroy {
     { id: 5, title: 'CRM-системы', image: 'assets/services/crm.png', anchor: 'zakaz' }
   ];
 
+  services = [...this.originalServices];
   currentPosition = 0;
-  animationInterval: any;
+  animationFrameId: number | null = null;
   isPaused = false;
-  cardWidth = 392; // Ширина карточки
-  gap = 20; // Расстояние между карточками
-  speed = 1.5;
+  cardWidth = 392;
+  gap = 20;
+  speed = 1;
   selectedIndex: number | null = null;
-  pauseDuration = 5000; // 5 секунд 5000
+  pauseDuration = 3000; 
   resumeTimeout: any;
+  singleCycleWidth: number = 0;
+  // Текущий индекс центральной карточки
+  currentCenterIndex: number = 0;
+  // Флаг для отслеживания, должна ли анимация возобновиться
+  shouldResumeAnimation = true;
+  // Счетчик активных операций для отслеживания множественных нажатий
+  pendingOperations = 0;
 
   ngOnInit(): void {
-    this.services = [...this.services, ...this.services, ...this.services];
+    this.prepareCarousel();
     this.startAnimation();
+  }
+
+  prepareCarousel(): void {
+    this.services = [...this.originalServices, ...this.originalServices, ...this.originalServices];
+    this.singleCycleWidth = (this.cardWidth + this.gap) * this.originalServices.length;
   }
 
   ngOnDestroy(): void {
@@ -37,114 +50,203 @@ export class ServicesComponent implements OnInit, OnDestroy {
   }
 
   startAnimation(): void {
-    this.stopAnimation();
-    this.animationInterval = setInterval(() => {
+    // Если анимация уже запущена, не запускаем её снова
+    if (this.animationFrameId !== null) return;
+    
+    const animate = () => {
       if (!this.isPaused) {
         this.currentPosition -= this.speed;
-        this.updateTrackPosition();
         
-        const totalWidth = (this.cardWidth + this.gap) * (this.services.length / 3);
-        if (Math.abs(this.currentPosition) >= totalWidth) {
-          this.currentPosition = 0;
+        if (Math.abs(this.currentPosition) >= this.singleCycleWidth) {
+          this.currentPosition += this.singleCycleWidth;
           this.updateTrackPosition(true);
         }
+        
+        this.updateTrackPosition();
       }
-    }, 16);
+      this.animationFrameId = requestAnimationFrame(animate);
+    };
+    this.animationFrameId = requestAnimationFrame(animate);
   }
 
-  
-
   stopAnimation(): void {
-    if (this.animationInterval) {
-      clearInterval(this.animationInterval);
+    if (this.animationFrameId) {
+      cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = null;
     }
   }
 
   updateTrackPosition(instant = false): void {
     const track = this.servicesTrack.nativeElement;
+    track.style.transform = `translateX(${this.currentPosition}px)`;
+    
     if (instant) {
-      // Жесткое позиционирование без анимации
-      track.style.transition = 'transform 0.5s ease-out';
-      track.style.transform = `translateX(${this.currentPosition}px)`;
-      // Принудительный рефлоу для мгновенного применения
+      track.style.transition = 'none';
       void track.offsetWidth;
     } else {
-      // Плавная анимация для автоматической прокрутки
-      track.style.transition = 'transform 0.5s ease-out';
-      track.style.transform = `translateX(${this.currentPosition}px)`;
+      track.style.transition = `transform ${this.speed * 0.16}s linear`;
     }
   }
 
-  pauseAnimation(index: number): void {
-    // Останавливаем анимацию
-    this.isPaused = true;
-    this.selectedIndex = index;
+  // Центрирование карточки с анимацией
+  centerCard(index: number): void {
+    // Инкрементируем счетчик операций
+    this.pendingOperations++;
     
-    // Получаем размеры контейнера
+    // Запоминаем, что анимация должна возобновиться, если она была активна
+    if (!this.isPaused && this.animationFrameId !== null) {
+      this.shouldResumeAnimation = true;
+    }
+    
+    this.isPaused = true;
+    this.stopAnimation();
+    this.selectedIndex = index;
+    this.currentCenterIndex = index % this.originalServices.length;
+
     const container = this.servicesTrack.nativeElement.parentElement;
     const containerWidth = container.offsetWidth;
     const containerCenter = containerWidth / 2;
     
-    // Рассчитываем центр выбранной карточки
     const card = this.servicesTrack.nativeElement.children[index];
     const cardRect = card.getBoundingClientRect();
     const cardCenter = cardRect.left - container.getBoundingClientRect().left + cardRect.width / 2;
     
-    // Вычисляем необходимое смещение для точного центрирования
     const offset = cardCenter - containerCenter;
-    
-    // Применяем коррекцию позиции
     this.currentPosition -= offset;
     
-    // Принудительное обновление позиции без анимации
     this.updateTrackPosition(true);
     
-    // Возобновляем анимацию через 5 секунд
+    // Добавляем класс для анимации приближения
+    card.classList.add('zoomed-card');
+    
+    // Удаляем класс у других карточек
+    Array.from(this.servicesTrack.nativeElement.children).forEach((child: unknown, i: number) => {
+      if (i !== index && child instanceof HTMLElement) {
+        child.classList.remove('zoomed-card');
+      }
+    });
+
+    // Сохраняем текущее значение счетчика для замыкания
+    const currentOperation = this.pendingOperations;
+    
     clearTimeout(this.resumeTimeout);
     this.resumeTimeout = setTimeout(() => {
-      this.isPaused = false;
-      this.selectedIndex = null;
+      // Проверяем, что это последняя операция
+      if (currentOperation === this.pendingOperations) {
+        this.isPaused = false;
+        this.selectedIndex = null;
+        // Убираем класс приближения после паузы
+        card.classList.remove('zoomed-card');
+        
+        // Перезапускаем анимацию, если была активна до паузы
+        if (this.shouldResumeAnimation) {
+          this.startAnimation();
+        }
+      }
     }, this.pauseDuration);
   }
 
+  // Обработчик клика по карточке
+  onCardClick(index: number): void {
+    this.centerCard(index);
+  }
+
+  // Навигация кнопками
   scroll(direction: 'left' | 'right'): void {
-    // Ставим анимацию на паузу
-    this.isPaused = true;
-    this.selectedIndex = null;
+    // Инкрементируем счетчик операций
+    this.pendingOperations++;
     
-    // Рассчитываем смещение для одной карточки
-    const singleCardOffset = this.cardWidth + this.gap;
-    
-    if (direction === 'left') {
-      // Прокрутка влево (к началу)
-      this.currentPosition += singleCardOffset;
-      
-      // Не даем уйти за начало
-      if (this.currentPosition > 0) {
-        this.currentPosition = 0;
-      }
-    } else {
-      // Прокрутка вправо (к концу)
-      this.currentPosition -= singleCardOffset;
-      
-      // Рассчитываем максимальное смещение
-      const visibleCards = Math.floor(this.servicesTrack.nativeElement.parentElement.offsetWidth / singleCardOffset);
-      const maxScroll = -(this.services.length * singleCardOffset - visibleCards * singleCardOffset);
-      
-      // Не даем уйти за конец
-      if (this.currentPosition < maxScroll) {
-        this.currentPosition = maxScroll;
-      }
+    // Запоминаем, что анимация должна возобновиться, если она была активна
+    if (!this.isPaused && this.animationFrameId !== null) {
+      this.shouldResumeAnimation = true;
     }
     
-    // Плавное обновление позиции
-    this.updateTrackPosition();
+    this.isPaused = true;
+    this.stopAnimation();
+
+    // Определяем новый индекс центральной карточки
+    let newIndex: number;
+    if (direction === 'left') {
+      newIndex = this.findCurrentCenterIndex() - 1;
+    } else {
+      newIndex = this.findCurrentCenterIndex() + 1;
+    }
+
+    // Корректируем индекс если вышли за границы
+    if (newIndex >= this.services.length) newIndex = 0;
+    if (newIndex < 0) newIndex = this.services.length - 1;
+
+    // Центрируем новую карточку
+    const card = this.servicesTrack.nativeElement.children[newIndex];
     
-    // Возобновляем анимацию через 10 секунд
+    // Центрирование карточки
+    const container = this.servicesTrack.nativeElement.parentElement;
+    const containerWidth = container.offsetWidth;
+    const containerCenter = containerWidth / 2;
+    
+    const cardRect = card.getBoundingClientRect();
+    const cardCenter = cardRect.left - container.getBoundingClientRect().left + cardRect.width / 2;
+    
+    const offset = cardCenter - containerCenter;
+    this.currentPosition -= offset;
+    
+    this.updateTrackPosition(true);
+    
+    // Добавляем класс для анимации приближения
+    card.classList.add('zoomed-card');
+    
+    // Удаляем класс у других карточек
+    Array.from(this.servicesTrack.nativeElement.children).forEach((child: unknown, i: number) => {
+      if (i !== newIndex && child instanceof HTMLElement) {
+        child.classList.remove('zoomed-card');
+      }
+    });
+    
+    this.selectedIndex = newIndex;
+    
+    // Сохраняем текущее значение счетчика для замыкания
+    const currentOperation = this.pendingOperations;
+    
+    // Устанавливаем таймаут для возобновления анимации
     clearTimeout(this.resumeTimeout);
     this.resumeTimeout = setTimeout(() => {
-      this.isPaused = false;
+      // Проверяем, что это последняя операция
+      if (currentOperation === this.pendingOperations) {
+        this.isPaused = false;
+        this.selectedIndex = null;
+        // Убираем класс приближения после паузы
+        card.classList.remove('zoomed-card');
+        
+        // Перезапускаем анимацию, если была активна до паузы
+        if (this.shouldResumeAnimation) {
+          this.startAnimation();
+        }
+      }
     }, this.pauseDuration);
+  }
+
+  // Находим индекс карточки, которая сейчас ближе всего к центру
+  findCurrentCenterIndex(): number {
+    const container = this.servicesTrack.nativeElement.parentElement;
+    const containerWidth = container.offsetWidth;
+    const containerCenter = containerWidth / 2;
+    
+    let closestIndex = 0;
+    let smallestDistance = Infinity;
+  
+    // Явно указываем тип для child
+    Array.from<HTMLElement>(this.servicesTrack.nativeElement.children).forEach((child, index) => {
+      const rect = child.getBoundingClientRect();
+      const cardCenter = rect.left - container.getBoundingClientRect().left + rect.width / 2;
+      const distance = Math.abs(cardCenter - containerCenter);
+      
+      if (distance < smallestDistance) {
+        smallestDistance = distance;
+        closestIndex = index;
+      }
+    });
+  
+    return closestIndex;
   }
 
   trackByFn(index: number, item: any): number {
