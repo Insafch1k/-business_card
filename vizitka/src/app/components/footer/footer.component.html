@@ -4,11 +4,11 @@
     <div class="footer-column">
       <h3 class="footer-title">Меню</h3>
       <ul class="footer-menu">
-        <li><a routerLink="/">Наша команда</a></li>
-        <li><a routerLink="/about">Наши услуги</a></li>
-        <li><a routerLink="/projects">Проекты</a></li>
-        <li><a routerLink="/questions">Частые вопросы</a></li>
-        <li><a routerLink="/contacts">Контакты</a></li>
+        <li><a (click)="scrollTo('team')">Команда</a></li>
+        <li><a (click)="scrollTo('services')">Услуги</a></li>
+        <li><a (click)="scrollTo('projects')">Проекты</a></li>
+        <li><a (click)="scrollTo('questions')">Вопросы</a></li>
+        <li><a (click)="scrollTo('contacts')">Контакты</a></li>
       </ul>
     </div>
 
@@ -28,24 +28,16 @@
         <!-- Телефон -->
         <div class="contact-item">
           <p>+7 (905) 026 21 62</p>
-          <p>г.Казань, ул.Сибирский <br />тракт</p>
+          <p>г.Казань, ул.Сибирский <br>тракт</p>
         </div>
-
+        
         <!-- Соцсети в одной строке -->
         <div class="social-icons">
           <a href="https://t.me/tg" target="_blank" class="social-link">
-            <img src="assets/icons/tg.svg" alt="Telegram" class="social-icon" />
+            <img src="assets/icons/tg.svg" alt="Telegram" class="social-icon">
           </a>
-          <a
-            href="https://wa.me/71234567890"
-            target="_blank"
-            class="social-link"
-          >
-            <img
-              src="assets/icons/whatsup.svg"
-              alt="WhatsApp"
-              class="social-icon"
-            />
+          <a href="https://wa.me/71234567890" target="_blank" class="social-link">
+            <img src="assets/icons/whatsup.svg" alt="WhatsApp" class="social-icon">
           </a>
         </div>
       </div>
@@ -54,7 +46,7 @@
     <!-- Колонка 4: Иконка/лого -->
     <div class="footer-column">
       <div class="footer-logo">
-        <img src="assets/icons/logo.svg" alt="Логотип" class="logo-icon" />
+        <img src="assets/icons/logo.svg" alt="Логотип" class="logo-icon">
       </div>
     </div>
   </div>
