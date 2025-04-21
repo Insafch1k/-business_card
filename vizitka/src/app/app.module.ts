@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
-// Font Awesome для Angular 16
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-// Компоненты
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -18,6 +16,7 @@ import { QuestionsComponent } from './components/questions/questions.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ContactsMenuComponent } from './components/contacts-menu/contacts-menu.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -38,6 +37,7 @@ import { ContactsMenuComponent } from './components/contacts-menu/contacts-menu.
     FontAwesomeModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

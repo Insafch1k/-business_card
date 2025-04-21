@@ -3,36 +3,35 @@ $primary-color: #0077ff;
 $text-color: #ffffff;
 $background: black;
 
+* {
+  font-size: 20px;
+  color: inherit;
+}
+
 .header {
   position: relative;
   width: 100%;
-  max-height: 133.2px;
-  margin: 10px 0 0 0;
-  padding: 0 20px;
+  max-height: clamp(6em, 13vw, 133.2px);
+  padding: 10px 20px 0 20px;
   font: {
     weight: 500;
-    size: clamp(16px, 2vw, 20px);
   }
   line-height: 100%;
   color: $text-color;
   background-color: transparent;
   box-sizing: border-box;
 
-  * {
-    font: inherit;
-    color: inherit;
-  }
-
   &::after {
     content: "";
     position: absolute;
-    top: -10px;
+    top: 0;
     right: 0;
-    left: 874px;
-    max-width: 847px;
-    max-height: 955px;
+    left: 60%;
+    width: 847px;
+    height: var(--background-height);
+    aspect-ratio: 847 / 960;
     background: {
-      image: url("../../../assets/Header/main_background.svg");
+      image: url("/assets/Header/main_background.svg");
       repeat: no-repeat;
       position: right top;
       size: contain;
@@ -44,8 +43,9 @@ $background: black;
   &-navigation {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1217px;
+    max-width: clamp(300px, 90vw, 1217px);
     margin: 0 auto;
+    justify-content: space-between;
   }
 
   &-navigation-menu {
@@ -53,15 +53,15 @@ $background: black;
     flex-wrap: wrap;
     gap: min(20px, 2vw);
     list-style: none;
-    margin: 30px 0 0 0;
+    margin: clamp(1em, 3vw, 30px) 0 0 0;
     padding: 0;
     width: auto;
 
     a {
       font-family: $font-family;
+      font-weight: 500;
       text-decoration: none;
       white-space: nowrap;
-      font-size: 20px;
 
       &:hover {
         color: $primary-color;
@@ -72,15 +72,16 @@ $background: black;
 
   &-logo {
     user-select: none;
-    max-width: 93.5px;
+    max-width: clamp(60px, 8vw, 93.5px);
     height: auto;
-    margin: 0 48px 0 45px;
+    margin-left: clamp(0px, 4vw, 45px);
+    margin-right: clamp(0px, 5vw, 48px);
   }
 
   .discuss-button {
     font: {
       family: $font-family;
-      weight: 600;
+      weight: 500;
     }
     max-width: 227px;
     height: 50px;
@@ -101,28 +102,31 @@ $background: black;
 
   .telephone-number {
     font-family: $font-family;
-    margin-top: clamp(15px, 2vw, 30px);
+    margin: clamp(1em, 3vw, 30px) 0 0 0;
+
     white-space: nowrap;
     text-decoration: none;
     font-size: 20px;
+    &:hover {
+      color: $primary-color;
+      cursor: pointer;
+    }
   }
 
   .mobile-burger-menu {
     display: none;
   }
 
-  @media (max-width: 992px) {
-    &::after {
-      width: 60%;
-    }
-
-    &-navigation-menu {
+  @media (max-width: 1271px) {
+    a {
       font-size: 16px;
-      display: none;
     }
 
     .discuss-button {
       font-size: 16px;
+      font-weight: 500;
+      width: 200px;
+      height: 40px;
     }
 
     .telephone-number {
@@ -130,57 +134,157 @@ $background: black;
     }
   }
 
-  @media (max-width: 756px) {
-    &::after {
-      width: 60%;
-    }
-
-    &-navigation-menu {
-      font-size: 16px;
-      display: none;
-    }
-
+  @media (max-width: 1092px) {
     .discuss-button {
-      font-size: 16px;
+      margin-right: 10px;
     }
 
-    .telephone-number {
-      font-size: 16px;
+    .header-logo {
+      margin: 0;
     }
   }
 
-  @media (max-width: 576px) {
-    .header {
-      margin: 10px 0 0 0;
+  @media (max-width: 965px) {
+    &::after {
+      width: clamp(320px, 72vw, 692px);
+      aspect-ratio: 692 / 800;
     }
+
+    .header-navigation-menu {
+      display: none;
+    }
+
     &-navigation {
       grid-template-columns: auto auto auto;
-      // justify-content: space-between;
       padding: 0 10px;
     }
 
     .discuss-button {
-      display: none;
+      position: absolute;
+      right: clamp(60px, 12vw, 50px);
+      order: 3;
+      padding: 10px 20px;
+      font-size: 16px;
+      white-space: nowrap;
+      text-align: center;
+      min-width: clamp(120px, 25vw, 180px);
+      box-sizing: border-box;
+      margin-top: 13px;
+    }
+
+    .logo {
+      order: 2;
     }
 
     .telephone-number {
-      font-size: 12px;
       order: 1;
-      margin-top: 27px;
+      margin-top: clamp(15px, 4vw, 27px);
     }
 
     &-logo {
-      width: 52.59px;
-      margin-left: 34px;
-      order: 2;
+      position: absolute;
+      width: 93px;
+      margin: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .mobile-burger-menu {
       display: block;
       position: absolute;
       order: 3;
-      top: 28px;
-      right: 20px;
+      top: clamp(20px, 5vw, 30px);
+      right: clamp(10px, 5vw, 20px);
+      cursor: pointer;
+    }
+    .burger-menu-dropdown {
+      position: absolute;
+      top: 95px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: #171717;
+      z-index: 3;
+
+      .burger-menu-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .burger-menu-element {
+          min-height: 33px;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: auto;
+
+          &:not(:last-child) {
+            border-bottom: 0.5px solid #ffffff;
+          }
+
+          .burger-menu-text {
+            text-decoration: none;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: #fff;
+            transition: color 0.2s ease;
+            padding: 10px;
+            display: inline-block;
+
+            &:hover {
+              color: #0077ff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 655px) {
+    .discuss-button {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header {
+      margin: clamp(0.2em, 1vw, 10px) 0 0 0;
+    }
+
+    .header::after {
+      display: none !important;
+    }
+
+    &-navigation {
+      grid-template-columns: auto auto auto;
+      padding: 0 10px;
+    }
+
+    .telephone-number {
+      font-size: 12px;
+      order: 1;
+      margin-top: clamp(15px, 4vw, 27px);
+    }
+
+    &-logo {
+      position: absolute;
+      width: clamp(40px, 7vw, 52.59px);
+      margin: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .mobile-burger-menu {
+      display: block;
+      position: absolute;
+      order: 3;
+      top: clamp(20px, 5vw, 28px);
+      right: clamp(10px, 5vw, 20px);
     }
   }
 }

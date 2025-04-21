@@ -11,11 +11,13 @@
     </button>
 
     <div class="projects-window">
-      <img
-        [src]="currentProject.image"
-        [alt]="currentProject.title"
-        class="project-image"
-      />
+      <div class="image-wrapper" [@fadeAnimation]="currentIndex">
+        <img
+          [src]="currentProject.image"
+          [alt]="currentProject.title"
+          class="project-image"
+        />
+      </div>
     </div>
 
     <button class="nav-button next-button" (click)="next()">

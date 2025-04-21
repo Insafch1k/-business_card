@@ -8,6 +8,21 @@ import { ContactsMenuService } from './contacts-menu.service';
 })
 export class ContactsMenuComponent {
   constructor(public menuService: ContactsMenuService) {}
+
+  goToContacts() {
+    // Закрываем меню
+    this.menuService.closeMenu();
+
+    // Прокручиваем страницу до элемента с id="contactsSection"
+    const contactsElement = document.getElementById('contactsSection');
+    if (contactsElement) {
+      contactsElement.scrollIntoView({
+        behavior: 'smooth', // Для плавной прокрутки
+        block: 'start',
+      });
+    }
+  }
+
   closeMenu() {
     this.menuService.closeMenu();
   }

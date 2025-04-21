@@ -6,14 +6,13 @@ $background: black;
 .main {
   position: relative;
   width: 100%;
-  min-height: min(830px, 100vh);
+  height: fit-content;
   color: $text-color;
   display: grid;
-  grid-template-rows: 1fr auto;
-  grid-template-columns: auto 600px;
   grid-template-areas:
     "column1 column2"
     "stack stack";
+  grid-auto-rows: auto;
   z-index: 1;
   background-color: transparent;
   box-sizing: border-box;
@@ -41,7 +40,6 @@ h1 {
   line-height: clamp(48px, 10vw, 145px);
   letter-spacing: -0.06em;
   text-transform: uppercase;
-  width: min(652px, 90%);
   height: auto;
   margin-top: clamp(30px, 10vw, 93px);
   margin-bottom: 0;
@@ -52,8 +50,8 @@ h1 {
   font-family: $font-family;
   font-weight: 300;
   font-size: clamp(16px, 2vw, 24px);
-  width: min(602px, 90%);
-  height: auto;
+  max-width: clamp(320px, 50vw, 602px);
+  height: clamp(57px, 8vw, 87px);
   margin-top: clamp(10px, 2vw, 20px);
 }
 
@@ -135,7 +133,7 @@ h1 {
   user-select: none;
   -ms-touch-action: none;
   touch-action: none;
-  height: clamp(50px, 6vw, 60px);
+  height: 60px;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -197,5 +195,125 @@ span {
   }
   100% {
     transform: translateX(-200%);
+  }
+}
+
+@media (max-width: 960px) {
+  h1 {
+    font-size: clamp(60px, 12vw, 140px);
+    font-weight: 700;
+    max-width: 468px;
+  }
+
+  .column-1 {
+    margin-left: 20px;
+  }
+
+  .C_plusplus {
+    left: clamp(10px, 30vw, 200px);
+    top: clamp(100px, 20vw, 204px);
+    max-width: 80px;
+    height: 80px;
+  }
+
+  .welcome {
+    margin-top: 20px;
+    font-size: clamp(14px, 2vw, 24px);
+    font-weight: 300;
+    width: 602px;
+    height: auto;
+  }
+
+  .order-button {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    max-width: 291px;
+    max-height: 60px;
+    width: 100%;
+    height: auto;
+    padding: 16px 32px;
+  }
+
+  .scrolling-stack {
+    margin-top: 57px;
+
+    span {
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+
+  .Python,
+  .VS,
+  .SQL,
+  .C_plusplus {
+    width: calc(clamp(50px, 12vw, 150px) - 25px);
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "column1"
+      "column2"
+      "stack";
+  }
+
+  .columns {
+    padding: 0 clamp(10px, 5vw, 30px);
+  }
+
+  h1 {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 60px;
+    width: fit-content;
+  }
+
+  img {
+    display: none;
+  }
+
+  .welcome {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    max-width: 320px;
+    height: 57px;
+  }
+
+  .order-button {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    max-width: fit-content;
+    max-height: 30px;
+    width: 100%;
+    padding: 10px 20px;
+  }
+
+  .column-2 {
+    display: none;
+  }
+
+  .scrolling-stack {
+    margin-top: 40px;
+    height: 40px;
+
+    span {
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+
+  .Python,
+  .VS,
+  .SQL,
+  .C_plusplus {
+    width: calc(clamp(30px, 9vw, 100px) - 50px);
+    height: auto;
   }
 }

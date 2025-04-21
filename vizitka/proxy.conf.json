@@ -4,7 +4,7 @@
     "secure": true,
     "changeOrigin": true,
     "pathRewrite": {
-      "^/api/telegram": "/bot7825086890:AAHKb98bzxvzRPaydcFkPZiXv1QxZTSUuQA"
+      "^/api/telegram": "/bot"
     },
     "logLevel": "debug"
   }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 interface Project {
   image: string;
@@ -11,6 +12,14 @@ interface Project {
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
+  animations: [
+    trigger('fadeAnimation', [
+      transition('* => *', [
+        style({ opacity: 0 }),
+        animate('300ms ease-in', style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class ProjectsComponent {
   projects: Project[] = [
@@ -35,21 +44,36 @@ export class ProjectsComponent {
   ];
 
   currentIndex = 0;
+  showImage = true;
 
   get currentProject(): Project {
     return this.projects[this.currentIndex];
   }
 
   next(): void {
-    this.currentIndex = (this.currentIndex + 1) % this.projects.length;
+    this.triggerImageChange(() => {
+      this.currentIndex = (this.currentIndex + 1) % this.projects.length;
+    });
   }
 
   prev(): void {
-    this.currentIndex =
-      (this.currentIndex - 1 + this.projects.length) % this.projects.length;
+    this.triggerImageChange(() => {
+      this.currentIndex =
+        (this.currentIndex - 1 + this.projects.length) % this.projects.length;
+    });
   }
 
   goTo(index: number): void {
-    this.currentIndex = index;
+    this.triggerImageChange(() => {
+      this.currentIndex = index;
+    });
+  }
+
+  private triggerImageChange(changeFn: () => void): void {
+    this.showImage = false;
+    setTimeout(() => {
+      changeFn();
+      this.showImage = true;
+    }, 50);
   }
 }
