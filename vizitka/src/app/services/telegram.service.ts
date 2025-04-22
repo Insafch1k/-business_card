@@ -13,7 +13,7 @@ export class TelegramService {
 
   sendMessage(formData: any) {
     const message = this.formatMessage(formData);
-    const url = `/api/telegram${this.BOT_TOKEN}/sendMessage?chat_id=${this.CHAT_ID}`;
+    const url = `/api/telegram/sendMessage?chat_id=${this.CHAT_ID}&token=${this.BOT_TOKEN}`;
 
     console.log('Отправка сообщения:', { url, message });
 

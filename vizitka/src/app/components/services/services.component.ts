@@ -1,58 +1,19 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-  OnDestroy,
-} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
-  styleUrls: ['./services.component.scss'],
+  styleUrls: ['./services.component.scss']
 })
 export class ServicesComponent implements OnInit, OnDestroy {
   @ViewChild('servicesTrack') servicesTrack!: ElementRef;
 
-  scrollToContacts(event: Event): void {
-    event.preventDefault(); // отменяет стандартный переход
-    const section = document.getElementById('contactsSection');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
   originalServices = [
-    {
-      id: 1,
-      title: 'Создание сайта',
-      image: 'assets/services/site.png',
-      anchor: 'contactsSection',
-    },
-    {
-      id: 2,
-      title: 'Разработка Telegram-бота',
-      image: 'assets/services/bot.png',
-      anchor: 'contactsSection',
-    },
-    {
-      id: 3,
-      title: 'Разработка мобильного приложения',
-      image: 'assets/services/mob.png',
-      anchor: 'contactsSection',
-    },
-    {
-      id: 4,
-      title: 'Разработка Web-приложения',
-      image: 'assets/services/web.png',
-      anchor: 'contactsSection',
-    },
-    {
-      id: 5,
-      title: 'CRM-системы',
-      image: 'assets/services/crm.png',
-      anchor: 'contactsSection',
-    },
+    { id: 1, title: 'Создание сайта', image: 'assets/services/site.png', anchor: 'zakaz' },
+    { id: 2, title: 'Разработка Telegram-бота', image: 'assets/services/bot.png', anchor: 'zakaz' },
+    { id: 3, title: 'Разработка мобильного приложения', image: 'assets/services/mob.png', anchor: 'zakaz' },
+    { id: 4, title: 'Разработка Web-приложения', image: 'assets/services/web.png', anchor: 'zakaz' },
+    { id: 5, title: 'CRM-системы', image: 'assets/services/crm.png', anchor: 'zakaz' }
   ];
 
   services = [...this.originalServices];
@@ -63,7 +24,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
   gap = 20;
   speed = 1;
   selectedIndex: number | null = null;
-  pauseDuration = 3000;
+  pauseDuration = 3000; 
   resumeTimeout: any;
   singleCycleWidth: number = 0;
   // Текущий индекс центральной карточки
@@ -79,13 +40,8 @@ export class ServicesComponent implements OnInit, OnDestroy {
   }
 
   prepareCarousel(): void {
-    this.services = [
-      ...this.originalServices,
-      ...this.originalServices,
-      ...this.originalServices,
-    ];
-    this.singleCycleWidth =
-      (this.cardWidth + this.gap) * this.originalServices.length;
+    this.services = [...this.originalServices, ...this.originalServices, ...this.originalServices];
+    this.singleCycleWidth = (this.cardWidth + this.gap) * this.originalServices.length;
   }
 
   ngOnDestroy(): void {
@@ -96,16 +52,16 @@ export class ServicesComponent implements OnInit, OnDestroy {
   startAnimation(): void {
     // Если анимация уже запущена, не запускаем её снова
     if (this.animationFrameId !== null) return;
-
+    
     const animate = () => {
       if (!this.isPaused) {
         this.currentPosition -= this.speed;
-
+        
         if (Math.abs(this.currentPosition) >= this.singleCycleWidth) {
           this.currentPosition += this.singleCycleWidth;
           this.updateTrackPosition(true);
         }
-
+        
         this.updateTrackPosition();
       }
       this.animationFrameId = requestAnimationFrame(animate);
@@ -123,7 +79,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
   updateTrackPosition(instant = false): void {
     const track = this.servicesTrack.nativeElement;
     track.style.transform = `translateX(${this.currentPosition}px)`;
-
+    
     if (instant) {
       track.style.transition = 'none';
       void track.offsetWidth;
@@ -136,12 +92,12 @@ export class ServicesComponent implements OnInit, OnDestroy {
   centerCard(index: number): void {
     // Инкрементируем счетчик операций
     this.pendingOperations++;
-
+    
     // Запоминаем, что анимация должна возобновиться, если она была активна
     if (!this.isPaused && this.animationFrameId !== null) {
       this.shouldResumeAnimation = true;
     }
-
+    
     this.isPaused = true;
     this.stopAnimation();
     this.selectedIndex = index;
@@ -150,34 +106,29 @@ export class ServicesComponent implements OnInit, OnDestroy {
     const container = this.servicesTrack.nativeElement.parentElement;
     const containerWidth = container.offsetWidth;
     const containerCenter = containerWidth / 2;
-
+    
     const card = this.servicesTrack.nativeElement.children[index];
     const cardRect = card.getBoundingClientRect();
-    const cardCenter =
-      cardRect.left -
-      container.getBoundingClientRect().left +
-      cardRect.width / 2;
-
+    const cardCenter = cardRect.left - container.getBoundingClientRect().left + cardRect.width / 2;
+    
     const offset = cardCenter - containerCenter;
     this.currentPosition -= offset;
-
+    
     this.updateTrackPosition(true);
-
+    
     // Добавляем класс для анимации приближения
     card.classList.add('zoomed-card');
-
+    
     // Удаляем класс у других карточек
-    Array.from(this.servicesTrack.nativeElement.children).forEach(
-      (child: unknown, i: number) => {
-        if (i !== index && child instanceof HTMLElement) {
-          child.classList.remove('zoomed-card');
-        }
+    Array.from(this.servicesTrack.nativeElement.children).forEach((child: unknown, i: number) => {
+      if (i !== index && child instanceof HTMLElement) {
+        child.classList.remove('zoomed-card');
       }
-    );
+    });
 
     // Сохраняем текущее значение счетчика для замыкания
     const currentOperation = this.pendingOperations;
-
+    
     clearTimeout(this.resumeTimeout);
     this.resumeTimeout = setTimeout(() => {
       // Проверяем, что это последняя операция
@@ -186,7 +137,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
         this.selectedIndex = null;
         // Убираем класс приближения после паузы
         card.classList.remove('zoomed-card');
-
+        
         // Перезапускаем анимацию, если была активна до паузы
         if (this.shouldResumeAnimation) {
           this.startAnimation();
@@ -204,12 +155,12 @@ export class ServicesComponent implements OnInit, OnDestroy {
   scroll(direction: 'left' | 'right'): void {
     // Инкрементируем счетчик операций
     this.pendingOperations++;
-
+    
     // Запоминаем, что анимация должна возобновиться, если она была активна
     if (!this.isPaused && this.animationFrameId !== null) {
       this.shouldResumeAnimation = true;
     }
-
+    
     this.isPaused = true;
     this.stopAnimation();
 
@@ -227,40 +178,35 @@ export class ServicesComponent implements OnInit, OnDestroy {
 
     // Центрируем новую карточку
     const card = this.servicesTrack.nativeElement.children[newIndex];
-
+    
     // Центрирование карточки
     const container = this.servicesTrack.nativeElement.parentElement;
     const containerWidth = container.offsetWidth;
     const containerCenter = containerWidth / 2;
-
+    
     const cardRect = card.getBoundingClientRect();
-    const cardCenter =
-      cardRect.left -
-      container.getBoundingClientRect().left +
-      cardRect.width / 2;
-
+    const cardCenter = cardRect.left - container.getBoundingClientRect().left + cardRect.width / 2;
+    
     const offset = cardCenter - containerCenter;
     this.currentPosition -= offset;
-
+    
     this.updateTrackPosition(true);
-
+    
     // Добавляем класс для анимации приближения
     card.classList.add('zoomed-card');
-
+    
     // Удаляем класс у других карточек
-    Array.from(this.servicesTrack.nativeElement.children).forEach(
-      (child: unknown, i: number) => {
-        if (i !== newIndex && child instanceof HTMLElement) {
-          child.classList.remove('zoomed-card');
-        }
+    Array.from(this.servicesTrack.nativeElement.children).forEach((child: unknown, i: number) => {
+      if (i !== newIndex && child instanceof HTMLElement) {
+        child.classList.remove('zoomed-card');
       }
-    );
-
+    });
+    
     this.selectedIndex = newIndex;
-
+    
     // Сохраняем текущее значение счетчика для замыкания
     const currentOperation = this.pendingOperations;
-
+    
     // Устанавливаем таймаут для возобновления анимации
     clearTimeout(this.resumeTimeout);
     this.resumeTimeout = setTimeout(() => {
@@ -270,7 +216,7 @@ export class ServicesComponent implements OnInit, OnDestroy {
         this.selectedIndex = null;
         // Убираем класс приближения после паузы
         card.classList.remove('zoomed-card');
-
+        
         // Перезапускаем анимацию, если была активна до паузы
         if (this.shouldResumeAnimation) {
           this.startAnimation();
@@ -284,25 +230,22 @@ export class ServicesComponent implements OnInit, OnDestroy {
     const container = this.servicesTrack.nativeElement.parentElement;
     const containerWidth = container.offsetWidth;
     const containerCenter = containerWidth / 2;
-
+    
     let closestIndex = 0;
     let smallestDistance = Infinity;
-
+  
     // Явно указываем тип для child
-    Array.from<HTMLElement>(this.servicesTrack.nativeElement.children).forEach(
-      (child, index) => {
-        const rect = child.getBoundingClientRect();
-        const cardCenter =
-          rect.left - container.getBoundingClientRect().left + rect.width / 2;
-        const distance = Math.abs(cardCenter - containerCenter);
-
-        if (distance < smallestDistance) {
-          smallestDistance = distance;
-          closestIndex = index;
-        }
+    Array.from<HTMLElement>(this.servicesTrack.nativeElement.children).forEach((child, index) => {
+      const rect = child.getBoundingClientRect();
+      const cardCenter = rect.left - container.getBoundingClientRect().left + rect.width / 2;
+      const distance = Math.abs(cardCenter - containerCenter);
+      
+      if (distance < smallestDistance) {
+        smallestDistance = distance;
+        closestIndex = index;
       }
-    );
-
+    });
+  
     return closestIndex;
   }
 

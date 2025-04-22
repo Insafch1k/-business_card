@@ -7,23 +7,18 @@
 
   <div class="services-marquee">
     <div class="services-track" #servicesTrack>
-      <div
-        class="service-card"
+      <div 
+        class="service-card" 
         *ngFor="let service of services; let i = index; trackBy: trackByFn"
         [class.active]="selectedIndex === i"
         (click)="centerCard(i)"
-      >
+        >
         <div class="service-image">
-          <img [src]="service.image" [alt]="service.title" />
+          <img [src]="service.image" [alt]="service.title">
           <div class="content-overlay">
             <h3 class="service-title">{{ service.title }}</h3>
-            <a href="#" (click)="scrollToContacts($event)" class="order-button">
-              Заказать
-              <img
-                src="assets/services/strelbl.svg"
-                alt=""
-                class="button-arrow"
-              />
+            <a href="#{{ service.anchor }}" class="order-button">
+              Заказать <img src="assets/services/strelbl.svg" alt="" class="button-arrow">
             </a>
           </div>
         </div>
@@ -33,10 +28,10 @@
 
   <div class="navigation-buttons">
     <button class="nav-button prev" (click)="scroll('left')">
-      <img src="assets/services/strwhleft.svg" alt="" class="button-arrow" />
+      <img src="assets/services/strwhleft.svg" alt="" class="button-arrow">
     </button>
     <button class="nav-button next" (click)="scroll('right')">
-      <img src="assets/services/strelwh.svg" alt="" class="button-arrow" />
+      <img src="assets/services/strelwh.svg" alt="" class="button-arrow">
     </button>
   </div>
 </section>
