@@ -237,7 +237,8 @@ $background: black;
             display: inline-block;
 
             &:hover {
-              color: #0077ff;
+              color: $primary-color;
+              cursor: pointer;
             }
           }
         }
