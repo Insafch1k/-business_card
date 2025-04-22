@@ -163,4 +163,25 @@
       text-align: center;
     }
   }
+
+  .phone-link {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 100;
+    display: block;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      text-decoration: none;
+      color: #0077FF;
+    }
+  }
+  
+  @media (hover: none) {
+    .phone-link {
+      -webkit-tap-highlight-color: transparent; 
+    }
+  }
 }
