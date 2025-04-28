@@ -126,7 +126,7 @@ h1 {
   width: clamp(100px, 12vw, 150px);
   height: clamp(100px, 12vw, 150px);
   top: clamp(100px, 17vw, 220px);
-  left: clamp(-20px, 5vw, 0px);
+  left: clamp(-200px, -10vw, -50px);
   animation-delay: 0s;
 }
 
@@ -134,7 +134,7 @@ h1 {
   width: clamp(80px, 10vw, 110px);
   height: clamp(80px, 10vw, 110px);
   top: clamp(150px, 25vw, 450px);
-  left: clamp(-70px, 7vw, 160px);
+  left: clamp(-70px, -10vw, 0px);
   animation-delay: 1.5s;
 }
 
@@ -142,7 +142,7 @@ h1 {
   width: clamp(60px, 7vw, 75px);
   height: clamp(60px, 7vw, 75px);
   top: clamp(200px, 35vw, 600px);
-  left: clamp(0px, 5vw, 63px);
+  left: clamp(-200px, -10vw, -50px);
   animation-delay: 1s;
 }
 
