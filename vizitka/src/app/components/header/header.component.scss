@@ -10,8 +10,10 @@ $background: black;
 
 .header {
   position: relative;
-  width: 100%;
   max-height: clamp(6em, 13vw, 133.2px);
+  max-width: 1216px;
+  margin: 0 auto;
+  box-sizing: border-box;
   padding: 10px 20px 0 20px;
   font: {
     weight: 500;
@@ -19,32 +21,10 @@ $background: black;
   line-height: 100%;
   color: $text-color;
   background-color: transparent;
-  box-sizing: border-box;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 60%;
-    width: 847px;
-    height: var(--background-height);
-    aspect-ratio: 847 / 960;
-    background: {
-      image: url("/assets/Header/main_background.svg");
-      repeat: no-repeat;
-      position: right top;
-      size: contain;
-    }
-    pointer-events: none;
-    z-index: -1;
-  }
 
   &-navigation {
     display: flex;
     flex-wrap: wrap;
-    max-width: clamp(300px, 90vw, 1217px);
-    margin: 0 auto;
     justify-content: space-between;
   }
 
@@ -82,6 +62,7 @@ $background: black;
     font: {
       family: $font-family;
       weight: 500;
+      line-height: 10px;
     }
     max-width: 227px;
     height: 50px;
@@ -90,7 +71,7 @@ $background: black;
     border-radius: 30px;
     background: transparent;
     margin-right: clamp(10px, 2vw, 20px);
-    margin-top: clamp(10px, 1.5vw, 17px);
+    margin-top: 17px;
     white-space: nowrap;
     font-size: 20px;
 
@@ -156,7 +137,8 @@ $background: black;
 
     &-navigation {
       grid-template-columns: auto auto auto;
-      padding: 0 10px;
+      padding: 0;
+      margin: 0;
     }
 
     .discuss-button {
@@ -169,7 +151,7 @@ $background: black;
       text-align: center;
       min-width: clamp(120px, 25vw, 180px);
       box-sizing: border-box;
-      margin-top: 13px;
+      margin-top: clamp(5px, 2.2vw, 35px);
     }
 
     .logo {
@@ -178,7 +160,7 @@ $background: black;
 
     .telephone-number {
       order: 1;
-      margin-top: clamp(15px, 4vw, 27px);
+      margin-top: clamp(15px, 4vw, 43px);
     }
 
     &-logo {
@@ -193,7 +175,7 @@ $background: black;
       display: block;
       position: absolute;
       order: 3;
-      top: clamp(20px, 5vw, 30px);
+      margin-top: clamp(15px, 4vw, 43px);
       right: clamp(10px, 5vw, 20px);
       cursor: pointer;
     }
@@ -246,6 +228,12 @@ $background: black;
     }
   }
 
+  @media (max-width: 730px) {
+    .discuss-button {
+      margin-top: clamp(5px, 1.5vw, 30px);
+    }
+  }
+
   @media (max-width: 655px) {
     .discuss-button {
       display: none;
@@ -263,13 +251,12 @@ $background: black;
 
     &-navigation {
       grid-template-columns: auto auto auto;
-      padding: 0 10px;
     }
 
     .telephone-number {
       font-size: 12px;
       order: 1;
-      margin-top: clamp(15px, 4vw, 27px);
+      margin-top: 17px;
     }
 
     &-logo {
@@ -284,8 +271,7 @@ $background: black;
       display: block;
       position: absolute;
       order: 3;
-      top: clamp(20px, 5vw, 28px);
-      right: clamp(10px, 5vw, 20px);
+      margin-top: 17px;
     }
   }
 }

@@ -5,8 +5,16 @@ $background: black;
 
 .main {
   position: relative;
-  width: 100%;
   height: fit-content;
+  background-color: transparent;
+}
+
+.main-box {
+  width: 100%;
+  max-width: 1216px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 20px;
   color: $text-color;
   display: grid;
   grid-template-areas:
@@ -14,26 +22,16 @@ $background: black;
     "stack stack";
   grid-auto-rows: auto;
   z-index: 1;
-  background-color: transparent;
-  box-sizing: border-box;
 }
 
 .column-1 {
   grid-area: column1;
-  margin-left: clamp(20px, 10vw, 200px);
-  z-index: -1;
-}
-
-.C_plusplus {
-  max-width: 120px;
-  height: 120px;
-  position: relative;
-  top: 204.5px;
-  left: 671px;
-  animation-delay: 0.7s;
+  z-index: 1;
+  height: fit-content;
 }
 
 h1 {
+  position: relative;
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
   font-size: clamp(48px, 12vw, 180px);
@@ -41,9 +39,31 @@ h1 {
   letter-spacing: -0.06em;
   text-transform: uppercase;
   height: auto;
-  margin-top: clamp(30px, 10vw, 93px);
+  margin-top: clamp(30px, 10vw, 134px);
   margin-bottom: 0;
   overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 30%;
+    right: 30%;
+    width: clamp(40px, 7vw, 80px);
+    height: clamp(40px, 7vw, 80px);
+    background: url("../../../assets/Main/Emblems/Figma.svg") no-repeat
+      center/contain;
+    pointer-events: none;
+    z-index: 5;
+    transform: rotate(15deg);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: none;
+    touch-action: none;
+    animation: levitate 3s ease-in-out infinite alternate;
+    transform: rotate(var(--rotation));
+  }
 }
 
 .welcome {
@@ -81,8 +101,8 @@ h1 {
 .column-2 {
   grid-area: column2;
   position: relative;
-  height: min(600px, 50vh);
   margin-top: 50px;
+  height: fit-content;
 }
 
 .levitate-image {
@@ -98,15 +118,15 @@ h1 {
   transform: rotate(var(--rotation));
 }
 
-.levitate-image_С {
+.levitate-image_F {
   @extend .levitate-image;
 }
 
 .Python {
   width: clamp(100px, 12vw, 150px);
   height: clamp(100px, 12vw, 150px);
-  top: clamp(100px, 20vw, 220px);
-  left: clamp(20px, 5vw, 0px);
+  top: clamp(100px, 17vw, 220px);
+  left: clamp(-20px, 5vw, 0px);
   animation-delay: 0s;
 }
 
@@ -114,7 +134,7 @@ h1 {
   width: clamp(80px, 10vw, 110px);
   height: clamp(80px, 10vw, 110px);
   top: clamp(150px, 25vw, 450px);
-  left: clamp(50px, 10vw, 160px);
+  left: clamp(-70px, 7vw, 160px);
   animation-delay: 1.5s;
 }
 
@@ -122,7 +142,7 @@ h1 {
   width: clamp(60px, 7vw, 75px);
   height: clamp(60px, 7vw, 75px);
   top: clamp(200px, 35vw, 600px);
-  left: clamp(20px, 5vw, 63px);
+  left: clamp(0px, 5vw, 63px);
   animation-delay: 1s;
 }
 
@@ -134,9 +154,10 @@ h1 {
   -ms-touch-action: none;
   touch-action: none;
   height: 60px;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
   position: relative;
+  left: 0;
   display: flex;
   align-items: center;
   background-color: #ffffff1a;
@@ -205,10 +226,6 @@ span {
     max-width: 468px;
   }
 
-  .column-1 {
-    margin-left: 20px;
-  }
-
   .C_plusplus {
     left: clamp(10px, 30vw, 200px);
     top: clamp(100px, 20vw, 204px);
@@ -255,11 +272,10 @@ span {
 
 @media (max-width: 480px) {
   .main {
-    grid-template-columns: 1fr;
     grid-template-areas:
       "column1"
-      "column2"
       "stack";
+    grid-template-columns: 1fr;
   }
 
   .columns {
@@ -271,6 +287,10 @@ span {
     font-weight: 700;
     line-height: 60px;
     width: fit-content;
+
+    &::after {
+      display: none;
+    }
   }
 
   img {

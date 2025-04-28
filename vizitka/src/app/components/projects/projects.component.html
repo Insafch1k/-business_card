@@ -1,45 +1,50 @@
-<h2 id="projects">Проекты</h2>
 <div class="projects">
-  <p class="project-description">{{ currentProject.description }}</p>
+  <h2 id="projects">Проекты</h2>
+  <div class="projects-box">
+    <p class="project-description">{{ currentProject.description }}</p>
 
-  <div class="gallery-container">
-    <button class="nav-button prev-button" (click)="prev()">
-      <img
-        src="../../../assets/Projects/prev_btn.svg"
-        alt="предыдущий проект"
-      />
-    </button>
-
-    <div class="projects-window">
-      <div class="image-wrapper" [@fadeAnimation]="currentIndex">
+    <div class="gallery-container">
+      <button class="nav-button prev-button" (click)="prev()">
         <img
-          [src]="currentProject.image"
-          [alt]="currentProject.title"
-          class="project-image"
+          src="../../../assets/Projects/prev_btn.svg"
+          alt="предыдущий проект"
         />
+      </button>
+
+      <div class="projects-window">
+        <div class="image-wrapper" [@fadeAnimation]="currentIndex">
+          <img
+            [src]="currentProject.image"
+            [alt]="currentProject.title"
+            class="project-image"
+          />
+        </div>
       </div>
+
+      <button class="nav-button next-button" (click)="next()">
+        <img
+          src="../../../assets/Projects/next_btn.svg"
+          alt="следующий проект"
+        />
+      </button>
     </div>
 
-    <button class="nav-button next-button" (click)="next()">
-      <img src="../../../assets/Projects/next_btn.svg" alt="следующий проект" />
-    </button>
-  </div>
+    <div class="dots-container">
+      <div
+        *ngFor="let dot of projects; let i = index"
+        class="dot"
+        [class.active]="i === currentIndex"
+        (click)="goTo(i)"
+      ></div>
+    </div>
 
-  <div class="dots-container">
-    <div
-      *ngFor="let dot of projects; let i = index"
-      class="dot"
-      [class.active]="i === currentIndex"
-      (click)="goTo(i)"
-    ></div>
+    <a
+      [href]="currentProject.link"
+      class="go-to-project_btn"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Перейти к проекту
+    </a>
   </div>
-
-  <a
-    [href]="currentProject.link"
-    class="go-to-project_btn"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Перейти к проекту
-  </a>
 </div>

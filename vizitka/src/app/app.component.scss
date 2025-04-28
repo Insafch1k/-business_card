@@ -1,1 +1,29 @@
+.background-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
 
+.background-image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background: url("/assets/Header/main_background.svg") no-repeat right top;
+  background-size: auto 100%;
+  background-position: 130% 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 480px) {
+  .background-image {
+    background: none;
+  }
+}

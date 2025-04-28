@@ -41,7 +41,6 @@ export class HeaderComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit() {
-    // Отложим на следующую макротаску, чтобы main успел отрисоваться
     setTimeout(() => {
       this.updateBackgroundHeight();
       this.setupResizeObserver();
