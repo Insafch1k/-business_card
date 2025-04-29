@@ -1,14 +1,3 @@
-<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<mask id="mask0_564_185" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
-<rect width="30" height="30" transform="matrix(-1 0 0 1 30 0)" fill="url(#pattern0_564_185)"/>
-</mask>
-<g mask="url(#mask0_564_185)">
-<rect width="30" height="30" transform="matrix(-1 0 0 1 30 0)" fill="white"/>
-</g>
-<defs>
-<pattern id="pattern0_564_185" patternContentUnits="objectBoundingBox" width="1" height="1">
-<use xlink:href="#image0_564_185" transform="scale(0.0111111)"/>
-</pattern>
-<image id="image0_564_185" width="90" height="90" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAABOUlEQVR4nO3cu0rEUBSF4aXFjoLPrWBjYTWV72AhvpAg2HlhSkWYSryAJCe65/tg+sPPIkwgnAQAAACA3zpOsknynOQhyXmSSc75bZK8fvjdiD2vgyRPn4QWewGPX4QWe2YX34QWe0bT7pks9gCV5PqH2LdJjkYcprsSW+yWyrLFbqksW+yWyrLFbqksW+yWyrLFbqksW+yWyrLFbqksW+yWyrLFbqksW+yWyrLH8ZHOH4t9NvJA+/wYuV/7gPsS+m7tA+7Lo+N07UP+d5MvVpfn790AIg8gssg9lFdukVsoSxa5hbJkkVsoSxa5hbJkkVsoSxa5hbJkkVsoSxa5hbJkkVsoSxa5hcnHLWNcuvNueYdJXtziOCb01lWZY1y5j3SMk13s7e6K4/dLYV3UvfBd0gAAAACZ2RvPehTvrUaSKAAAAABJRU5ErkJggg=="/>
-</defs>
+<svg width="14" height="22" viewBox="0 0 14 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.08744 11.6787L11.5368 21.635C11.7112 21.8012 11.9428 21.8939 12.1837 21.8939C12.4246 21.8939 12.6562 21.8012 12.8306 21.635L12.8418 21.6237C12.9266 21.5432 12.9942 21.4462 13.0403 21.3387C13.0865 21.2312 13.1103 21.1154 13.1103 20.9984C13.1103 20.8814 13.0865 20.7657 13.0403 20.6582C12.9942 20.5507 12.9266 20.4537 12.8418 20.3731L3.00182 10.9981L12.8418 1.62687C12.9266 1.54629 12.9942 1.4493 13.0403 1.34181C13.0865 1.2343 13.1103 1.11854 13.1103 1.00155C13.1103 0.884566 13.0865 0.768803 13.0403 0.661303C12.9942 0.553803 12.9266 0.456816 12.8418 0.376242L12.8306 0.364991C12.6562 0.198782 12.4246 0.106061 12.1837 0.106061C11.9428 0.106061 11.7112 0.198782 11.5368 0.364991L1.08744 10.3212C0.995546 10.4088 0.922386 10.5141 0.872397 10.6308C0.822408 10.7475 0.796631 10.8731 0.796631 11C0.796631 11.1269 0.822408 11.2525 0.872397 11.3692C0.922385 11.4859 0.995546 11.5912 1.08744 11.6787Z" fill="white"/>
 </svg>
