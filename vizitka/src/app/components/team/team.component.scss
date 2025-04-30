@@ -34,7 +34,7 @@
     flex-wrap: wrap;
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: 480px) {
     flex-wrap: wrap;
     margin-bottom: 20px;
   }
@@ -59,7 +59,7 @@
     aspect-ratio: 1;
     color: #e32966;
 
-    @media (max-width: 576px) {
+    @media (max-width: 480px) {
       border-radius: 15px;
       padding: 20px;
     }
@@ -111,7 +111,7 @@
   }
 
   /* Для мобильных */
-  @media (max-width: 576px) {
+  @media (max-width: 480px) {
     grid-auto-columns: max(150px, calc(25% - 10px)); /* Минимум 150px или 50% ширины */
 
     &.single-row-mobile {
@@ -158,7 +158,7 @@
       border-radius: 20px;
       font-size: clamp(10px, 1.5vw, 19px);
 
-      @media (max-width: 576px) {
+      @media (max-width: 480px) {
         transform: translateY(0);
         position: absolute;
         border-radius: 15px;
@@ -185,7 +185,7 @@
         transform: translateY(0);
       }
 
-      @media (max-width: 576px) {
+      @media (max-width: 480px) {
         img {
           transform: none;
         }
