@@ -1,33 +1,17 @@
 <!-- Обновляем шаблон -->
 <section class="team-section">
   <h2 id="team" class="team-title">
-    <span class="first-word">НАША</span>
-    <span class="second-word"> КОМАНДА</span>
+    <span class="first-word">СПЕЦИАЛИЗАЦИИ</span>
+    <span class="second-word"> КОМАНДЫ</span>
   </h2>
   <div class="category-buttons">
     <button
       *ngFor="let category of categories"
-      [class.active]="activeCategory === category.name"
-      (click)="setCategory(category.name)"
+      [class.wide]="category.isWide"
     >
+    <span [innerHTML]="safeHtml(category.displayName)"></span>
       <img [src]="category.icon" alt="" class="category-icon" />
-      <span [innerHTML]="safeHtml(category.displayName)"></span>
     </button>
   </div>
-  <div
-    class="team-grid"
-    [class.single-row]="!isMobile() && filteredMembers.length <= 4"
-    [class.single-row-mobile]="isMobile() && filteredMembers.length <= 2"
-    [ngStyle]="getGridStyle()"
-  >
-    <div class="team-member" *ngFor="let member of filteredMembers">
-      <div class="member-photo">
-        <img [src]="member.photo" [alt]="member.name" />
-        <div class="member-info">
-          <h3 [innerHTML]="safeHtml(member.name)"></h3>
-          <p>{{ member.position }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
+
