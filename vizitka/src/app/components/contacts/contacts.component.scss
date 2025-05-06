@@ -74,6 +74,10 @@ form {
   &:focus {
     border-bottom: 2px solid #fff;
   }
+
+  &.ng-invalid.ng-touched {
+    border-bottom: 2px solid red;
+  }
 }
 
 .name_field,

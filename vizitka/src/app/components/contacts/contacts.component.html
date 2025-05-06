@@ -2,7 +2,11 @@
   <h2>Контакты</h2>
   <div id="contactsSection" class="contacts-box">
     <div class="contacts_column-1">
-      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <form
+        [formGroup]="contactForm"
+        (ngSubmit)="onSubmit()"
+        [class.form-invalid]="contactForm.invalid && contactForm.touched"
+      >
         <input
           type="text"
           class="text-field name_field"

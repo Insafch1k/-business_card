@@ -134,7 +134,7 @@ h1 {
 .VS {
   width: clamp(50px, 7vw, 110px);
   height: clamp(50px, 7vw, 110px);
-  top: clamp(110px, calc(20vw - 20px), 380px);
+  top: clamp(110px, calc(20vw - 20px), 300px);
   left: clamp(-60px, -6vw, 10px);
   animation-delay: 1.5s;
 }
@@ -142,7 +142,7 @@ h1 {
 .SQL {
   width: clamp(25px, 6vw, 75px);
   height: clamp(25px, 6vw, 75px);
-  top: clamp(180px, 30vw, 550px);
+  top: clamp(180px, 30vw, 450px);
   left: clamp(-110px, calc(-8vw - 10px), -30px);
   animation-delay: 1s;
 }
