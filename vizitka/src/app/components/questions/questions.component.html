@@ -1,13 +1,16 @@
-<div id="questions" class="questions">
+<div id="questions" class="questions component">
   <h2 class="questions-title">
-    <span class="frequent">ЧАСТЫЕ</span><span class="questions"> ВОПРОСЫ</span>
+    <span class="frequent">ЧАСТЫЕ</span
+    ><span class="questions-word"> ВОПРОСЫ</span>
   </h2>
 
   <div class="questions-container">
     <div
       *ngFor="let item of questions; let i = index"
       class="question-item"
+      (click)="toggleQuestion(i); $event.stopPropagation()"
       [class.expanded]="item.isExpanded"
+      [class.animating]="item.isAnimating"
     >
       <div class="question-header">
         <span class="text question-text">{{ item.question }}</span>
@@ -19,9 +22,11 @@
           <span class="icon"></span>
         </button>
       </div>
-      <div class="answer-content" *ngIf="item.isExpanded">
-        <div class="divider"></div>
-        <div class="text answer">{{ item.answer }}</div>
+      <div class="answer-wrapper" [class.visible]="item.isExpanded">
+        <div class="answer-content">
+          <div class="divider"></div>
+          <div class="text answer">{{ item.answer }}</div>
+        </div>
       </div>
     </div>
   </div>

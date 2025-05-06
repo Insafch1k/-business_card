@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 interface QuestionItem {
   question: string;
   answer: string;
   isExpanded: boolean;
+  isAnimating: boolean;
 }
 
 @Component({
@@ -15,29 +15,43 @@ interface QuestionItem {
 export class QuestionsComponent {
   questions: QuestionItem[] = [
     {
-      question: 'Какой у нас стек?',
+      question: 'Кто мы и чем занимаемся?',
       answer: 'C++, Pascal, Кумир',
       isExpanded: false,
+      isAnimating: false,
     },
     {
-      question: 'Сколько стоит наш час?',
-      answer: '1500 час, продлить 1000',
-      isExpanded: false,
-    },
-    {
-      question: 'Сколько человек в нашей команде?',
-      answer: '3',
-      isExpanded: false,
-    },
-    {
-      question: 'Где мы находимся?',
+      question: 'Какой у нас стэк?',
       answer:
-        'там где ну примерно плюс минус ну типо около это ну той которая вот ну ты понял кароче там где ещё этот был ну как его забыл кроче там где обычно вот это вот всё это самое ну в общем ты понял',
+        'Figma, HTML, CSS, JavaScript/TypeScript, Angular, MySQL, PostgresSQL, Flask, Python, Flutter, NumPy,  Pandas, FastApi,Git',
       isExpanded: false,
+      isAnimating: false,
+    },
+    {
+      question: 'Сколько времени уходит на выполнение заказа?',
+      answer: 'Зависит от сложности',
+      isExpanded: false,
+      isAnimating: false,
+    },
+    {
+      question: 'Поддерживается ли проект после его старта?',
+      answer: 'Да.',
+      isExpanded: false,
+      isAnimating: false,
     },
   ];
 
   toggleQuestion(index: number): void {
+    if (this.questions[index].isAnimating) {
+      return;
+    }
+
+    this.questions[index].isAnimating = true;
+
     this.questions[index].isExpanded = !this.questions[index].isExpanded;
+
+    setTimeout(() => {
+      this.questions[index].isAnimating = false;
+    }, 600);
   }
 }

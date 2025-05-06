@@ -12,7 +12,7 @@ $background: black;
 .main-box {
   width: 100%;
   max-width: 1216px;
-  margin: 0 auto;
+  margin: clamp(60px, 7vw, 100px) auto 0;
   box-sizing: border-box;
   padding: 0 20px;
   color: $text-color;
@@ -39,8 +39,8 @@ h1 {
   letter-spacing: -0.06em;
   text-transform: uppercase;
   height: auto;
-  margin-top: clamp(30px, 10vw, 115px);
   margin-bottom: 0;
+  margin-top: 0;
   overflow: hidden;
 
   &::after {
@@ -61,8 +61,9 @@ h1 {
     user-select: none;
     -ms-touch-action: none;
     touch-action: none;
-    animation: levitate 3s ease-in-out infinite alternate;
+    animation: levitate 2s ease-in-out infinite alternate;
     transform: rotate(var(--rotation));
+    animation-delay: 0.8s;
   }
 }
 
@@ -114,7 +115,7 @@ h1 {
   touch-action: none;
   pointer-events: none;
   position: absolute;
-  animation: levitate 3s ease-in-out infinite alternate;
+  animation: levitate 2s ease-in-out infinite alternate;
   transform: rotate(var(--rotation));
 }
 
@@ -123,26 +124,26 @@ h1 {
 }
 
 .Python {
-  width: clamp(100px, 12vw, 150px);
-  height: clamp(100px, 12vw, 150px);
-  top: clamp(100px, 17vw, 220px);
-  left: clamp(-200px, -10vw, -50px);
+  width: clamp(65px, 8vw, 130px);
+  height: clamp(65px, 8vw, 130px);
+  top: clamp(50px, calc(10vw - 25px), 190px);
+  left: clamp(-140px, calc(-10vw - 20px), -60px);
   animation-delay: 0s;
 }
 
 .VS {
-  width: clamp(80px, 10vw, 110px);
-  height: clamp(80px, 10vw, 110px);
-  top: clamp(150px, 25vw, 450px);
-  left: clamp(-70px, -10vw, 0px);
+  width: clamp(50px, 7vw, 110px);
+  height: clamp(50px, 7vw, 110px);
+  top: clamp(110px, calc(20vw - 20px), 380px);
+  left: clamp(-60px, -6vw, 10px);
   animation-delay: 1.5s;
 }
 
 .SQL {
-  width: clamp(60px, 7vw, 75px);
-  height: clamp(60px, 7vw, 75px);
-  top: clamp(200px, 35vw, 600px);
-  left: clamp(-200px, -10vw, -50px);
+  width: clamp(25px, 6vw, 75px);
+  height: clamp(25px, 6vw, 75px);
+  top: clamp(180px, 30vw, 550px);
+  left: clamp(-110px, calc(-8vw - 10px), -30px);
   animation-delay: 1s;
 }
 
@@ -163,7 +164,7 @@ h1 {
   background-color: #ffffff1a;
   backdrop-filter: blur(9.9px);
   grid-area: stack;
-  margin-top: 180px;
+  margin-top: clamp(60px, 120px, 180px);
 }
 
 .stack {
@@ -219,18 +220,26 @@ span {
   }
 }
 
+@media (max-width: 1060px) {
+  @keyframes levitate {
+    0% {
+      transform: translateY(0) rotate(var(--rotation));
+    }
+    100% {
+      transform: translateY(-10px) rotate(var(--rotation));
+    }
+  }
+}
+
 @media (max-width: 960px) {
+  .main-box {
+    margin-top: clamp(20px, 5vw, 60px);
+  }
+
   h1 {
     font-size: clamp(60px, 12vw, 140px);
     font-weight: 700;
     max-width: 468px;
-  }
-
-  .C_plusplus {
-    left: clamp(10px, 30vw, 200px);
-    top: clamp(100px, 20vw, 204px);
-    max-width: 80px;
-    height: 80px;
   }
 
   .welcome {
@@ -260,13 +269,16 @@ span {
       font-weight: 400;
     }
   }
+}
 
-  .Python,
-  .VS,
-  .SQL,
-  .C_plusplus {
-    width: calc(clamp(50px, 12vw, 150px) - 25px);
-    height: auto;
+@media (max-width: 660px) {
+  @keyframes levitate {
+    0% {
+      transform: translateY(0) rotate(var(--rotation));
+    }
+    100% {
+      transform: translateY(-5px) rotate(var(--rotation));
+    }
   }
 }
 
@@ -279,7 +291,7 @@ span {
   }
 
   .columns {
-    padding: 0 clamp(10px, 5vw, 30px);
+    display: none;
   }
 
   h1 {
@@ -302,6 +314,7 @@ span {
     font-size: 14px;
     font-weight: 300;
     max-width: 320px;
+    width: auto;
     height: 57px;
   }
 
@@ -327,13 +340,5 @@ span {
       font-size: 16px;
       font-weight: 400;
     }
-  }
-
-  .Python,
-  .VS,
-  .SQL,
-  .C_plusplus {
-    width: calc(clamp(30px, 9vw, 100px) - 50px);
-    height: auto;
   }
 }

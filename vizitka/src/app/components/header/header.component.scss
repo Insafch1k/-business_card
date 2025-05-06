@@ -10,7 +10,7 @@ $background: black;
 
 .header {
   position: relative;
-  max-height: clamp(6em, 13vw, 133.2px);
+  height: clamp(67px, 80px + 2vw, 133px);
   max-width: 1216px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -71,9 +71,10 @@ $background: black;
     border-radius: 30px;
     background: transparent;
     margin-right: clamp(10px, 2vw, 20px);
-    margin-top: 17px;
+    margin-top: 15px;
     white-space: nowrap;
     font-size: 20px;
+    text-align: center;
 
     &:hover {
       background-color: $primary-color;
@@ -151,7 +152,7 @@ $background: black;
       text-align: center;
       min-width: clamp(120px, 25vw, 180px);
       box-sizing: border-box;
-      margin-top: clamp(5px, 2.2vw, 35px);
+      margin-top: clamp(5px, 2.3vw, 30px);
     }
 
     .logo {
@@ -179,58 +180,11 @@ $background: black;
       right: clamp(10px, 5vw, 20px);
       cursor: pointer;
     }
-    .burger-menu-dropdown {
-      position: absolute;
-      top: 95px;
-      left: 0;
-      right: 0;
-      width: 100%;
-      background-color: #171717;
-      z-index: 3;
-
-      .burger-menu-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .burger-menu-element {
-          min-height: 33px;
-          padding: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: auto;
-
-          &:not(:last-child) {
-            border-bottom: 0.5px solid #ffffff;
-          }
-
-          .burger-menu-text {
-            text-decoration: none;
-            font-family: "Montserrat", sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            color: #fff;
-            transition: color 0.2s ease;
-            padding: 10px;
-            display: inline-block;
-
-            &:hover {
-              color: $primary-color;
-              cursor: pointer;
-            }
-          }
-        }
-      }
-    }
   }
 
   @media (max-width: 730px) {
     .discuss-button {
-      margin-top: clamp(5px, 1.5vw, 30px);
+      margin-top: clamp(13px, 1.5vw, 30px);
     }
   }
 

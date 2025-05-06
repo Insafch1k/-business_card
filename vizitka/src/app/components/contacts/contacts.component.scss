@@ -1,54 +1,54 @@
 .contacts {
-  width: 100%;
   max-width: 1216px;
-  margin: clamp(60px, 5vw, 100px) auto 0;
+  margin: clamp(60px, 7vw, 100px) auto 0;
   box-sizing: border-box;
-  padding: 0 2%;
+  padding: 0 20px;
 }
 
 h2 {
   position: relative;
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
-  font-size: clamp(32px, 8vw, 96px);
+  font-size: clamp(32px, 7vw, 96px);
   letter-spacing: -0.06em;
   text-transform: uppercase;
   color: #fff;
   margin-bottom: 0;
   margin-top: 0;
   overflow: hidden;
-  height: auto;
-  min-height: clamp(32px, 10vw, 145px);
+}
+
+.contacts_L {
+  max-width: clamp(320px, 80vw, 1216px);
+  margin: clamp(40px, 6vw, 100px) auto 0;
+  box-sizing: border-box;
+  padding: 0 20px;
 }
 
 .contacts-box {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Mozilla", sans-serif;
   display: grid;
-  grid-template-columns: clamp(150px, 30vw, 400px) 1fr;
-  height: auto;
-  min-height: 300px;
-  max-height: 715px;
-  position: relative;
+  grid-template-columns: auto 1fr;
 }
 
 .contacts_column-1 {
   display: flex;
   flex-direction: column;
-  margin-top: clamp(40px, 8vw, 132px);
-  position: relative;
-  z-index: 2;
-  margin-bottom: clamp(60px, 8vw, 133px);
+  gap: clamp(10px, 2vw, 20px);
+  margin-top: clamp(40px, 10vw, 132px);
+  margin-bottom: 133px;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: clamp(10px, 1.5vw, 20px);
-  width: clamp(360px, 70vw, 450px);
+  gap: clamp(10px, 1vw, 20px);
+  width: clamp(150px, 40vw, 450px);
+  max-width: 100%;
 }
 
 .text-field {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Mozilla", sans-serif;
   font-weight: 300;
   font-size: clamp(12px, 2vw, 24px);
   line-height: 100%;
@@ -57,15 +57,15 @@ form {
   box-shadow: none;
   box-sizing: border-box;
   background-color: transparent;
-  width: 100%;
-  max-width: 450px;
+  width: clamp(150px, 40vw, 450px);
   border-bottom: 2px solid #676767;
-  padding: clamp(10px, 1.5vw, 20px);
+  padding: clamp(10px, 2vw, 20px);
+  max-width: 100%;
   color: #fff;
 
   &::placeholder {
     color: #999;
-    font-family: Montserrat, sans-serif;
+    font-family: Mozilla, sans-serif;
     font-weight: 200;
     font-size: clamp(12px, 2vw, 24px);
     line-height: 100%;
@@ -76,35 +76,30 @@ form {
   }
 }
 
-.name_field {
-  height: 60px;
-}
-
-.phone_field {
-  height: 60px;
+.name_field,
+.phone_number_field {
+  height: clamp(30px, 5vw, 60px);
 }
 
 .comment_field {
-  height: 200px;
+  height: clamp(90px, 15vw, 200px);
   resize: none;
   overflow: hidden;
 }
 
 .bid-button {
-  font: {
-    family: Space Grotesk, sans-serif;
-    weight: 500;
-  }
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
   height: clamp(30px, 4vw, 50px);
   border: 2px solid #0077ff;
   border-radius: 30px;
   background: transparent;
-  margin-top: clamp(10px, 1.5vw, 20px);
+  margin-top: clamp(10px, 3vw, 40px);
   white-space: nowrap;
-  font-size: clamp(12px, 1.8vw, 20px);
+  font-size: clamp(12px, 2vw, 20px);
   color: #fff;
-  width: 100%;
-  max-width: 450px;
+  width: clamp(150px, 40vw, 450px);
+  max-width: 100%;
   &:hover {
     background-color: #0077ff;
     cursor: pointer;
@@ -112,14 +107,14 @@ form {
 }
 
 .contacts_column-2 {
-  margin-left: clamp(0px, 20vw, 200px);
+  margin-left: clamp(-20px, 10vw, 168px);
   position: relative;
-  height: 100%;
-  z-index: 2;
 }
 
 .Danis-photo {
   position: absolute;
+  bottom: 0;
+  transform: translateX(-20%);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -127,13 +122,9 @@ form {
   -ms-touch-action: none;
   touch-action: none;
   pointer-events: none;
-  height: auto;
-  max-height: 100%;
+  width: clamp(218px, 50vw, 598px);
+  height: clamp(260px, 60vw, 712px);
   object-fit: contain;
-  object-position: bottom;
-  bottom: 0;
-  left: 0;
-  right: 0;
   z-index: -1;
 }
 
@@ -144,67 +135,63 @@ form {
   user-select: none;
   -ms-touch-action: none;
   touch-action: none;
-  pointer-events: none;
   position: absolute;
   animation: levitate 3s ease-in-out infinite alternate;
-  width: 100px;
-  height: 100px;
-  z-index: 3;
+  width: clamp(25px, 7vw, 75px);
+  height: clamp(25px, 7vw, 75px);
 }
 
 .Whatsapp {
   position: relative;
-  left: clamp(60px, 7vw, 100px);
+  left: clamp(-40px, 6vw, 60px);
   animation-delay: 1.5s;
 }
 
 .Telegram {
   position: relative;
-  left: clamp(-50px, -7vw, -100px);
-  top: clamp(90px, 10vw, 150px);
+  left: clamp(-140px, -7vw, -90px);
+  top: clamp(90px, 15vw, 150px);
   animation-delay: 0.5s;
 }
 
 .contacts_text {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Mozilla", sans-serif;
   font-weight: 600;
-  font-size: clamp(8px, 1.8vw, 20px);
+  font-size: clamp(8px, 2vw, 20px);
   line-height: 100%;
-  position: relative;
-  z-index: 3;
 }
 
 .contacts-span-text {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Mozilla", sans-serif;
   font-weight: 600;
-  font-size: clamp(8px, 1.8vw, 20px);
-  line-height: 100%;
+  font-size: clamp(8px, 2vw, 20px);
+  line-height: clamp(8px, 2vw, 20px);
 }
 
 .Danis {
   box-sizing: border-box;
   position: relative;
   text-align: center;
-  margin-top: clamp(140px, 15vw, 185px);
-  width: clamp(121px, 25vw, 280px);
+  margin-left: clamp(-80px, -5vw, 0px);
+  margin-top: clamp(200px, 25vw, 306px);
+  width: clamp(100px, 25vw, 280px);
   padding: clamp(5px, 1vw, 10px);
-  gap: 5px;
+  gap: clamp(0px, 0.5vw, 5px);
   border-radius: 15px;
   color: #fff;
   background-color: #0077ff;
-  z-index: 3;
 
   &::after {
     content: "";
     position: absolute;
-    top: -25px;
-    right: -25px;
-    width: clamp(20px, 3vw, 40px);
-    height: clamp(20px, 3vw, 40px);
+    top: -35px;
+    right: -35px;
+    width: clamp(20px, 4vw, 40px);
+    height: clamp(20px, 4vw, 40px);
     background-image: url("../../../assets/Contacts/arrow.svg");
     background-size: contain;
     background-repeat: no-repeat;
-    z-index: 3;
+    z-index: 2;
   }
 }
 
@@ -220,19 +207,21 @@ form {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: clamp(0px, 0.5vw, 5px);
-  width: clamp(121px, 25vw, 280px);
+  gap: clamp(5px, 1vw, 10px);
+  width: clamp(100px, 25vw, 280px);
+  min-width: 100px;
   height: auto;
-  padding: clamp(5px, 1vw, 10px);
-  border-radius: 15px;
+  padding: clamp(5px, 0.5vw, 8px);
+  border-radius: clamp(5px, 1vw, 15px);
   background-color: #fff;
-  margin-top: clamp(5px, 1.5vw, 20px);
-  position: relative;
-  z-index: 3;
+  margin-top: clamp(5px, 2vw, 20px);
+  margin-left: clamp(-80px, -5vw, 0px);
+  overflow: hidden;
 }
 
 .contact-line {
-  line-height: clamp(6px, 1.5vw, normal);
+  line-height: clamp(8px, 2vw, 20px);
+  white-space: nowrap;
 }
 
 @keyframes levitate {
@@ -246,108 +235,90 @@ form {
 
 @media (max-width: 960px) {
   .contacts {
-    margin-top: 60px;
-    margin-left: 20px;
-  }
-
-  h2 {
-    font-size: clamp(40px, 60px, 80px);
-  }
-
-  .contacts-box {
-    height: 600px;
+    margin-top: clamp(40px, 6vw, 60px);
+    margin-left: 0;
   }
 
   .contacts_column-1 {
-    margin-top: 111px;
-    margin-bottom: 110px;
+    margin-top: clamp(40px, 11.5625vw, 111px);
+    margin-bottom: clamp(22px, 11.4583vw, 110px);
   }
 
   form {
-    width: clamp(150px, 60vw, 360px);
-    gap: 10px;
+    width: clamp(100px, 46.875vw, 450px);
+    gap: clamp(5px, 1.0417vw, 10px);
   }
 
   .text-field {
-    width: clamp(150px, 60vw, 360px);
-    font-size: 20px;
+    width: clamp(100px, 46.875vw, 450px);
+    font-size: clamp(12px, 2.0833vw, 20px);
   }
 
-  input {
-    height: 60px;
+  .name_field,
+  .phone_number_field {
+    height: clamp(30px, 6.25vw, 60px);
   }
 
   .text-field::placeholder {
-    font-size: 20px;
+    font-size: clamp(12px, 2.0833vw, 20px);
   }
 
   .comment_field {
-    width: clamp(150px, 60vw, 360px);
-    height: 150px;
-    font-size: 20px;
+    height: clamp(90px, 15.625vw, 150px);
+    font-size: clamp(12px, 2.0833vw, 20px);
   }
 
   .bid-button {
-    width: clamp(150px, 60vw, 360px);
-    height: 50px;
-    margin-top: 30px;
+    width: clamp(100px, 46.875vw, 450px);
+    height: clamp(30px, 5.2083vw, 50px);
+    margin-top: clamp(20px, 4.1667vw, 40px);
   }
 
   .contacts_column-2 {
-    margin-left: clamp(0px, 1vw, 60px);
-  }
-
-  .Danis-photo {
-    height: auto;
-    max-height: 600px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    object-fit: contain;
-    object-position: bottom;
-    width: clamp(218px, 50vw, 502px);
-  }
-
-  .image {
-    width: 75px;
-    height: 75px;
-  }
-
-  .Whatsapp {
-    top: 20px;
-    left: 200px;
-  }
-
-  .Telegram {
-    left: 50px;
+    margin-left: clamp(-20px, 6.25vw, 60px);
   }
 
   .Danis {
-    margin-top: 246px;
-  }
-
-  .contacts_text {
-    margin-left: 100px;
+    margin-left: 10px;
   }
 
   .Danis_contacts {
-    margin-left: 100px;
+    margin-left: 10px;
+  }
+
+  .Danis-photo {
+    max-width: clamp(218px, 52.2917vw, 502px);
+    max-height: clamp(260px, 62.5vw, 600px);
+  }
+
+  .Danis::after {
+    display: none;
+  }
+
+  .levitate-image {
+    width: clamp(25px, 7.8125vw, 75px);
+    height: clamp(25px, 7.8125vw, 75px);
+  }
+
+  .Whatsapp {
+    top: clamp(20px, 5.2083vw, 50px);
+    left: clamp(-50px, 8.3333vw, 30px);
+  }
+
+  .Telegram {
+    left: clamp(-140px, -7.2917vw, -80px);
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 580px) {
+  .image {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
   .contacts {
-    margin-top: 40px;
-    margin-left: 20px;
-  }
-
-  h2 {
-    font-size: 32px;
-    height: 32px;
-  }
-
-  .contacts-box {
-    height: 282px;
+    margin-top: clamp(20px, 8.3333vw, 40px);
   }
 
   .contacts_column-1 {
@@ -356,41 +327,34 @@ form {
   }
 
   form {
-    width: 150px;
+    width: clamp(100px, 40vw, 180px);
     gap: 10px;
   }
 
-  .name_field {
-    height: 30px;
-  }
-
+  .name_field,
   .phone_number_field {
     height: 30px;
   }
 
   .text-field {
-    width: 150px;
+    width: clamp(100px, 50vw, 180px);
     font-size: 12px;
-    padding: 10px 20px;
+    padding: clamp(5px, 4.1667vw, 10px);
   }
 
   .text-field::placeholder {
     font-size: 12px;
   }
 
-  textarea {
+  .comment_field {
     height: 90px;
     font-size: 12px;
   }
 
-  .comment_field {
-    height: 90px;
-  }
-
   .bid-button {
-    width: 150px;
+    width: clamp(100px, 50vw, 210px);
     height: 30px;
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 12px;
   }
 
@@ -399,33 +363,41 @@ form {
   }
 
   .Danis-photo {
-    width: 100%;
-    height: auto;
-    max-height: 260px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    object-fit: contain;
-    object-position: bottom right;
+    width: auto;
+    height: clamp(180px, 90vw, 360px);
+    margin-top: clamp(10px, 4.1667vw, 20px);
+    transform: translateX(25%);
   }
 
-  .image {
+  .levitate-image {
     width: 25px;
     height: 25px;
   }
 
   .Whatsapp {
-    left: 60px;
+    left: clamp(-40px, 8.3333vw, 20px);
   }
 
   .Telegram {
-    left: 10px;
-    top: 90px;
+    left: clamp(-80px, 0vw, -20px);
+    top: clamp(50px, 18.75vw, 90px);
+  }
+
+  .contacts_text {
+    font-size: 7px;
+    line-height: 7px;
+    width: clamp(100px, 30vw, 121px);
+    margin-top: clamp(180px, 45vw, 220px);
+    margin-left: clamp(40px, 15vw, 60px);
   }
 
   .contacts-span-text {
-    font-size: 8px;
-    line-height: 11px;
+    font-size: 7px;
+    line-height: 7px;
+  }
+
+  .contact-line {
+    line-height: 7px;
   }
 
   .Danis {
@@ -433,29 +405,25 @@ form {
     align-items: center;
     justify-content: center;
     line-height: 100%;
-    width: 121px;
-    font-size: 8px;
-    margin-left: 52px;
-    padding: 10px;
-    height: 19px;
-    margin-top: 140px;
+    font-size: 7px;
+    margin-left: clamp(40px, 14vw, 52px);
+    padding: clamp(5px, 2.0833vw, 10px);
+    height: clamp(10px, 3.9583vw, 19px);
+    margin-top: clamp(160px, 38.3vw, 200px);
     &::after {
       display: none;
     }
   }
 
-  .contact-line {
-    line-height: 6px;
-  }
-
   .Danis_contacts {
-    box-sizing: border-box;
-    width: 121px;
-    height: 40px;
-    margin-top: 5px;
-    gap: 0px;
-    margin-left: 52px;
-    padding: 10px;
+    width: clamp(100px, 30vw, 121px);
+    min-width: 100px;
+    height: auto;
+    margin-top: clamp(10px, 2.0833vw, 10px);
+    gap: 5px;
+    margin-left: clamp(40px, 14vw, 52px);
+    padding: 5px;
     border-radius: 5px;
+    overflow: hidden;
   }
 }

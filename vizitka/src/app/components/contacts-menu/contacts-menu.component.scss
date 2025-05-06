@@ -5,53 +5,70 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(clamp(5px, 1vw, 10px));
   z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .contacts_menu {
   position: relative;
-  width: 598px;
-  height: 392px;
-  border-radius: 20px;
+  width: clamp(280px, 80vw, 598px);
+  height: fit-content;
+  border-radius: clamp(10px, 2vw, 20px);
   background-color: #171717;
-  align-items: center;
   box-sizing: border-box;
-  margin: 163px auto auto auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .close_button {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: clamp(10px, 2vw, 20px);
+  right: clamp(10px, 2vw, 20px);
   background-color: transparent;
   border: none;
   cursor: pointer;
+  width: clamp(20px, 3vw, 30px);
+  height: clamp(20px, 3vw, 30px);
+  padding: 0;
+}
+
+.close_button img {
+  width: 100%;
+  height: 100%;
 }
 
 p {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  font-size: 32px;
-  line-height: 32px;
+  font-size: clamp(20px, 4vw, 32px);
+  line-height: 1.2;
   letter-spacing: -0.06em;
   color: #fff;
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .menu_box {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: clamp(15px, 3vw, 25px);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .menu {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  margin-top: 40px;
+  gap: clamp(20px, 3vw, 40px);
+  width: 100%;
+  align-items: center;
 }
 
 .menu_button {
@@ -59,26 +76,31 @@ p {
   color: #fff;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  font-size: 24px;
-  line-height: 32px;
+  font-size: clamp(16px, 2.5vw, 24px);
+  line-height: 1.3;
   letter-spacing: -0.06em;
-  width: 400px;
-  height: 60px;
-  border-radius: 40px;
+  width: clamp(200px, 90%, 400px);
+  height: clamp(45px, 8vw, 60px);
+  border-radius: clamp(20px, 5vw, 40px);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-
-  &:hover {
-    background-color: transparent;
-    border: 2px solid #0077ff;
-    box-sizing: border-box;
-  }
+  gap: clamp(6px, 1vw, 10px);
+  text-decoration: none;
+  border: 2px solid #0077ff;
+  box-sizing: border-box;
+  padding: 0 clamp(10px, 2vw, 20px);
+  transition: background-color 0.3s ease;
 }
 
-img {
+.menu_button:hover {
+  background-color: transparent;
+}
+
+.menu_button img {
+  width: clamp(16px, 2.5vw, 24px);
+  height: clamp(16px, 2.5vw, 24px);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -89,4 +111,37 @@ img {
 
 a {
   text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .contacts_menu {
+    width: 95vw;
+    height: auto;
+  }
+
+  .menu_button {
+    min-height: 45px;
+    height: auto;
+    padding: 8px clamp(10px, 3vw, 15px);
+  }
+
+  .menu {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 320px) {
+  .menu_button {
+    font-size: 14px;
+    min-height: 40px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .menu_button img {
+    width: 16px;
+    height: 16px;
+  }
 }

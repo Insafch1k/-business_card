@@ -1,9 +1,13 @@
 /* services.component.scss */
 .services-section {
   max-width: 1216px;
-  margin: 0 auto 100px;
+  margin: clamp(60px, 7vw, 100px) auto 0;
   box-sizing: border-box;
   padding: 0 20px;
+
+  @media (max-width: 960px) {
+    margin-top: clamp(40px, 6vw, 60px);
+  }
 }
 
 .services-title {
@@ -29,9 +33,10 @@
   overflow: hidden;
   padding: 30px 0;
   margin: 0;
-  
-  &::before, &::after {
-    content: '';
+
+  &::before,
+  &::after {
+    content: "";
     width: clamp(20px, 8vw, 70px);
     position: absolute;
     top: 0;
@@ -39,15 +44,15 @@
     z-index: 2;
     pointer-events: none;
   }
-  
+
   &::before {
     left: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.8), transparent);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
   }
-  
+
   &::after {
     right: 0;
-    background: linear-gradient(to left, rgba(0,0,0,0.8), transparent);
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
   }
 }
 
@@ -59,7 +64,7 @@
   transition: transform 0.01s linear !important; // Минимальная длительность
   backface-visibility: hidden; // Аппаратное ускорение
   transform-style: preserve-3d;
-  
+
   // Для плавного перехода при мгновенном смещении
   &.no-transition {
     transition: none !important;
@@ -77,7 +82,6 @@
   position: relative;
   transform: translateZ(0);
   will-change: transform;
-  
 
   &.active {
     transform: scale(1.05);
@@ -98,7 +102,6 @@
   width: 100%;
   height: 100%;
   position: relative;
-  
 
   img {
     width: 100%;
@@ -116,12 +119,12 @@
     flex-direction: column;
     justify-content: space-between;
     padding: clamp(5px, 3vw, 40px);
-   background: linear-gradient(
+    background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.7) 0%,
       rgba(0, 0, 0, 0.3) 50%,
       rgba(0, 0, 0, 0.7) 100%
-    ); 
+    );
   }
 }
 
@@ -131,7 +134,7 @@
   font-size: clamp(10px, 2vw, 24px);
   font-weight: 500;
   margin: 0;
-//  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  //  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
 
@@ -212,13 +215,13 @@
   @media (max-width: 480px) {
     width: 20px;
     height: 20px;
-  }  
+  }
   // Контент
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0; // Важно для правильного масштабирования
-  
+
   // Стиль
   background: #e32966;
   border: none;
@@ -232,7 +235,7 @@
   }
 
   &:hover {
-    background: #BB013E;
+    background: #bb013e;
   }
 }
 
@@ -248,7 +251,7 @@
   transform: scale(1.1);
   transition: transform 0.3s ease;
   z-index: 10;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .card:not(.zoomed-card) {

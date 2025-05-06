@@ -12,6 +12,7 @@ export class ContactsComponent {
   isSending = false;
   isSuccess = false;
   errorMessage = '';
+  showSuccessModal = false;
 
   constructor(
     private fb: FormBuilder,
@@ -35,12 +36,12 @@ export class ContactsComponent {
     }
 
     this.isSending = true;
-    this.isSuccess = false;
     this.errorMessage = '';
+    this.showSuccessModal = false;
 
     this.telegramService.sendMessage(this.contactForm.value).subscribe({
       next: () => {
-        this.isSuccess = true;
+        this.showSuccessModal = true;
         this.contactForm.reset();
       },
       error: (err) => {
@@ -57,5 +58,9 @@ export class ContactsComponent {
     Object.values(this.contactForm.controls).forEach((control) => {
       control.markAsTouched();
     });
+  }
+
+  hideSuccessModal() {
+    this.showSuccessModal = false;
   }
 }

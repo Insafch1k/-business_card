@@ -1,0 +1,61 @@
+.success {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+  padding: 2vw;
+}
+
+.success-box {
+  width: clamp(280px, 80vw, 600px);
+  height: fit-content;
+  background-color: #171717;
+  border-radius: 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: clamp(16px, 5vw, 40px);
+  box-sizing: border-box;
+
+  p {
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-size: clamp(10px, 2.5vw, 32px);
+    font-weight: 600;
+    margin-top: clamp(10px, 2vh, 20px);
+    text-align: center;
+  }
+}
+
+.checkmark {
+  width: clamp(80px, 30vw, 200px);
+  height: clamp(80px, 30vw, 200px);
+}
+
+.close-button {
+  position: absolute;
+  top: clamp(10px, 3vw, 30px);
+  right: clamp(10px, 3vw, 30px);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  img {
+    width: clamp(16px, 4vw, 32px);
+    height: clamp(16px, 4vw, 32px);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

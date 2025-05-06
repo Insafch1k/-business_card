@@ -24,23 +24,5 @@
       (click)="toggleBurgerMenu()"
     />
   </div>
-  <div class="burger-menu-dropdown" *ngIf="isBurgerOpen" @fadeInOut>
-    <ul class="burger-menu-list">
-      <li class="burger-menu-element">
-        <a class="burger-menu-text" (click)="scrollTo('team')">Команда</a>
-      </li>
-      <li class="burger-menu-element">
-        <a class="burger-menu-text" (click)="scrollTo('services')">Услуги</a>
-      </li>
-      <li class="burger-menu-element">
-        <a class="burger-menu-text" (click)="scrollTo('projects')">Проекты</a>
-      </li>
-      <li class="burger-menu-element">
-        <a class="burger-menu-text" (click)="scrollTo('questions')">Вопросы</a>
-      </li>
-      <li class="burger-menu-element">
-        <a class="burger-menu-text" (click)="scrollTo('contacts')">Контакты</a>
-      </li>
-    </ul>
-  </div>
 </header>
+<app-burger-menu *ngIf="isBurgerOpen"></app-burger-menu>

@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ContactsMenuComponent } from './components/contacts-menu/contacts-menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SuccessComponent } from './success/success.component';
+import { BurgerMenuComponent } from './burger-menu/burger-menu.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ContactsComponent,
     QuestionsComponent,
     ContactsMenuComponent,
+    SuccessComponent,
+    BurgerMenuComponent,
   ],
   imports: [
     BrowserModule,

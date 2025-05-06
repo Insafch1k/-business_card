@@ -4,33 +4,17 @@ import {
   AfterViewInit,
   ElementRef,
   NgZone,
+  ViewChild,
+  OnDestroy,
 } from '@angular/core';
 import { ContactsMenuService } from '../contacts-menu/contacts-menu.service';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(-10px)' }),
-        animate(
-          '200ms ease-out',
-          style({ opacity: 1, transform: 'translateY(0)' })
-        ),
-      ]),
-      transition(':leave', [
-        animate(
-          '150ms ease-in',
-          style({ opacity: 0, transform: 'translateY(-10px)' })
-        ),
-      ]),
-    ]),
-  ],
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent implements AfterViewInit, OnDestroy {
   isBurgerOpen = false;
   private resizeObserver: ResizeObserver | null = null;
 
@@ -40,11 +24,21 @@ export class HeaderComponent implements AfterViewInit {
     private ngZone: NgZone
   ) {}
 
+  @ViewChild('logoEl') logoElementRef!: ElementRef;
+  @ViewChild('headerEl') headerElementRef!: ElementRef;
+
   ngAfterViewInit() {
     setTimeout(() => {
       this.updateBackgroundHeight();
       this.setupResizeObserver();
     });
+  }
+
+  ngOnDestroy() {
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+      this.resizeObserver = null;
+    }
   }
 
   scrollTo(id: string): void {
@@ -109,7 +103,8 @@ export class HeaderComponent implements AfterViewInit {
     if (
       this.isBurgerOpen &&
       !target.closest('.mobile-burger-menu') &&
-      !target.closest('.burger-menu-dropdown')
+      !target.closest('.burger-menu-dropdown') &&
+      !target.closest('app-burger-menu')
     ) {
       this.isBurgerOpen = false;
     }

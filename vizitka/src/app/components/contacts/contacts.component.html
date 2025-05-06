@@ -27,9 +27,6 @@
         >
           {{ isSending ? "Отправка..." : "Оставить заявку" }}
         </button>
-        <div *ngIf="isSuccess" class="success-message">
-          Сообщение успешно отправлено!
-        </div>
         <div *ngIf="errorMessage" class="error-message">
           {{ errorMessage }}
         </div>
@@ -66,3 +63,7 @@
     </div>
   </div>
 </div>
+<app-success
+  *ngIf="showSuccessModal"
+  (closed)="hideSuccessModal()"
+></app-success>

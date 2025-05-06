@@ -4,35 +4,33 @@
   (click)="closeMenu()"
 >
   <div class="contacts_menu" (click)="$event.stopPropagation()">
-    <div class="contacts_menu">
-      <button class="close_button" (click)="closeMenu()">
-        <img src="../../../assets/Contacts_menu/cross.svg" alt="закрыть" />
-      </button>
-      <div class="menu_box">
+    <button class="close_button" (click)="closeMenu()">
+      <img src="../../../assets/Contacts_menu/cross.svg" alt="закрыть" />
+    </button>
+    <div class="menu_box">
+      <div class="menu">
         <p>Свяжитесь с нами</p>
-        <div class="menu">
-          <a href="tel:+7 (917) 464  55-32" class="menu_button phone">
-            <img
-              src="../../../assets/Contacts_menu/phone.svg"
-              alt="закрыть"
-            />Связаться по телефону
-          </a>
-          <a
-            href="https://t.me/DemlerIT"
-            class="menu_button Telegram"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="../../../assets/Contacts_menu/telegram.svg"
-              alt="телеграмм"
-            />Написать в teleram
-          </a>
-          <button class="menu_button form" (click)="goToContacts()">
-            <img src="../../../assets/Contacts_menu/form.svg" alt="закрыть" />
-            Заполнить форму
-          </button>
-        </div>
+        <a href="tel:+7 (917) 464  55-32" class="menu_button phone">
+          <img
+            src="../../../assets/Contacts_menu/phone.svg"
+            alt="телефон"
+          />Связаться по телефону
+        </a>
+        <a
+          href="https://t.me/DemlerIT"
+          class="menu_button Telegram"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="../../../assets/Contacts_menu/telegram.svg"
+            alt="телеграмм"
+          />Написать в teleram
+        </a>
+        <a class="menu_button form" (click)="goToContacts()">
+          <img src="../../../assets/Contacts_menu/form.svg" alt="закрыть" />
+          Заполнить форму
+        </a>
       </div>
     </div>
   </div>
