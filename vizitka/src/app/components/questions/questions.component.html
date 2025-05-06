@@ -8,6 +8,7 @@
     <div
       *ngFor="let item of questions; let i = index"
       class="question-item"
+      #questionItem
       (click)="toggleQuestion(i); $event.stopPropagation()"
       [class.expanded]="item.isExpanded"
       [class.animating]="item.isAnimating"
