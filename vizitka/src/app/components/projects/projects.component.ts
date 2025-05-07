@@ -26,19 +26,19 @@ export class ProjectsComponent {
     {
       image: '../../../assets/Projects/nedvizhka.svg',
       title: 'Nedvizhka',
-      description: 'Telegram App по поиску недвижимости',
+      description: 'TELEGRAM APP ПО ПОИСКУ НЕДВИЖИМОСТИ',
       link: 'https://clinika03.ru/main',
     },
     {
       image: '../../../assets/Projects/klinika.svg',
       title: 'Klinika 03',
-      description: 'Сайт для "Клиника 03"',
+      description: 'САЙТ ДЛЯ "КЛИНИКА 03"',
       link: 'https://clinika03.ru/main',
     },
     {
       image: '../../../assets/Projects/hidra.svg',
       title: 'Zilant Hydro',
-      description: 'Проектирование схем водоснабжения "Zilant Hydro"',
+      description: 'ПРОЕКТИРОВАНИЕ СХЕМ ВОДОСНАБЖЕНИЯ "ZILANT HYDRO"',
       link: 'https://clinika03.ru/main',
     },
   ];
