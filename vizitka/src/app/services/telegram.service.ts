@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environments';
+import { catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,12 +16,31 @@ export class TelegramService {
     const message = this.formatMessage(formData);
     const url = `/api/telegram${this.BOT_TOKEN}/sendMessage?chat_id=${this.CHAT_ID}`;
 
-    console.log('Отправка сообщения:', { url, message });
-
-    return this.http.post(url, {
-      text: message,
-      parse_mode: 'HTML',
+    console.log('Отправка сообщения:', {
+      url,
+      message,
+      botToken: this.BOT_TOKEN,
+      chatId: this.CHAT_ID,
     });
+
+    return this.http
+      .post(url, {
+        text: message,
+        parse_mode: 'HTML',
+      })
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Ошибка Telegram API:', {
+            status: error.status,
+            statusText: error.statusText,
+            message: error.message,
+            error: error.error,
+          });
+          return throwError(
+            () => new Error('Ошибка отправки сообщения в Telegram')
+          );
+        })
+      );
   }
 
   private formatMessage(data: any): string {
