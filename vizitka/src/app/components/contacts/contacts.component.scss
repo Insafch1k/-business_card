@@ -26,7 +26,7 @@ h2 {
 }
 
 .contacts-box {
-  font-family: "Mozilla", sans-serif;
+  font-family: "Monsterrat", sans-serif;
   display: grid;
   grid-template-columns: auto 1fr;
 }
@@ -48,7 +48,7 @@ form {
 }
 
 .text-field {
-  font-family: "Mozilla", sans-serif;
+  font-family: "Monsterrat", sans-serif;
   font-weight: 300;
   font-size: clamp(12px, 2vw, 24px);
   line-height: 100%;
@@ -65,7 +65,7 @@ form {
 
   &::placeholder {
     color: #999;
-    font-family: Mozilla, sans-serif;
+    font-family: Monsterrat, sans-serif;
     font-weight: 200;
     font-size: clamp(12px, 2vw, 24px);
     line-height: 100%;
@@ -159,15 +159,15 @@ form {
 }
 
 .contacts_text {
-  font-family: "Mozilla", sans-serif;
-  font-weight: 600;
+  font-family: "Monsterrat", sans-serif;
+  font-weight: 400;
   font-size: clamp(8px, 2vw, 20px);
   line-height: 100%;
 }
 
 .contacts-span-text {
-  font-family: "Mozilla", sans-serif;
-  font-weight: 600;
+  font-family: "Monsterrat", sans-serif;
+  font-weight: 550;
   font-size: clamp(8px, 2vw, 20px);
   line-height: clamp(8px, 2vw, 20px);
 }
@@ -204,7 +204,7 @@ form {
 }
 
 .value {
-  font-weight: 400;
+  font-weight: 200;
 }
 
 .Danis_contacts {
