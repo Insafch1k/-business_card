@@ -24,26 +24,27 @@ export class QuestionsComponent implements AfterViewChecked {
   questions: QuestionItem[] = [
     {
       question: 'Кто мы и чем занимаемся?',
-      answer: 'C++, Pascal, Кумир',
+      answer:
+        'Мы — Zilant Team, команда IT-специалистов, разрабатывающая проекты на заказ: cайты, CRM-системы, телеграм-боты, мобильные приложения, веб-приложения и др.',
       isExpanded: false,
       isAnimating: false,
     },
     {
       question: 'Какой у нас стэк?',
       answer:
-        'Figma, HTML, CSS, JavaScript/TypeScript, Angular, MySQL, PostgresSQL, Flask, Python, Flutter, NumPy, Pandas, FastApi, Git',
+        'Figma, HTML, CSS, JavaScript/TypeScript, Angular, MySQL, PostgreSQL, Flask, Python, Flutter, NumPy, Pandas, FastAPI, Git.',
       isExpanded: false,
       isAnimating: false,
     },
     {
       question: 'Сколько времени уходит на выполнение заказа?',
-      answer: 'Зависит от сложности',
+      answer: 'До 1 месяца в зависимости от сложности заказа.',
       isExpanded: false,
       isAnimating: false,
     },
     {
-      question: 'Поддерживается ли проект после его старта?',
-      answer: 'Да.',
+      question: 'Поддерживается ли проект после разработки?',
+      answer: 'Да, но за отдельную плату.',
       isExpanded: false,
       isAnimating: false,
     },
@@ -69,79 +70,43 @@ export class QuestionsComponent implements AfterViewChecked {
 
   private updateRowHeights(): void {
     const items = this.questionItems.toArray();
+    if (!items.length) return;
 
-    const isSingleColumn = window.innerWidth <= 480;
+    let maxItemHeight = 0;
+    let maxAnswerHeight = 0;
 
-    if (isSingleColumn) {
-      items.forEach((item, index) => {
-        const questionItem = item.nativeElement;
-        const answerWrapper = questionItem.querySelector('.answer-wrapper');
-        if (answerWrapper && this.questions[index].isExpanded) {
-          answerWrapper.style.maxHeight = 'none';
-          questionItem.style.height = 'auto';
-          const answerHeight = answerWrapper.scrollHeight;
-          const itemHeight = questionItem.scrollHeight;
-          answerWrapper.style.maxHeight = '';
-          questionItem.style.height = '';
-          answerWrapper.style.setProperty('--max-height', `${answerHeight}px`);
-          questionItem.style.setProperty('--item-height', `${itemHeight}px`);
-        } else if (answerWrapper) {
-          answerWrapper.style.removeProperty('--max-height');
-          questionItem.style.removeProperty('--item-height');
-        }
-      });
-    } else {
-      const rows: ElementRef[][] = [
-        [items[0], items[1]],
-        [items[2], items[3]],
-      ];
-
-      rows.forEach((row) => {
-        const expandedItems = row.filter(
-          (_, i) => this.questions[row.indexOf(row[i])].isExpanded
-        );
-
-        if (expandedItems.length > 0) {
-          let maxHeight = 0;
-          let maxItemHeight = 0;
-
-          expandedItems.forEach((item) => {
-            const questionItem = item.nativeElement;
-            const answerWrapper = questionItem.querySelector('.answer-wrapper');
-            if (answerWrapper) {
-              answerWrapper.style.maxHeight = 'none';
-              questionItem.style.height = 'auto';
-              const answerHeight = answerWrapper.scrollHeight;
-              const itemHeight = questionItem.scrollHeight;
-              maxHeight = Math.max(maxHeight, answerHeight);
-              maxItemHeight = Math.max(maxItemHeight, itemHeight);
-              answerWrapper.style.maxHeight = '';
-              questionItem.style.height = '';
-            }
-          });
-
-          expandedItems.forEach((item) => {
-            const questionItem = item.nativeElement;
-            const answerWrapper = questionItem.querySelector('.answer-wrapper');
-            if (answerWrapper && answerWrapper.classList.contains('visible')) {
-              answerWrapper.style.setProperty('--max-height', `${maxHeight}px`);
-              questionItem.style.setProperty(
-                '--item-height',
-                `${maxItemHeight}px`
-              );
-            }
-          });
-        } else {
-          row.forEach((item) => {
-            const questionItem = item.nativeElement;
-            const answerWrapper = questionItem.querySelector('.answer-wrapper');
-            if (answerWrapper) {
-              answerWrapper.style.removeProperty('--max-height');
-              questionItem.style.removeProperty('--item-height');
-            }
-          });
-        }
-      });
+    const firstItem = items[0].nativeElement;
+    const firstAnswerWrapper = firstItem.querySelector('.answer-wrapper');
+    if (firstAnswerWrapper) {
+      firstAnswerWrapper.style.maxHeight = 'none';
+      firstItem.style.height = 'auto';
+      maxAnswerHeight = firstAnswerWrapper.scrollHeight;
+      maxItemHeight = firstItem.scrollHeight;
+      firstAnswerWrapper.style.maxHeight = '';
+      firstItem.style.height = '';
     }
+
+    items.forEach((item, index) => {
+      const questionItem = item.nativeElement;
+      const answerWrapper = questionItem.querySelector('.answer-wrapper');
+
+      if (answerWrapper) {
+        if (this.questions[index].isExpanded) {
+          questionItem.style.setProperty(
+            '--max-item-height',
+            `${maxItemHeight}px`
+          );
+          answerWrapper.style.setProperty(
+            '--max-height',
+            `${maxAnswerHeight}px`
+          );
+          questionItem.classList.add('expanded');
+        } else {
+          questionItem.style.removeProperty('--max-item-height');
+          answerWrapper.style.removeProperty('--max-height');
+          questionItem.classList.remove('expanded');
+        }
+      }
+    });
   }
 }

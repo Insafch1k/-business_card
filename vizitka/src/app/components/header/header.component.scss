@@ -54,8 +54,7 @@ $background: black;
     user-select: none;
     max-width: clamp(60px, 8vw, 93.5px);
     height: auto;
-    margin-left: clamp(0px, 4vw, 45px);
-    margin-right: clamp(0px, 5vw, 48px);
+    margin-right: 20px;
   }
 
   .discuss-button {
@@ -70,7 +69,6 @@ $background: black;
     border: 2px solid $primary-color;
     border-radius: 30px;
     background: transparent;
-    margin-right: clamp(10px, 2vw, 20px);
     margin-top: 15px;
     white-space: nowrap;
     font-size: 20px;

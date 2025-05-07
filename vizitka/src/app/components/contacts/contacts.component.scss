@@ -13,16 +13,8 @@ h2 {
   letter-spacing: -0.06em;
   text-transform: uppercase;
   color: #fff;
-  margin-bottom: 0;
-  margin-top: 0;
+  margin: 0;
   overflow: hidden;
-}
-
-.contacts_L {
-  max-width: clamp(320px, 80vw, 1216px);
-  margin: clamp(40px, 6vw, 100px) auto 0;
-  box-sizing: border-box;
-  padding: 0 20px;
 }
 
 .contacts-box {
@@ -88,7 +80,7 @@ form {
 .comment_field {
   height: clamp(90px, 15vw, 200px);
   resize: none;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .bid-button {
@@ -104,10 +96,48 @@ form {
   color: #fff;
   width: clamp(150px, 40vw, 450px);
   max-width: 100%;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+
   &:hover {
     background-color: #0077ff;
     cursor: pointer;
   }
+
+  &:focus,
+  &:active {
+    outline: none;
+    border: 2px solid #0077ff;
+    background: transparent;
+  }
+
+  &[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.error-message-container {
+  min-height: clamp(20px, 2vw, 24px);
+  width: clamp(150px, 40vw, 450px);
+  max-width: 100%;
+}
+
+.error-message {
+  font-family: "Mozilla", sans-serif;
+  font-size: clamp(12px, 2vw, 16px);
+  color: red;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
 }
 
 .contacts_column-2 {
@@ -119,11 +149,7 @@ form {
   position: absolute;
   bottom: 0;
   transform: translateX(-20%);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  -ms-touch-action: none;
   touch-action: none;
   pointer-events: none;
   width: clamp(218px, 50vw, 598px);
@@ -133,11 +159,7 @@ form {
 }
 
 .levitate-image {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  -ms-touch-action: none;
   touch-action: none;
   position: absolute;
   animation: levitate 3s ease-in-out infinite alternate;
@@ -146,13 +168,11 @@ form {
 }
 
 .Whatsapp {
-  position: relative;
   left: clamp(-40px, 6vw, 60px);
   animation-delay: 1.5s;
 }
 
 .Telegram {
-  position: relative;
   left: clamp(-140px, -7vw, -90px);
   top: clamp(90px, 15vw, 150px);
   animation-delay: 0.5s;
@@ -184,19 +204,6 @@ form {
   border-radius: 15px;
   color: #fff;
   background-color: #0077ff;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: -35px;
-    right: -35px;
-    width: clamp(20px, 4vw, 40px);
-    height: clamp(20px, 4vw, 40px);
-    background-image: url("../../../assets/Contacts/arrow.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    z-index: 2;
-  }
 }
 
 .label {
@@ -212,7 +219,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: clamp(5px, 1vw, 10px);
-  width: clamp(100px, 25vw, 280px);
+  width: clamp(100px, 26vw, 280px);
   min-width: 100px;
   height: auto;
   padding: clamp(5px, 0.5vw, 8px);
@@ -278,6 +285,10 @@ form {
     margin-top: clamp(20px, 4.1667vw, 40px);
   }
 
+  .error-message-container {
+    width: clamp(100px, 46.875vw, 450px);
+  }
+
   .contacts_column-2 {
     margin-left: clamp(-20px, 6.25vw, 60px);
   }
@@ -293,10 +304,6 @@ form {
   .Danis-photo {
     max-width: clamp(218px, 52.2917vw, 502px);
     max-height: clamp(260px, 62.5vw, 600px);
-  }
-
-  .Danis::after {
-    display: none;
   }
 
   .levitate-image {
@@ -335,11 +342,6 @@ form {
     gap: 10px;
   }
 
-  .name_field,
-  .phone_number_field {
-    height: 30px;
-  }
-
   .text-field {
     width: clamp(100px, 50vw, 180px);
     font-size: 12px;
@@ -348,6 +350,11 @@ form {
 
   .text-field::placeholder {
     font-size: 12px;
+  }
+
+  .name_field,
+  .phone_number_field {
+    height: 30px;
   }
 
   .comment_field {
@@ -360,6 +367,11 @@ form {
     height: 30px;
     margin-top: 20px;
     font-size: 12px;
+  }
+
+  .error-message-container {
+    min-height: 20px;
+    width: clamp(100px, 50vw, 210px);
   }
 
   .contacts_column-2 {
@@ -414,9 +426,6 @@ form {
     padding: clamp(5px, 2.0833vw, 10px);
     height: clamp(10px, 3.9583vw, 19px);
     margin-top: clamp(160px, 38.3vw, 200px);
-    &::after {
-      display: none;
-    }
   }
 
   .Danis_contacts {
@@ -424,7 +433,7 @@ form {
     min-width: 100px;
     height: auto;
     margin-top: clamp(10px, 2.0833vw, 10px);
-    gap: 5px;
+    gap: 0px;
     margin-left: clamp(40px, 14vw, 52px);
     padding: 5px;
     border-radius: 5px;

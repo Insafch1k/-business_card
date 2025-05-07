@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TelegramService } from '../../services/telegram.service';
+
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
@@ -10,7 +10,6 @@ import { TelegramService } from '../../services/telegram.service';
 export class ContactsComponent {
   contactForm!: FormGroup;
   isSending = false;
-  isSuccess = false;
   errorMessage = '';
   showSuccessModal = false;
 
@@ -21,15 +20,49 @@ export class ContactsComponent {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       phone: [
-        '',
-        [Validators.required, Validators.pattern(/^\+?[0-9\s\-\(\)]+$/)],
+        '+7',
+        [
+          Validators.required,
+          Validators.pattern(/^\+7[0-9]{10}$/),
+          Validators.minLength(12),
+          Validators.maxLength(12),
+        ],
       ],
       text: [''],
     });
   }
 
+  formatPhoneNumber(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    let value = input.value.replace(/[^0-9]/g, '');
+
+    if (!value.startsWith('7')) {
+      value = '7' + value;
+    }
+
+    value = value.substring(0, 11);
+
+    let formatted = '+7';
+    if (value.length > 1) {
+      formatted += ' (' + value.substring(1, 4);
+    }
+    if (value.length >= 4) {
+      formatted += ') ' + value.substring(4, 7);
+    }
+    if (value.length >= 7) {
+      formatted += '-' + value.substring(7, 9);
+    }
+    if (value.length >= 9) {
+      formatted += '-' + value.substring(9, 11);
+    }
+
+    input.value = formatted;
+    this.contactForm.get('phone')?.setValue('+7' + value.substring(1), {
+      emitEvent: false,
+    });
+  }
+
   onSubmit() {
-    console.log('Форма отправлена!', this.contactForm.value);
     if (this.contactForm.invalid) {
       this.markAllAsTouched();
       return;
@@ -42,10 +75,9 @@ export class ContactsComponent {
     this.telegramService.sendMessage(this.contactForm.value).subscribe({
       next: () => {
         this.showSuccessModal = true;
-        this.contactForm.reset();
+        this.contactForm.reset({ phone: '+7' });
       },
       error: (err) => {
-        console.error('Ошибка отправки:', err);
         this.errorMessage = 'Ошибка отправки формы. Попробуйте позже.';
       },
       complete: () => {

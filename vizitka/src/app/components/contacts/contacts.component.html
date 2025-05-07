@@ -14,10 +14,11 @@
           formControlName="name"
         />
         <input
-          type="text"
+          type="tel"
           class="text-field phone_number_field"
-          placeholder="Телефон*"
+          placeholder="+7 (___) ___-__-__"
           formControlName="phone"
+          (input)="formatPhoneNumber($event)"
         />
         <textarea
           class="text-field comment_field"
@@ -31,8 +32,10 @@
         >
           {{ isSending ? "Отправка..." : "Оставить заявку" }}
         </button>
-        <div *ngIf="errorMessage" class="error-message">
-          {{ errorMessage }}
+        <div class="error-message-container">
+          <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+          </div>
         </div>
       </form>
     </div>
@@ -46,11 +49,13 @@
         src="../../../assets/Contacts/Whatsapp.svg"
         alt="ватсап"
         class="image levitate-image Whatsapp"
+        looseness="0.5"
       />
       <img
         src="../../../assets/Contacts/Telegram.svg"
         alt="телеграм"
         class="image levitate-image Telegram"
+        looseness="0.5"
       />
       <div class="Danis contacts_text">Данис Хамидуллин</div>
       <div class="Danis_contacts">
@@ -70,4 +75,5 @@
 <app-success
   *ngIf="showSuccessModal"
   (closed)="hideSuccessModal()"
+  class="success-modal"
 ></app-success>
