@@ -14,11 +14,10 @@
 
       <div class="projects-window">
         <div class="image-wrapper" [@fadeAnimation]="currentIndex">
-          <img
-            [src]="currentProject.image"
-            [alt]="currentProject.title"
-            class="project-image"
-          />
+          <div 
+          [innerHTML]="currentProject.image" 
+          class="project-image"
+        ></div>
         </div>
       </div>
 
