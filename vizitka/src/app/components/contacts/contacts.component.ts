@@ -21,7 +21,14 @@ export class ContactsComponent {
     private sanitizer: DomSanitizer
   ) {
     this.contactForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(100),
+        ],
+      ],
       phone: [
         '+7',
         [
@@ -31,7 +38,7 @@ export class ContactsComponent {
           Validators.maxLength(12),
         ],
       ],
-      text: [''],
+      text: ['', [Validators.maxLength(1000)]],
     });
 
     this.danisSvg = this.sanitizer
