@@ -84,6 +84,11 @@ form {
   height: clamp(90px, 15vw, 200px);
   resize: none;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .bid-button {
