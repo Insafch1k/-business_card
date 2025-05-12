@@ -99,7 +99,7 @@ export class ContactsComponent {
         this.showSuccessModal = true;
         this.contactForm.reset({ phone: '+7' });
       },
-      error: (err) => {
+      error: () => {
         this.errorMessage = 'Ошибка отправки формы. Попробуйте позже.';
       },
       complete: () => {

@@ -57,8 +57,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "vizitka:build",
-            "proxyConfig": "proxy.conf.json"
+            "browserTarget": "vizitka:build"
           },
           "configurations": {
             "production": {
