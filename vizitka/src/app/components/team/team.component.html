@@ -5,13 +5,9 @@
     <span class="second-word"> КОМАНДЫ</span>
   </h2>
   <div class="category-buttons">
-    <button
-      *ngFor="let category of categories"
-      [class.wide]="category.isWide"
-    >
-    <span [innerHTML]="safeHtml(category.displayName)"></span>
+    <button *ngFor="let category of categories" [class.wide]="category.isWide">
+      <span [innerHTML]="safeHtml(category.displayName)"></span>
       <img [src]="category.icon" alt="" class="category-icon" />
     </button>
   </div>
 </section>
-

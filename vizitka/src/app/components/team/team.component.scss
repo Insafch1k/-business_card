@@ -22,7 +22,7 @@
   }
 
   .second-word {
-    color: #00CDCD;
+    color: #0077ff;
   }
 }
 
@@ -58,10 +58,9 @@
       padding: 10px 0 15px 0;
     }
 
-
     &.wide {
       grid-column: span 2; // Широкая карточка занимает 2 колонки
-      aspect-ratio: unset;  // Соотношение сторон 2:1 вместо 1:1
+      aspect-ratio: unset; // Соотношение сторон 2:1 вместо 1:1
       height: clamp(150px, 30.6vw, 392px);
     }
   }
@@ -73,7 +72,7 @@
   }
 
   .category-icon {
-  //  width: min(250px, 21vw);
+    //  width: min(250px, 21vw);
     width: clamp(100px, 20vw, 250px);
     height: auto;
     border-radius: 50%;
