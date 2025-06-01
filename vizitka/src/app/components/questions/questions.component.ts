@@ -5,6 +5,7 @@ import {
   ViewChildren,
   QueryList,
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 interface QuestionItem {
   question: string;
@@ -17,6 +18,8 @@ interface QuestionItem {
   selector: 'app-questions',
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.scss'],
+  standalone: true,
+  imports: [CommonModule],
 })
 export class QuestionsComponent implements AfterViewChecked {
   @ViewChildren('questionItem') questionItems!: QueryList<ElementRef>;

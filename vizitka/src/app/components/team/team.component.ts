@@ -1,47 +1,41 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { Component, HostListener, ChangeDetectorRef } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 interface Category {
-  displayName: string; //поле для HTML-форматирования
+  displayName: string;
   icon: string;
-  isWide?: boolean; // Новое свойство для широкой карточки
+  isWide?: boolean;
 }
 
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss'],
+  standalone: true,
+  imports: [CommonModule],
 })
 export class TeamComponent {
-  constructor(
-    private sanitizer: DomSanitizer) {}
-
   categories: Category[] = [
     {
       displayName: 'ML',
-      icon: 'assets/icons/ml.gif',
+      icon: '/assets/icons/ml.gif',
     },
     {
       displayName: 'FRONTEND',
-      icon: 'assets/icons/front.gif',
+      icon: '/assets/icons/front.gif',
     },
     {
       displayName: 'UX/UI DESIGN',
-      icon: 'assets/icons/design.gif',
+      icon: '/assets/icons/design.gif',
     },
     {
       displayName: 'BACKEND',
-      icon: 'assets/icons/back.gif',
+      icon: '/assets/icons/back.gif',
     },
     {
       displayName: 'MOBILE DEVELOPMENT',
-      icon: 'assets/icons/mobile.gif',
-      isWide: true // Помечаем последнюю карточку как широкую
+      icon: '/assets/icons/mobile.gif',
+      isWide: true,
     },
   ];
-
-  //для  вывода HTML
-  safeHtml(html: string) {
-    return this.sanitizer.bypassSecurityTrustHtml(html);
-  }
 }

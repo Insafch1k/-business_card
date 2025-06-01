@@ -7,12 +7,17 @@ import {
   ViewChild,
   OnDestroy,
 } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { ContactsMenuService } from '../contacts-menu/contacts-menu.service';
+import { CommonModule } from '@angular/common';
+import { BurgerMenuComponent } from '../../burger-menu/burger-menu.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  standalone: true,
+  imports: [CommonModule, RouterModule, BurgerMenuComponent],
 })
 export class HeaderComponent implements AfterViewInit, OnDestroy {
   isBurgerOpen = false;
@@ -21,7 +26,8 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   constructor(
     private menuService: ContactsMenuService,
     private el: ElementRef,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private router: Router
   ) {}
 
   @ViewChild('logoEl') logoElementRef!: ElementRef;
@@ -45,6 +51,11 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(
+        null,
+        '',
+        window.location.pathname + window.location.search
+      );
     }
   }
 
@@ -54,47 +65,42 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   }
 
   private updateBackgroundHeight() {
-    const headerEl = this.el.nativeElement;
-    const appMain = headerEl.nextElementSibling;
+    const headerEl = this.headerElementRef?.nativeElement;
+    const mainComponent = document.querySelector('app-main .main');
 
-    if (appMain && appMain.tagName.toLowerCase() === 'app-main') {
-      const mainComponent = appMain as HTMLElement;
-      const realMainEl = mainComponent.querySelector('.main');
+    if (headerEl && mainComponent) {
+      const headerHeight = headerEl.offsetHeight;
+      const mainHeight = mainComponent.scrollHeight;
+      const totalHeight = headerHeight + mainHeight;
 
-      if (realMainEl) {
-        const headerHeight = headerEl.offsetHeight;
-        const mainHeight = realMainEl.scrollHeight;
-
-        document.documentElement.style.setProperty(
-          '--background-height',
-          `${headerHeight + mainHeight}px`
-        );
-      }
+      document.documentElement.style.setProperty(
+        '--background-height',
+        `${totalHeight}px`
+      );
+      console.log(`Updated --background-height: ${totalHeight}px`);
+    } else {
+      console.warn('Header or Main component not found for height calculation');
     }
   }
 
   private setupResizeObserver() {
-    const headerEl = this.el.nativeElement;
-    const appMain = headerEl.nextElementSibling;
-
-    if (appMain && appMain.tagName.toLowerCase() === 'app-main') {
-      const realMainEl = appMain.querySelector('.main');
-
-      if (realMainEl && window.ResizeObserver) {
-        this.resizeObserver = new ResizeObserver(() => {
-          this.ngZone.run(() => this.updateBackgroundHeight());
-        });
-        this.resizeObserver.observe(realMainEl);
-      }
+    const mainComponent = document.querySelector('app-main .main');
+    if (mainComponent && window.ResizeObserver) {
+      this.resizeObserver = new ResizeObserver(() => {
+        this.ngZone.run(() => this.updateBackgroundHeight());
+      });
+      this.resizeObserver.observe(mainComponent);
     }
   }
 
   openContactsMenu() {
+    console.log('Opening Contacts Menu');
     this.menuService.openMenu();
   }
 
   toggleBurgerMenu() {
     this.isBurgerOpen = !this.isBurgerOpen;
+    console.log('Burger menu toggled, isBurgerOpen:', this.isBurgerOpen);
   }
 
   @HostListener('document:click', ['$event'])
@@ -107,6 +113,7 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
       !target.closest('app-burger-menu')
     ) {
       this.isBurgerOpen = false;
+      console.log('Closed burger menu due to outside click');
     }
   }
 }

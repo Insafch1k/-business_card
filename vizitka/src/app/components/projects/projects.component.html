@@ -1,14 +1,17 @@
 <div class="projects">
-  <h2 id="projects">Проекты</h2>
+  <h2 id="projects" #projectsEl>Проекты</h2>
   <div class="projects-box">
     <p class="project-description">{{ currentProject.description }}</p>
 
     <div class="gallery-container">
       <button class="nav-button prev-button" (click)="prev()">
         <img
-          src="../../../assets/services/strwhleft.svg"
+          src="/assets/services/strwhleft.svg"
           alt="предыдущий проект"
           class="arrow"
+          width="30"
+          height="30"
+          loading="lazy"
         />
       </button>
 
@@ -20,9 +23,12 @@
 
       <button class="nav-button next-button" (click)="next()">
         <img
-          src="../../../assets/services/strelwh.svg"
+          src="/assets/services/strelwh.svg"
           alt="следующий проект"
           class="arrow"
+          width="30"
+          height="30"
+          loading="lazy"
         />
       </button>
     </div>
@@ -37,10 +43,11 @@
     </div>
 
     <a
-      [href]="currentProject.link"
+      [href]="currentProject.link || 'javascript:void(0)'"
       class="go-to-project_btn"
-      target="_blank"
-      rel="noopener noreferrer"
+      [class.disabled]="!currentProject.link"
+      [attr.target]="currentProject.link ? '_blank' : null"
+      [attr.rel]="currentProject.link ? 'noopener noreferrer' : null"
     >
       Перейти к проекту
     </a>

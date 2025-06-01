@@ -1,3 +1,4 @@
+/* src/app/components/main/main.component.scss */
 $font-family: "Montserrat", sans-serif;
 $primary-color: #0077ff;
 $text-color: #ffffff;
@@ -5,8 +6,8 @@ $background: black;
 
 .main {
   position: relative;
-  height: fit-content;
   background-color: transparent;
+  min-height: 250px; /* Добавлено для CLS */
 }
 
 .main-box {
@@ -39,8 +40,7 @@ h1 {
   letter-spacing: -0.06em;
   text-transform: uppercase;
   height: auto;
-  margin-bottom: 0;
-  margin-top: 0;
+  margin: 0;
   overflow: hidden;
 
   &::after {
@@ -50,16 +50,11 @@ h1 {
     right: 30%;
     width: clamp(40px, 7vw, 80px);
     height: clamp(40px, 7vw, 80px);
-    background: url("../../../assets/Main/Emblems/Figma.svg") no-repeat
-      center/contain;
+    background: url("/assets/Main/Emblems/Figma.svg") no-repeat center/contain;
     pointer-events: none;
     z-index: 5;
     transform: rotate(15deg);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
-    -ms-touch-action: none;
     touch-action: none;
     animation: levitate 2s ease-in-out infinite alternate;
     transform: rotate(var(--rotation));
@@ -107,20 +102,12 @@ h1 {
 }
 
 .levitate-image {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  -ms-touch-action: none;
   touch-action: none;
   pointer-events: none;
   position: absolute;
   animation: levitate 2s ease-in-out infinite alternate;
   transform: rotate(var(--rotation));
-}
-
-.levitate-image_F {
-  @extend .levitate-image;
 }
 
 .Python {
@@ -148,11 +135,7 @@ h1 {
 }
 
 .scrolling-stack {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  -ms-touch-action: none;
   touch-action: none;
   height: 60px;
   width: 100vw;
@@ -263,11 +246,11 @@ span {
 
   .scrolling-stack {
     margin-top: 57px;
+  }
 
-    span {
-      font-size: 24px;
-      font-weight: 400;
-    }
+  .scrolling-stack span {
+    font-size: 24px;
+    font-weight: 400;
   }
 }
 
@@ -335,10 +318,10 @@ span {
   .scrolling-stack {
     margin-top: 40px;
     height: 40px;
+  }
 
-    span {
-      font-size: 16px;
-      font-weight: 400;
-    }
+  .scrolling-stack span {
+    font-size: 16px;
+    font-weight: 400;
   }
 }

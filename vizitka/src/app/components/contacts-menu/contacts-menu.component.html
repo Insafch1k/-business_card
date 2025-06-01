@@ -1,3 +1,4 @@
+<!-- src/app/components/contacts-menu/contacts-menu.component.html -->
 <div
   class="menu-overlay"
   *ngIf="menuService.isMenuOpen$ | async"
@@ -5,15 +6,20 @@
 >
   <div class="contacts_menu" (click)="$event.stopPropagation()">
     <button class="close_button" (click)="closeMenu()">
-      <img src="../../../assets/Contacts_menu/cross1.svg" alt="закрыть" />
+      <img
+        src="/assets/Contacts_menu/cross1.svg"
+        alt="закрыть"
+        loading="lazy"
+      />
     </button>
     <div class="menu_box">
       <div class="menu">
         <p>Свяжитесь с нами</p>
-        <a href="tel:+7 (917) 464  55-32" class="menu_button phone">
+        <a href="tel:+7 (917) 464 55-32" class="menu_button phone">
           <img
-            src="../../../assets/Contacts_menu/phone.svg"
+            src="/assets/Contacts_menu/phone.svg"
             alt="телефон"
+            loading="lazy"
           />Связаться по телефону
         </a>
         <a
@@ -23,15 +29,17 @@
           rel="noopener noreferrer"
         >
           <img
-            src="../../../assets/Contacts_menu/telegram.svg"
-            alt="телеграмм"
-          />Написать в teleram
+            src="/assets/Contacts_menu/telegram.svg"
+            alt="телеграм"
+            loading="lazy"
+          />Написать в Telegram
         </a>
         <a class="menu_button form" (click)="goToContacts()">
           <img
-            src="../../../assets/Contacts_menu/form1.svg"
-            alt="закрыть"
+            src="/assets/Contacts_menu/form1.svg"
+            alt="форма"
             class="form"
+            loading="lazy"
           />
           Заполнить форму
         </a>

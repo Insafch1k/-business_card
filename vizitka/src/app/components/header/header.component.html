@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" #headerEl>
   <div class="header-navigation">
     <ul class="header-navigation-menu">
       <li><a (click)="scrollTo('team')">Специализации</a></li>
@@ -7,20 +7,26 @@
       <li><a (click)="scrollTo('questions')">Вопросы</a></li>
       <li><a (click)="scrollTo('contacts')">Контакты</a></li>
     </ul>
-
-    <img src="assets/icons/logo.svg" alt="Логотип" class="header-logo" />
-
+    <img
+      src="/assets/icons/logo.svg"
+      alt="Логотип"
+      class="header-logo"
+      width="93"
+      height="93"
+      loading="lazy"
+      #logoEl
+    />
     <button (click)="openContactsMenu()" class="discuss-button">
       Обсудить проект
     </button>
-
-    <a href="tel:+7 (905) 026 21 62" class="telephone-number">
-      +7 (905) 026 21 62
-    </a>
+    <a href="tel:+79050262162" class="telephone-number"> +7 (905) 026 21 62 </a>
     <img
-      src="../../../assets/Header/burger.svg"
+      src="/assets/Header/burger.svg"
       alt="бургер-меню"
       class="mobile-burger-menu"
+      width="20"
+      height="13"
+      loading="lazy"
       (click)="toggleBurgerMenu()"
     />
   </div>

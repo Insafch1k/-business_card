@@ -1,6 +1,6 @@
 <!-- services.component.html -->
-<section id="services" class="services-section">
-  <h2 class="services-title">
+<section id="services" class="services-section" >
+  <h2 class="services-title" #servicesEl>
     <span class="first-word">НАШИ</span>
     <span class="second-word"> УСЛУГИ</span>
   </h2>
@@ -14,15 +14,16 @@
         (click)="centerCard(i)"
       >
         <div class="service-image">
-          <img [src]="service.image" [alt]="service.title" />
+          <img [src]="service.image" [alt]="service.title" loading="lazy" />
           <div class="content-overlay">
             <h3 class="service-title">{{ service.title }}</h3>
-            <a href="#" (click)="scrollToContacts($event)" class="order-button">
+            <a (click)="scrollToContacts($event)" class="order-button">
               Заказать
               <img
                 src="assets/services/strelbl.svg"
                 alt=""
                 class="button-arrow"
+                loading="lazy"
               />
             </a>
           </div>
@@ -33,10 +34,20 @@
 
   <div class="navigation-buttons">
     <button class="nav-button prev" (click)="scroll('left')">
-      <img src="assets/services/strwhleft.svg" alt="" class="button-arrow" />
+      <img
+        src="assets/services/strwhleft.svg"
+        alt=""
+        class="button-arrow"
+        loading="lazy"
+      />
     </button>
     <button class="nav-button next" (click)="scroll('right')">
-      <img src="assets/services/strelwh.svg" alt="" class="button-arrow" />
+      <img
+        src="assets/services/strelwh.svg"
+        alt=""
+        class="button-arrow"
+        loading="lazy"
+      />
     </button>
   </div>
 </section>

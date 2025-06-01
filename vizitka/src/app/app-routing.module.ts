@@ -1,14 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from './components/main/main.component';
+import HomeComponent from './components/home/home.component';
+import { BurgerMenuComponent } from './burger-menu/burger-menu.component';
 
-const routes: Routes = [{ path: '', component: MainComponent }];
+// Экспортируем routes
+export const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent,
+    data: { title: 'Главная' },
+  },
+  {
+    path: 'burger-menu',
+    component: BurgerMenuComponent,
+    data: { title: 'Меню' },
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
+];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      anchorScrolling: 'enabled',
-      scrollPositionRestoration: 'enabled',
+      scrollPositionRestoration: 'disabled', // Отключаем восстановление позиции прокрутки
+      anchorScrolling: 'disabled', // Отключаем прокрутку к якорям
     }),
   ],
   exports: [RouterModule],

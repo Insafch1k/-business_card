@@ -26,12 +26,12 @@ h2 {
 .project-description {
   font-family: "Space Grotesk", sans-serif;
   font-weight: 500;
-  font-size: 40px;
+  font-size: clamp(24px, 5vw, 40px);
   letter-spacing: -0.06em;
   color: #fff;
-  margin-bottom: 40px;
+  margin-bottom: clamp(20px, 4vw, 40px);
   text-align: center;
-  min-height: 100px;
+  min-height: 4rem; /* Минимальная высота для предотвращения CLS */
 }
 
 .gallery-container {
@@ -43,28 +43,24 @@ h2 {
 }
 
 .projects-window {
-  max-width: 960px;
   width: 100%;
+  max-width: 80vw; /* Ограничиваем максимальную ширину относительно viewport */
+  aspect-ratio: 960 / 800; /* Сохраняем пропорции */
+  overflow: hidden;
 }
 
 .project-image {
   width: 100%;
-  max-height: 800px;
+  height: 100%;
   display: block;
   transition: opacity 0.3s ease-in-out;
 
   svg {
     width: 100%;
-    max-height: 800px;
-    height: auto;
+    height: 100%;
+    object-fit: contain; /* Сохраняем пропорции изображения */
     display: block;
-    object-fit: contain;
   }
-}
-
-::ng-deep .project-image svg {
-  width: 100%;
-  height: auto;
 }
 
 .nav-button {
@@ -96,22 +92,15 @@ h2 {
   }
 }
 
-@media (max-width: 480px) {
-  .nav-button {
-    width: 30px;
-    height: 30px;
-  }
-}
-
 .dots-container {
   display: flex;
   gap: 15px;
-  margin: 30px 0;
+  margin: clamp(20px, 3vw, 30px) 0;
 }
 
 .dot {
-  width: 20px;
-  height: 20px;
+  width: clamp(10px, 2vw, 20px);
+  height: clamp(10px, 2vw, 20px);
   border-radius: 50%;
   background-color: #2b2b2b;
   cursor: pointer;
@@ -129,29 +118,44 @@ h2 {
   user-select: none;
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
-  font-size: 24px;
+  font-size: clamp(16px, 3vw, 24px);
   color: #fff;
-  padding: 15px 30px;
+  padding: clamp(8px, 2vw, 15px) clamp(16px, 3vw, 30px);
   border-radius: 30px;
   background-color: #e32966;
   text-decoration: none;
+  box-sizing: border-box;
+  border: 2px solid #e32966;
 
   &:hover {
-    background-color: #bb013e;
+    background-color: transparent;
+  }
+
+  &.disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    pointer-events: auto;
+    border: 2px solid #cccccc;
+
+    &:hover {
+      background-color: #cccccc;
+    }
   }
 }
 
 @media (max-width: 992px) {
   .project-description {
-    font-size: 32px;
+    font-size: clamp(20px, 4vw, 32px);
+    min-height: 4rem;
   }
 
   .projects-window {
-    max-width: 600px;
+    max-width: 90vw; /* Увеличиваем ширину на меньших экранах */
+    aspect-ratio: 960 / 800;
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 992px) {
   .projects {
     margin-top: clamp(40px, 6vw, 60px);
   }
@@ -159,30 +163,32 @@ h2 {
 
 @media (max-width: 576px) {
   .project-description {
-    font-size: 15px;
-    margin: 30px 0 20px;
-    min-height: 40px;
+    font-size: clamp(14px, 3vw, 15px);
+    margin: clamp(15px, 3vw, 20px) 0;
+    min-height: 35px;
   }
 
-  .prev-button {
-    margin: 0 10px 0 0;
+  .projects-window {
+    max-width: 95vw;
+    aspect-ratio: 960 / 800;
   }
 
+  .prev-button,
   .next-button {
-    margin: 0 0 0 10px;
+    margin: 0 clamp(5px, 2vw, 10px);
   }
 
   .dots-container {
-    margin: 20px 0;
+    margin: clamp(15px, 2vw, 20px) 0;
   }
 
   .dot {
-    width: 10px;
-    height: 10px;
+    width: clamp(8px, 2vw, 10px);
+    height: clamp(8px, 2vw, 10px);
   }
 
   .go-to-project_btn {
-    font-size: 16px;
-    padding: 8px 16px;
+    font-size: clamp(12px, 2.5vw, 16px);
+    padding: clamp(6px, 2vw, 8px) clamp(12px, 2.5vw, 16px);
   }
 }

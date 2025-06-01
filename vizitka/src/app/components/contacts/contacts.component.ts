@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { TelegramService } from '../../services/telegram.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { SuccessComponent } from '../../success/success.component';
 
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.scss'],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, SuccessComponent],
 })
 export class ContactsComponent {
   contactForm!: FormGroup;
@@ -57,31 +66,19 @@ export class ContactsComponent {
   formatPhoneNumber(event: Event): void {
     const input = event.target as HTMLInputElement;
     let value = input.value.replace(/[^0-9]/g, '');
-
-    if (!value.startsWith('7')) {
-      value = '7' + value;
-    }
-
+    if (!value.startsWith('7')) value = '7' + value;
     value = value.substring(0, 11);
 
     let formatted = '+7';
-    if (value.length > 1) {
-      formatted += ' (' + value.substring(1, 4);
-    }
-    if (value.length >= 4) {
-      formatted += ') ' + value.substring(4, 7);
-    }
-    if (value.length >= 7) {
-      formatted += '-' + value.substring(7, 9);
-    }
-    if (value.length >= 9) {
-      formatted += '-' + value.substring(9, 11);
-    }
+    if (value.length > 1) formatted += ` (${value.substring(1, 4)}`;
+    if (value.length >= 4) formatted += `) ${value.substring(4, 7)}`;
+    if (value.length >= 7) formatted += `-${value.substring(7, 9)}`;
+    if (value.length >= 9) formatted += `-${value.substring(9, 11)}`;
 
     input.value = formatted;
-    this.contactForm.get('phone')?.setValue('+7' + value.substring(1), {
-      emitEvent: false,
-    });
+    this.contactForm
+      .get('phone')
+      ?.setValue('+7' + value.substring(1), { emitEvent: false });
   }
 
   onSubmit() {

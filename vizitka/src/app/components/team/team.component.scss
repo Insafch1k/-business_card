@@ -1,13 +1,10 @@
-/* Обновляем стили для сетки */
+/* src/app/components/team/team.component.scss */
 .team-section {
   padding: 0 20px;
   max-width: 1216px;
-  margin: clamp(60px, 7vw, 100px) auto 0;
+  margin: clamp(40px, 6vw, 100px) auto 0;
   box-sizing: border-box;
-
-  @media (max-width: 960px) {
-    margin-top: clamp(40px, 6vw, 60px);
-  }
+  min-height: 350px; /* Добавлено для CLS */
 }
 
 .team-title {
@@ -30,13 +27,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  min-height: 300px; /* Добавлено для CLS */
 
   button {
-    grid-auto-rows: 1fr;
     font-family: "Montserrat", sans-serif;
     background: #171717;
     border: none;
@@ -59,8 +52,8 @@
     }
 
     &.wide {
-      grid-column: span 2; // Широкая карточка занимает 2 колонки
-      aspect-ratio: unset; // Соотношение сторон 2:1 вместо 1:1
+      grid-column: span 2;
+      aspect-ratio: unset;
       height: clamp(150px, 30.6vw, 392px);
     }
   }
@@ -72,10 +65,22 @@
   }
 
   .category-icon {
-    //  width: min(250px, 21vw);
     width: clamp(100px, 20vw, 250px);
     height: auto;
     border-radius: 50%;
     margin-top: clamp(10px, 2vw, 40px);
+  }
+
+  @media (max-width: 960px) {
+
+    .team-section {
+      margin: clamp(40px, 6vw, 60px) auto 0;
+      min-height: 200px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+    min-height: 200px; /* Добавлено для CLS */
   }
 }
