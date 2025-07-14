@@ -19,7 +19,6 @@ export class ContactsMenuComponent implements AfterViewInit {
   ) {
     this.menuService.isMenuOpen$.subscribe((isOpen) => {
       console.log('ContactsMenuComponent: isMenuOpen$ =', isOpen);
-      this.cdr.detectChanges();
     });
   }
 

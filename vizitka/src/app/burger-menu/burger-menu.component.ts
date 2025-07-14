@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,7 +9,9 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class BurgerMenuComponent {
-  scrollTo(id: string): void {
+  @Output() closeBurgerMenu = new EventEmitter<void>();
+
+  scrollToAndClose(id: string): void {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -19,5 +21,11 @@ export class BurgerMenuComponent {
         window.location.pathname + window.location.search
       );
     }
+
+    this.closeBurgerMenu.emit();
+  }
+
+  closeBurgerMenuHandler(): void {
+    this.closeBurgerMenu.emit();
   }
 }

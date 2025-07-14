@@ -65,26 +65,30 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   }
 
   private updateBackgroundHeight() {
-    const headerEl = this.headerElementRef?.nativeElement;
-    const mainComponent = document.querySelector('app-main .main');
-
-    if (headerEl && mainComponent) {
-      const headerHeight = headerEl.offsetHeight;
-      const mainHeight = mainComponent.scrollHeight;
-      const totalHeight = headerHeight + mainHeight;
+    const mainComponent = document.querySelector(
+      'app-main .main'
+    ) as HTMLElement | null;
+    if (mainComponent) {
+      const mainTop = mainComponent.offsetTop;
+      const mainHeight = mainComponent.offsetHeight; 
+      const totalHeight = mainTop + mainHeight - 3;
 
       document.documentElement.style.setProperty(
         '--background-height',
         `${totalHeight}px`
       );
-      console.log(`Updated --background-height: ${totalHeight}px`);
+      console.log(
+        `Updated --background-height: ${totalHeight}px (mainTop: ${mainTop}px, mainHeight: ${mainHeight}px)`
+      );
     } else {
-      console.warn('Header or Main component not found for height calculation');
+      console.warn('Main component not found for height calculation');
     }
   }
 
   private setupResizeObserver() {
-    const mainComponent = document.querySelector('app-main .main');
+    const mainComponent = document.querySelector(
+      'app-main .main'
+    ) as HTMLElement | null;
     if (mainComponent && window.ResizeObserver) {
       this.resizeObserver = new ResizeObserver(() => {
         this.ngZone.run(() => this.updateBackgroundHeight());
@@ -100,7 +104,20 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
 
   toggleBurgerMenu() {
     this.isBurgerOpen = !this.isBurgerOpen;
+
+    if (this.isBurgerOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
     console.log('Burger menu toggled, isBurgerOpen:', this.isBurgerOpen);
+  }
+
+  closeBurgerMenu() {
+    this.isBurgerOpen = false;
+    document.body.style.overflow = 'auto';
+    console.log('Burger menu closed');
   }
 
   @HostListener('document:click', ['$event'])
@@ -112,8 +129,7 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
       !target.closest('.burger-menu-dropdown') &&
       !target.closest('app-burger-menu')
     ) {
-      this.isBurgerOpen = false;
-      console.log('Closed burger menu due to outside click');
+      this.closeBurgerMenu();
     }
   }
 }

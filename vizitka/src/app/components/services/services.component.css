@@ -1,0 +1,196 @@
+.services-section {
+  max-width: 1216px;
+  margin: clamp(60px, 7vw, 100px) auto 0;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+@media (max-width: 960px) {
+  .services-section {
+    margin-top: clamp(40px, 6vw, 60px);
+  }
+}
+
+.services-title {
+  font-size: clamp(52px, 5.5vw, 64px);
+  font-family: "Space Grotesk", sans-serif;
+  margin: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.services-title .first-word {
+  color: white;
+}
+.services-title .second-word {
+  color: #e32966;
+}
+@media (max-width: 960px) {
+  .services-title {
+    font-size: clamp(20px, 3.5vw, 52px);
+  }
+}
+
+.services-marquee {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  padding: 30px 0;
+  margin: 0;
+}
+.services-marquee::before, .services-marquee::after {
+  content: "";
+  width: clamp(20px, 8vw, 70px);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.services-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+}
+.services-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.services-track {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  will-change: transform;
+  transition: transform 0.1s linear;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+.services-track.no-transition {
+  transition: none;
+}
+
+.service-card {
+  width: clamp(150px, 32vw, 392px);
+  height: clamp(208px, 43vw, 540px);
+  flex-shrink: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  cursor: pointer;
+  position: relative;
+  transform: translateZ(0);
+  will-change: transform;
+}
+.service-card.active {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(227, 41, 102, 0.3);
+  z-index: 1;
+}
+.service-card:hover {
+  transform: scale(1.03);
+}
+@media (max-width: 960px) {
+  .service-card {
+    width: clamp(120px, 80vw, 300px);
+    height: clamp(160px, 100vw, 400px);
+  }
+}
+@media (max-width: 480px) {
+  .service-card {
+    border-radius: 15px;
+  }
+}
+
+.service-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.service-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.service-image .content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(5px, 3vw, 40px);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.service-title {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: clamp(10px, 2vw, 24px);
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+}
+
+.order-button {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(12px, 1.8vw, 24px);
+  font-weight: 500;
+  padding: clamp(5px, 1vw, 7px) clamp(15px, 2vw, 29px);
+  background: white;
+  color: black;
+  border-radius: 30px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  align-self: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.order-button:hover {
+  background: #d0cdcd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  background-color: #171717;
+  border-radius: 35px;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px;
+  margin: 20px auto;
+}
+@media (max-width: 768px) {
+  .navigation-buttons {
+    gap: 20px;
+  }
+}
+
+.nav-button {
+  width: clamp(20px, 5vw, 50px);
+  height: clamp(20px, 5vw, 50px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #e32966;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.nav-button img {
+  width: 30%;
+  max-width: 30px;
+}
+.nav-button:hover {
+  background: #bb013e;
+}/*# sourceMappingURL=services.component.css.map */

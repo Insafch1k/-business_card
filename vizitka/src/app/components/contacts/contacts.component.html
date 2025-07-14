@@ -23,7 +23,7 @@
         />
         <textarea
           class="text-field comment_field"
-          placeholder="Текст"
+          placeholder="Ваш комментарий"
           formControlName="text"
           maxlength="1000"
         ></textarea>
@@ -34,11 +34,6 @@
         >
           {{ isSending ? "Отправка..." : "Оставить заявку" }}
         </button>
-        <div class="error-message-container">
-          <div *ngIf="errorMessage" class="error-message">
-            {{ errorMessage }}
-          </div>
-        </div>
       </form>
     </div>
     <div class="contacts_column-2">

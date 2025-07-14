@@ -59,7 +59,7 @@ $background: black;
   .discuss-button {
     font: {
       family: $font-family;
-      weight: 500;
+      weight: 600;
       line-height: 10px;
     }
     max-width: 227px;
@@ -123,11 +123,7 @@ $background: black;
     }
   }
 
-  @media (max-width: 965px) {
-    &::after {
-      width: clamp(320px, 72vw, 692px);
-      aspect-ratio: 692 / 800;
-    }
+  @media (max-width: 987px) {
 
     .header-navigation-menu {
       display: none;

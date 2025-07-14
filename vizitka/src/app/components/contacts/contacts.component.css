@@ -1,0 +1,465 @@
+.contacts {
+  max-width: 1216px;
+  margin: clamp(60px, 7vw, 100px) auto 0;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+h2 {
+  position: relative;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: clamp(52px, 5.5vw, 64px);
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+  overflow: hidden;
+}
+
+.contacts-box {
+  font-family: "Monsterrat", sans-serif;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.contacts_column-1 {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 2vw, 20px);
+  margin-top: clamp(40px, 10vw, 132px);
+  margin-bottom: 133px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1vw, 20px);
+  width: clamp(150px, 47vw, 620px);
+  max-width: 100%;
+  background-color: #171717;
+  border-radius: 20px;
+  padding: 40px 21px;
+}
+
+.text-field {
+  font-family: "Monsterrat", sans-serif;
+  font-weight: 300;
+  font-size: clamp(12px, 2vw, 24px);
+  line-height: 100%;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  border-radius: 15px;
+  padding: clamp(10px, 2vw, 20px);
+  max-width: 100%;
+  color: #fff;
+  background-color: #3f3f3f;
+}
+.text-field::-moz-placeholder {
+  color: #999;
+  font-family: Monsterrat, sans-serif;
+  font-weight: 200;
+  font-size: clamp(12px, 2vw, 24px);
+  line-height: 100%;
+}
+.text-field::placeholder {
+  color: #999;
+  font-family: Monsterrat, sans-serif;
+  font-weight: 200;
+  font-size: clamp(12px, 2vw, 24px);
+  line-height: 100%;
+}
+.text-field:focus {
+  border-bottom: 2px solid #fff;
+}
+.text-field.ng-invalid.ng-touched {
+  border-bottom: 2px solid red;
+}
+
+.name_field,
+.phone_number_field {
+  height: clamp(30px, 5vw, 60px);
+}
+
+.comment_field {
+  height: clamp(90px, 15vw, 200px);
+  resize: none;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.comment_field::-webkit-scrollbar {
+  width: 0;
+}
+
+.bid-button {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  height: clamp(30px, 4vw, 50px);
+  border: 2px solid #0077ff;
+  border-radius: 30px;
+  background-color: #0077ff;
+  align-self: center;
+  margin-top: clamp(10px, 3vw, 40px);
+  white-space: nowrap;
+  font-size: clamp(12px, 2vw, 20px);
+  color: #fff;
+  width: 400px;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+}
+.bid-button:hover {
+  background: transparent;
+  cursor: pointer;
+}
+.bid-button:focus, .bid-button:active {
+  outline: none;
+  border: 2px solid #0077ff;
+  background: transparent;
+}
+.bid-button[disabled] {
+  opacity: 0.6;
+  background-color: #0077ff;
+}
+
+.error-message-container {
+  min-height: clamp(20px, 2vw, 24px);
+  width: clamp(150px, 40vw, 450px);
+  max-width: 100%;
+}
+
+.error-message {
+  font-family: "Mozilla", sans-serif;
+  font-size: clamp(12px, 2vw, 16px);
+  color: red;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.contacts_column-2 {
+  margin-left: clamp(-20px, 10vw, 168px);
+  position: relative;
+}
+
+.Danis-photo {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-20%);
+  width: clamp(218px, 50vw, 598px);
+  height: clamp(260px, 60vw, 712px);
+  -o-object-fit: contain;
+     object-fit: contain;
+  z-index: -1;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  touch-action: none;
+  pointer-events: none;
+}
+
+:host ::ng-deep .Danis-photo-internal {
+  width: 100%;
+  height: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  touch-action: none;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.levitate-image {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  touch-action: none;
+  position: absolute;
+  animation: levitate 3s ease-in-out infinite alternate;
+  width: clamp(25px, 7vw, 75px);
+  height: clamp(25px, 7vw, 75px);
+}
+
+.Whatsapp {
+  left: clamp(-40px, 6vw, 60px);
+  animation-delay: 1.5s;
+}
+
+.Telegram {
+  left: -40px;
+  top: clamp(90px, 15vw, 150px);
+  animation-delay: 0.5s;
+}
+
+.contacts_text {
+  font-family: "Monsterrat", sans-serif;
+  font-weight: 500;
+  font-size: clamp(8px, 2vw, 20px);
+  line-height: 100%;
+}
+
+.contacts-span-text {
+  font-family: "Monsterrat", sans-serif;
+  font-weight: 550;
+  font-size: clamp(8px, 2vw, 20px);
+  line-height: clamp(8px, 2vw, 20px);
+}
+
+.Danis {
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+  margin-left: clamp(35px, 4vw, 70px);
+  margin-top: clamp(200px, 30vw, 406px);
+  width: clamp(100px, 26vw, 280px);
+  padding: clamp(5px, 1vw, 10px);
+  gap: clamp(0px, 0.5vw, 5px);
+  border-radius: 15px;
+  color: #fff;
+  background-color: #0077ff;
+}
+
+.label {
+  color: #e32966;
+}
+
+.value {
+  font-weight: 400;
+}
+
+.Danis_contacts {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5px, 1vw, 10px);
+  width: clamp(100px, 26vw, 280px);
+  min-width: 100px;
+  height: auto;
+  padding: clamp(5px, 0.5vw, 8px);
+  border-radius: clamp(5px, 1vw, 15px);
+  background-color: #fff;
+  margin-top: clamp(5px, 2vw, 20px);
+  margin-left: clamp(35px, 4vw, 70px);
+  overflow: hidden;
+}
+
+.contact-line {
+  line-height: clamp(8px, 2vw, 20px);
+  white-space: nowrap;
+}
+
+@keyframes levitate {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+@media (max-width: 960px) {
+  .contacts {
+    margin-top: clamp(40px, 6vw, 60px);
+    margin-left: 0;
+  }
+  h2 {
+    font-size: clamp(20px, 3.5vw, 52px);
+  }
+  .contacts_column-1 {
+    margin-top: clamp(40px, 11.5625vw, 111px);
+    margin-bottom: clamp(22px, 11.4583vw, 110px);
+  }
+  form {
+    width: clamp(100px, 46.875vw, 450px);
+    gap: clamp(5px, 1.0417vw, 10px);
+  }
+  .text-field {
+    width: clamp(100px, 46.875vw, 450px);
+    font-size: clamp(12px, 2.0833vw, 20px);
+  }
+  .name_field,
+  .phone_number_field {
+    height: clamp(30px, 6.25vw, 60px);
+  }
+  .text-field::-moz-placeholder {
+    font-size: clamp(12px, 2.0833vw, 20px);
+  }
+  .text-field::placeholder {
+    font-size: clamp(12px, 2.0833vw, 20px);
+  }
+  .comment_field {
+    height: clamp(90px, 15.625vw, 150px);
+    font-size: clamp(12px, 2.0833vw, 20px);
+  }
+  .bid-button {
+    width: clamp(130px, 12vw, 400px);
+    height: clamp(30px, 5.2083vw, 50px);
+    margin-top: clamp(20px, 4.1667vw, 40px);
+  }
+  .error-message-container {
+    width: clamp(100px, 46.875vw, 450px);
+  }
+  .contacts_column-2 {
+    margin-left: clamp(-20px, 6.25vw, 60px);
+  }
+  .Danis {
+    margin-top: clamp(100px, 45vw, 406px);
+    margin-left: clamp(20px, 3vw, 30px);
+  }
+  .Danis_contacts {
+    margin-left: clamp(20px, 3vw, 30px);
+  }
+  .Danis-photo {
+    max-width: clamp(218px, 52.2917vw, 502px);
+    max-height: clamp(260px, 62.5vw, 600px);
+  }
+  :host ::ng-deep .Danis-photo-internal {
+    max-width: clamp(218px, 52.2917vw, 502px);
+    max-height: clamp(260px, 62.5vw, 600px);
+  }
+  .levitate-image {
+    width: clamp(25px, 7.8125vw, 75px);
+    height: clamp(25px, 7.8125vw, 75px);
+  }
+  .Whatsapp {
+    top: clamp(20px, 5.2083vw, 50px);
+    left: clamp(-50px, 8.3333vw, 30px);
+  }
+  .Telegram {
+    left: clamp(-80px, -3vw, 30px);
+  }
+}
+@media (max-width: 580px) {
+  .image {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .contacts_column-1 {
+    margin-top: 40px;
+    margin-bottom: 22px;
+  }
+  form {
+    width: clamp(100px, 40vw, 180px);
+    gap: 10px;
+  }
+  .text-field {
+    width: clamp(100px, 50vw, 180px);
+    font-size: 12px;
+    padding: clamp(5px, 4.1667vw, 10px);
+  }
+  .text-field::-moz-placeholder {
+    font-size: 12px;
+  }
+  .text-field::placeholder {
+    font-size: 12px;
+  }
+  .name_field,
+  .phone_number_field {
+    height: 30px;
+  }
+  .comment_field {
+    height: 90px;
+    font-size: 12px;
+  }
+  .bid-button {
+    height: 30px;
+    margin-top: 20px;
+    font-size: 12px;
+  }
+  .error-message-container {
+    min-height: 20px;
+    width: clamp(100px, 50vw, 210px);
+  }
+  .contacts_column-2 {
+    margin-left: -20px;
+  }
+  .Danis-photo {
+    margin-top: clamp(10px, 4.1667vw, 20px);
+  }
+  :host ::ng-deep .Danis-photo-internal {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+    transform: translateX(20%);
+  }
+  .levitate-image {
+    width: 25px;
+    height: 25px;
+  }
+  .Whatsapp {
+    left: clamp(-40px, 8.3333vw, 20px);
+  }
+  .Telegram {
+    top: clamp(50px, 18.75vw, 90px);
+  }
+  .contacts_text {
+    font-size: 7px;
+    line-height: 7px;
+    width: clamp(80px, 10vw, 121px);
+    margin-top: clamp(180px, 45vw, 220px);
+    margin-left: clamp(40px, 15vw, 60px);
+  }
+  .contacts-span-text {
+    font-size: 7px;
+    line-height: 7px;
+  }
+  .contact-line {
+    line-height: 7px;
+  }
+  .Danis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 100%;
+    font-size: 7px;
+    min-width: 100px;
+    margin-left: clamp(60px, 14vw, 52px);
+    padding: clamp(5px, 2.0833vw, 10px);
+    height: clamp(10px, 3.9583vw, 19px);
+    margin-top: 230px;
+  }
+  .Danis_contacts {
+    width: clamp(80px, 10vw, 121px);
+    min-width: 100px;
+    height: auto;
+    margin-top: clamp(10px, 2.0833vw, 10px);
+    gap: 0px;
+    margin-left: clamp(60px, 14vw, 52px);
+    padding: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+}
+@media only screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  .text-field {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+         appearance: none;
+    border: none;
+    padding: clamp(5px, 4.1667vw, 10px);
+    box-sizing: border-box;
+  }
+  .name_field,
+  .phone_number_field {
+    height: 30px;
+    border-radius: 10px;
+  }
+  .comment_field {
+    height: 90px;
+    border-radius: 10px;
+  }
+}/*# sourceMappingURL=contacts.component.css.map */

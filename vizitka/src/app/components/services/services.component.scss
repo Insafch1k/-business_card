@@ -1,20 +1,22 @@
-/* services.component.scss */
 .services-section {
-  max-width: 1216px;
-  margin: clamp(60px, 7vw, 100px) auto 0;
+  margin: clamp(80px, 6vw, 100px) auto 0;
   box-sizing: border-box;
   padding: 0 20px;
+  contain: paint;
+  position: relative;
 
   @media (max-width: 960px) {
-    margin-top: clamp(40px, 6vw, 60px);
+    margin-top: clamp(40px, 6vw, 80px);
   }
 }
 
 .services-title {
-  font-size: clamp(32px, 8.4vw, 96px);
+  font-size: clamp(52px, 5.5vw, 64px);
   font-family: "Space Grotesk", sans-serif;
-  margin: 0;
+  margin: 0 auto;
   font-weight: 600;
+  text-transform: uppercase;
+  max-width: 1216px;
 
   .first-word {
     color: white;
@@ -22,6 +24,10 @@
 
   .second-word {
     color: #e32966;
+  }
+
+  @media (max-width: 960px) {
+    font-size: clamp(20px, 3.5vw, 52px);
   }
 }
 
@@ -33,6 +39,15 @@
   overflow: hidden;
   padding: 30px 0;
   margin: 0;
+  touch-action: none;
+
+  @media (max-width: 960px) {
+    padding: 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+  }
 
   &::before,
   &::after {
@@ -61,14 +76,8 @@
   display: flex;
   gap: 20px;
   will-change: transform;
-  transition: transform 0.01s linear !important; // Минимальная длительность
-  backface-visibility: hidden; // Аппаратное ускорение
+  backface-visibility: hidden;
   transform-style: preserve-3d;
-
-  // Для плавного перехода при мгновенном смещении
-  &.no-transition {
-    transition: none !important;
-  }
 }
 
 .service-card {
@@ -82,6 +91,7 @@
   position: relative;
   transform: translateZ(0);
   will-change: transform;
+  aspect-ratio: 392/540;
 
   &.active {
     transform: scale(1.05);
@@ -106,7 +116,10 @@
   img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
     transition: transform 0.5s ease;
+    content-visibility: auto;
+    will-change: transform;
   }
 
   .content-overlay {
@@ -132,17 +145,15 @@
   font-family: "Montserrat", sans-serif;
   color: white;
   font-size: clamp(10px, 2vw, 24px);
-  font-weight: 500;
+  font-weight: 600;
   margin: 0;
   text-align: center;
 }
 
 .order-button {
   font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  display: inline-flex;
+  font-weight: 600;
   align-items: center;
-  gap: 15px;
   padding: clamp(5px, 1vw, 7px) clamp(15px, 2vw, 29px);
   background: white;
   color: black;
@@ -153,6 +164,7 @@
   align-self: center;
   font-size: clamp(16px, 2vw, 24px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: clamp(90px, 6.5vw, 180px);
 
   img {
     width: clamp(7px, 2vw, 12px);
@@ -168,7 +180,12 @@
 .navigation-buttons {
   display: flex;
   justify-content: center;
+  justify-self: center;
   gap: 30px;
+  background-color: #171717;
+  border-radius: 35px;
+  width: fit-content;
+  padding: 10px;
 
   @media (max-width: 768px) {
     gap: 20px;
@@ -176,40 +193,41 @@
 }
 
 .nav-button {
-  // Размеры и форма
   width: clamp(20px, 5vw, 50px);
-  height: clamp(20px, 5vw, 50px); // Квадратная форма
+  height: clamp(20px, 5vw, 50px);
   border-radius: 50%;
 
   @media (max-width: 480px) {
     width: 30px;
     height: 30px;
   }
-  // Контент
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0; // Важно для правильного масштабирования
+  padding: 0;
 
-  // Стиль
   background: #e32966;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
 
-  // Иконка внутри
   img {
-    width: 30%; // Относительный размер
-    max-width: 30px; // Лимит по вашему оригинальному стилю
+    width: 30%;
+    max-width: 30px;
   }
 
   &:hover {
     background: #bb013e;
   }
+
+  &.disabled {
+    opacity: 0.5;
+    background: #666;
+  }
 }
 
 .services-track {
-  // Добавляем плавный переход для ручной прокрутки
   &.manual-scroll {
     display: flex;
     transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -220,7 +238,6 @@
   transform: scale(1.1);
   transition: transform 0.3s ease;
   z-index: 10;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .card:not(.zoomed-card) {

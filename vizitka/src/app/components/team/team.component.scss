@@ -1,17 +1,21 @@
-/* src/app/components/team/team.component.scss */
 .team-section {
   padding: 0 20px;
   max-width: 1216px;
-  margin: clamp(40px, 6vw, 100px) auto 0;
+  margin: clamp(80px, 6vw, 100px) auto 0;
   box-sizing: border-box;
-  min-height: 350px; /* Добавлено для CLS */
+  min-height: 350px;
+
+  @media (max-width: 960px) {
+    margin: clamp(40px, 6vw, 80px) auto 0;
+    min-height: 200px;
+  }
 }
 
 .team-title {
   text-align: left;
-  font-size: clamp(32px, 8.4vw, 96px);
+  font-size: clamp(52px, 5.5vw, 64px);
   font-family: "Space Grotesk", sans-serif;
-  margin: 0 0 20px;
+  margin: 0 0 40px;
   line-height: 1;
 
   .first-word {
@@ -21,13 +25,18 @@
   .second-word {
     color: #0077ff;
   }
+
+  @media (max-width: 960px) {
+    font-size: clamp(20px, 3.5vw, 52px);
+    margin-bottom: 20px;
+  }
 }
 
 .category-buttons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  min-height: 300px; /* Добавлено для CLS */
+  min-height: 300px;
 
   button {
     font-family: "Montserrat", sans-serif;
@@ -36,7 +45,7 @@
     border-radius: 20px;
     text-align: center;
     line-height: 2;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,16 +80,8 @@
     margin-top: clamp(10px, 2vw, 40px);
   }
 
-  @media (max-width: 960px) {
-
-    .team-section {
-      margin: clamp(40px, 6vw, 60px) auto 0;
-      min-height: 200px;
-    }
-  }
-
   @media (max-width: 480px) {
     grid-template-columns: repeat(2, 1fr);
-    min-height: 200px; /* Добавлено для CLS */
+    min-height: 200px;
   }
 }

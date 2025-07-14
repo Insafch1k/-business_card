@@ -1,0 +1,223 @@
+.projects {
+  max-width: 1216px;
+  margin: clamp(60px, 7vw, 100px) auto 0;
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: clamp(52px, 5.5vw, 64px);
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+h2 .first-word {
+  color: white;
+}
+h2 .second-word {
+  color: #e32966;
+}
+
+.projects-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.project-description {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: clamp(32px, 3vw, 40px);
+  letter-spacing: -0.06em;
+  color: #fff;
+  margin: 0 0 20px;
+  text-align: center;
+  min-height: 6.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 40px;
+}
+
+.projects-window {
+  width: 100%;
+  max-width: 80vw;
+  overflow: hidden;
+  background-color: #171717;
+  border-radius: 20px;
+  padding: 40px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: opacity 0.3s ease-in-out;
+}
+.project-image svg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: block;
+}
+
+.image-wrapper {
+  aspect-ratio: 960/800;
+  width: 100%;
+}
+
+.nav-button {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  width: clamp(30px, 5vw, 50px);
+  height: clamp(30px, 5vw, 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #e32966;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin: 0 clamp(10px, 5vw, 58px);
+}
+.nav-button:hover {
+  background-color: #bb013e;
+}
+.nav-button img {
+  width: 30%;
+  max-width: 30px;
+}
+
+.dots-container {
+  display: flex;
+  gap: 20px;
+  margin: clamp(20px, 3vw, 30px) 0;
+}
+
+.dot {
+  width: 60px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #2b2b2b;
+  cursor: pointer;
+}
+.dot.active {
+  background-color: #e32966;
+  transform: scale(1.2);
+}
+
+.go-to-project_btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: clamp(16px, 3vw, 24px);
+  color: #fff;
+  padding: clamp(8px, 2vw, 15px) clamp(16px, 3vw, 30px);
+  border-radius: 30px;
+  background-color: #e32966;
+  text-decoration: none;
+  box-sizing: border-box;
+  border: 2px solid #e32966;
+}
+.go-to-project_btn:hover {
+  background-color: transparent;
+}
+.go-to-project_btn.disabled {
+  background-color: #cccccc;
+  pointer-events: auto;
+  border: 2px solid #cccccc;
+}
+.go-to-project_btn.disabled:hover {
+  background-color: #cccccc;
+}
+
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: inline-block;
+}
+
+@media (max-width: 992px) {
+  .project-description {
+    font-size: clamp(15px, 3vw, 32px);
+    min-height: 5rem;
+  }
+  h2 {
+    font-size: clamp(20px, 3.5vw, 52px);
+  }
+  .projects-window {
+    max-width: 90vw;
+    padding: 40px 30px;
+  }
+}
+@media (max-width: 992px) {
+  .projects {
+    margin-top: clamp(40px, 6vw, 60px);
+  }
+}
+@media (max-width: 576px) {
+  .project-description {
+    font-size: clamp(14px, 3vw, 15px);
+    min-height: 40px;
+  }
+  .projects-window {
+    max-width: 95vw;
+    padding: 19px 18px 10px;
+  }
+  .prev-button,
+  .next-button {
+    margin: 0 clamp(5px, 2vw, 10px);
+  }
+  .dots-container {
+    margin: clamp(15px, 2vw, 20px) 0;
+  }
+  .dot {
+    width: 40px;
+    height: 20px;
+  }
+  .go-to-project_btn {
+    font-size: clamp(12px, 2.5vw, 16px);
+    padding: clamp(6px, 2vw, 8px) clamp(12px, 2.5vw, 16px);
+  }
+  .mobile-only {
+    display: inline-block;
+    margin-top: 20px;
+  }
+  .desktop-only {
+    display: none;
+  }
+}/*# sourceMappingURL=projects.component.css.map */

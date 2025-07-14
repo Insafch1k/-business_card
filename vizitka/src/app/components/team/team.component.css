@@ -1,0 +1,86 @@
+@charset "UTF-8";
+/* src/app/components/team/team.component.scss */
+.team-section {
+  padding: 0 20px;
+  max-width: 1216px;
+  margin: clamp(40px, 6vw, 100px) auto 0;
+  box-sizing: border-box;
+  min-height: 350px;
+}
+
+.team-title {
+  text-align: left;
+  font-size: clamp(52px, 5.5vw, 64px);
+  font-family: "Space Grotesk", sans-serif;
+  margin: 0 0 40px;
+  line-height: 1;
+}
+.team-title .first-word {
+  color: white;
+}
+.team-title .second-word {
+  color: #0077ff;
+}
+@media (max-width: 960px) {
+  .team-title {
+    font-size: clamp(20px, 3.5vw, 52px);
+  }
+}
+
+.category-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  min-height: 300px; /* Добавлено для CLS */
+}
+.category-buttons button {
+  font-family: "Montserrat", sans-serif;
+  background: #171717;
+  border: none;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 2;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: clamp(150px, 30.6vw, 392px);
+  padding: 20px 0 43px 0;
+  aspect-ratio: unset;
+  color: white;
+  position: relative;
+}
+@media (max-width: 480px) {
+  .category-buttons button {
+    padding: 10px 0 15px 0;
+  }
+}
+.category-buttons button.wide {
+  grid-column: span 2;
+  aspect-ratio: unset;
+  height: clamp(150px, 30.6vw, 392px);
+}
+.category-buttons span {
+  display: block;
+  line-height: 1.2;
+  font-size: clamp(14px, 3vw, 36px);
+}
+.category-buttons .category-icon {
+  width: clamp(100px, 20vw, 250px);
+  height: auto;
+  border-radius: 50%;
+  margin-top: clamp(10px, 2vw, 40px);
+}
+@media (max-width: 960px) {
+  .category-buttons .team-section {
+    margin: clamp(40px, 6vw, 60px) auto 0;
+    min-height: 200px;
+  }
+}
+@media (max-width: 480px) {
+  .category-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    min-height: 200px;
+  }
+}/*# sourceMappingURL=team.component.css.map */

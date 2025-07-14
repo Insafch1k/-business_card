@@ -1,15 +1,15 @@
 <header class="header" #headerEl>
   <div class="header-navigation">
     <ul class="header-navigation-menu">
-      <li><a (click)="scrollTo('team')">Специализации</a></li>
       <li><a (click)="scrollTo('services')">Услуги</a></li>
-      <li><a (click)="scrollTo('projects')">Проекты</a></li>
+      <li><a (click)="scrollTo('team')">Специализации</a></li>
+      <li><a (click)="scrollTo('projects')">Портфолио</a></li>
       <li><a (click)="scrollTo('questions')">Вопросы</a></li>
       <li><a (click)="scrollTo('contacts')">Контакты</a></li>
     </ul>
     <img
       src="/assets/icons/logo.svg"
-      alt="Логотип"
+      alt="Логотип Зилант"
       class="header-logo"
       width="93"
       height="93"
@@ -22,7 +22,7 @@
     <a href="tel:+79050262162" class="telephone-number"> +7 (905) 026 21 62 </a>
     <img
       src="/assets/Header/burger.svg"
-      alt="бургер-меню"
+      alt="кнопка бургер-меню"
       class="mobile-burger-menu"
       width="20"
       height="13"
@@ -31,4 +31,7 @@
     />
   </div>
 </header>
-<app-burger-menu *ngIf="isBurgerOpen"></app-burger-menu>
+<app-burger-menu
+  *ngIf="isBurgerOpen"
+  (closeBurgerMenu)="closeBurgerMenu()"
+></app-burger-menu>

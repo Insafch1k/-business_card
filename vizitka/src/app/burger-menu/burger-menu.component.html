@@ -1,19 +1,50 @@
-<div class="burger-menu-dropdown">
-  <ul class="burger-menu-list">
-    <li class="burger-menu-element">
-      <a class="burger-menu-text" (click)="scrollTo('team')">Специализации</a>
-    </li>
-    <li class="burger-menu-element">
-      <a class="burger-menu-text" (click)="scrollTo('services')">Услуги</a>
-    </li>
-    <li class="burger-menu-element">
-      <a class="burger-menu-text" (click)="scrollTo('projects')">Проекты</a>
-    </li>
-    <li class="burger-menu-element">
-      <a class="burger-menu-text" (click)="scrollTo('questions')">Вопросы</a>
-    </li>
-    <li class="burger-menu-element">
-      <a class="burger-menu-text" (click)="scrollTo('contacts')">Контакты</a>
-    </li>
-  </ul>
+<div class="burger-menu-overlay">
+  <div class="burger-menu-dropdown">
+    <div class="burger-menu-header">
+      <img
+        src="/assets/icons/logo.svg"
+        alt="Логотип Зилант"
+        class="burger-menu-logo"
+        width="93"
+        height="93"
+        loading="lazy"
+      />
+      <button class="burger-menu-close" (click)="closeBurgerMenuHandler()">
+        <img
+          src="../../assets/Header/close.svg"
+          alt="Закрыть меню"
+          width="24"
+          height="24"
+          loading="lazy"
+        />
+      </button>
+    </div>
+    <ul class="burger-menu-list">
+      <li class="burger-menu-element">
+        <a class="burger-menu-text" (click)="scrollToAndClose('services')"
+          >Услуги</a
+        >
+      </li>
+      <li class="burger-menu-element">
+        <a class="burger-menu-text" (click)="scrollToAndClose('team')"
+          >Специализации</a
+        >
+      </li>
+      <li class="burger-menu-element">
+        <a class="burger-menu-text" (click)="scrollToAndClose('projects')"
+          >Портфолио</a
+        >
+      </li>
+      <li class="burger-menu-element">
+        <a class="burger-menu-text" (click)="scrollToAndClose('questions')"
+          >Вопросы</a
+        >
+      </li>
+      <li class="burger-menu-element">
+        <a class="burger-menu-text" (click)="scrollToAndClose('contacts')"
+          >Контакты</a
+        >
+      </li>
+    </ul>
+  </div>
 </div>

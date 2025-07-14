@@ -1,8 +1,9 @@
 <div class="projects">
-  <h2 id="projects" #projectsEl>Проекты</h2>
+  <h2 id="projects" #projectsEl>
+    <span class="first-word">Наше</span
+    ><span class="second-word"> Портфолио</span>
+  </h2>
   <div class="projects-box">
-    <p class="project-description">{{ currentProject.description }}</p>
-
     <div class="gallery-container">
       <button class="nav-button prev-button" (click)="prev()">
         <img
@@ -16,8 +17,20 @@
       </button>
 
       <div class="projects-window">
-        <div class="image-wrapper" [@fadeAnimation]="currentIndex">
-          <div [innerHTML]="currentProject.image" class="project-image"></div>
+        <div class="project-content">
+          <p class="project-description">{{ currentProject.description }}</p>
+          <div class="image-wrapper" [@fadeAnimation]="currentIndex">
+            <div [innerHTML]="currentProject.image" class="project-image"></div>
+          </div>
+          <a
+            [href]="currentProject.link || 'javascript:void(0)'"
+            class="go-to-project_btn mobile-only"
+            [class.disabled]="!currentProject.link"
+            [attr.target]="currentProject.link ? '_blank' : null"
+            [attr.rel]="currentProject.link ? 'noopener noreferrer' : null"
+          >
+            Перейти к проекту
+          </a>
         </div>
       </div>
 
@@ -41,10 +54,9 @@
         (click)="goTo(i)"
       ></div>
     </div>
-
     <a
       [href]="currentProject.link || 'javascript:void(0)'"
-      class="go-to-project_btn"
+      class="go-to-project_btn desktop-only"
       [class.disabled]="!currentProject.link"
       [attr.target]="currentProject.link ? '_blank' : null"
       [attr.rel]="currentProject.link ? 'noopener noreferrer' : null"

@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import HomeComponent from './components/home/home.component';
 import { BurgerMenuComponent } from './burger-menu/burger-menu.component';
 
-// Экспортируем routes
 export const routes: Routes = [
   {
     path: '',
@@ -24,8 +23,8 @@ export const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      scrollPositionRestoration: 'disabled', // Отключаем восстановление позиции прокрутки
-      anchorScrolling: 'disabled', // Отключаем прокрутку к якорям
+      scrollPositionRestoration: 'disabled',
+      anchorScrolling: 'disabled', 
     }),
   ],
   exports: [RouterModule],

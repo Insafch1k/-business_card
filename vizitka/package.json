@@ -39,6 +39,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "sass": "^1.77.6",
-    "typescript": "~5.0.4"
+    "typescript": "~5.0.4",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }

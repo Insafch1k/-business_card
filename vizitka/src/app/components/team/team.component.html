@@ -1,4 +1,4 @@
-<section class="team-section" >
+<section class="team-section" #teamsection>
   <h2 id="team" class="team-title" #teamEl>
     <span class="first-word">СПЕЦИАЛИЗАЦИИ</span>
     <span class="second-word"> КОМАНДЫ</span>
@@ -6,14 +6,25 @@
   <div class="category-buttons">
     <button *ngFor="let category of categories" [class.wide]="category.isWide">
       <span>{{ category.displayName }}</span>
-      <img
-        [src]="category.icon"
-        alt="{{ category.displayName }}"
+      <video
+        aria-hidden="true"
+        preload="metadata"
         class="category-icon"
         width="250"
         height="250"
-        loading="lazy"
-      />
+        loop
+        muted
+        playsinline
+        autoplay
+        [attr.aria-label]="category.displayName"
+        #categoryVideo
+      >
+        <source [attr.src]="category.icon" type="video/webm" />
+        <source
+          [attr.src]="category.icon.replace('.webm', '.mp4')"
+          type="video/mp4"
+        />
+      </video>
     </button>
   </div>
 </section>

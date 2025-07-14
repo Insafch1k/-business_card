@@ -1,8 +1,7 @@
-<!-- services.component.html -->
-<section id="services" class="services-section" >
+<section id="services" class="services-section">
   <h2 class="services-title" #servicesEl>
-    <span class="first-word">НАШИ</span>
-    <span class="second-word"> УСЛУГИ</span>
+    <span class="first-word">Наши услуги</span
+    ><span class="second-word"> по разработке</span>
   </h2>
 
   <div class="services-marquee">
@@ -14,17 +13,17 @@
         (click)="centerCard(i)"
       >
         <div class="service-image">
-          <img [src]="service.image" [alt]="service.title" loading="lazy" />
+          <img
+            [src]="service.image"
+            [alt]="service.alt"
+            sizes="(max-width: 400px) 400px,
+         (max-width: 800px) 800px,
+         1200px"
+          />
           <div class="content-overlay">
             <h3 class="service-title">{{ service.title }}</h3>
             <a (click)="scrollToContacts($event)" class="order-button">
               Заказать
-              <img
-                src="assets/services/strelbl.svg"
-                alt=""
-                class="button-arrow"
-                loading="lazy"
-              />
             </a>
           </div>
         </div>
@@ -33,18 +32,28 @@
   </div>
 
   <div class="navigation-buttons">
-    <button class="nav-button prev" (click)="scroll('left')">
+    <button
+      class="nav-button prev"
+      [class.disabled]="isFirstCard"
+      [disabled]="isFirstCard"
+      (click)="scroll('left')"
+    >
       <img
         src="assets/services/strwhleft.svg"
-        alt=""
+        alt="стрелка влево"
         class="button-arrow"
         loading="lazy"
       />
     </button>
-    <button class="nav-button next" (click)="scroll('right')">
+    <button
+      class="nav-button next"
+      [class.disabled]="isLastCard"
+      [disabled]="isLastCard"
+      (click)="scroll('right')"
+    >
       <img
         src="assets/services/strelwh.svg"
-        alt=""
+        alt="стрелка вправо"
         class="button-arrow"
         loading="lazy"
       />

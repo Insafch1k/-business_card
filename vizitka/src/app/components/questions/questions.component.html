@@ -1,7 +1,7 @@
-<div id="questions" class="questions component" >
+<div id="questions" class="questions component">
   <h2 class="questions-title" #questionsEl>
-    <span class="frequent">ЧАСТЫЕ</span
-    ><span class="questions-word"> ВОПРОСЫ</span>
+    <span class="frequent">Часто Задаваемые Вопросы </span
+    ><span class="questions-word">(FAQ)</span>
   </h2>
 
   <div class="questions-container">
@@ -14,7 +14,7 @@
       [class.animating]="item.isAnimating"
     >
       <div class="question-header">
-        <span class="text question-text">{{ item.question }}</span>
+        <h3 class="text question-text">{{ item.question }}</h3>
         <button
           class="toggle-button"
           (click)="toggleQuestion(i); $event.stopPropagation()"
@@ -26,7 +26,9 @@
       <div class="answer-wrapper" [class.visible]="item.isExpanded">
         <div class="answer-content">
           <div class="divider"></div>
-          <div class="text answer">{{ item.answer }}</div>
+          <div class="text answer" [innerHTML]="item.answer">
+            {{ item.answer }}
+          </div>
         </div>
       </div>
     </div>

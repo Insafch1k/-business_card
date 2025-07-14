@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /assets/fonts/
+Disallow: /assets/icons/
+Disallow: /assets/*.ttf$
+Disallow: /assets/*.woff$
+Disallow: /assets/*.woff2$
+Disallow: /assets/*.css$
+Disallow: /environments/
+Disallow: /src/
+Disallow: /404
+Allow: /
+
+Sitemap: https://vizitka-f7dad.web.app/sitemap.xml

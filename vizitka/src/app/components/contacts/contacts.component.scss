@@ -9,7 +9,7 @@ h2 {
   position: relative;
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
-  font-size: clamp(32px, 8.4vw, 96px);
+  font-size: clamp(52px, 5.5vw, 64px);
   letter-spacing: -0.06em;
   text-transform: uppercase;
   color: #fff;
@@ -27,16 +27,19 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: clamp(10px, 2vw, 20px);
-  margin-top: clamp(40px, 10vw, 132px);
-  margin-bottom: 133px;
+  margin-top: clamp(20px, 3vw, 98px);
+  margin-bottom: clamp(40px, 4.5vw, 97px);
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: clamp(10px, 1vw, 20px);
-  width: clamp(150px, 40vw, 450px);
+  gap: 20px;
+  width: clamp(150px, 47vw, 620px);
   max-width: 100%;
+  background-color: #171717;
+  border-radius: 20px;
+  padding: 40px 21px 40px;
 }
 
 .text-field {
@@ -48,18 +51,16 @@ form {
   outline: none;
   box-shadow: none;
   box-sizing: border-box;
-  background-color: transparent;
-  width: clamp(150px, 40vw, 450px);
   -webkit-appearance: none;
   appearance: none;
-  border-radius: 0;
-  border-bottom: 2px solid #676767;
+  border-radius: 15px;
   padding: clamp(10px, 2vw, 20px);
   max-width: 100%;
   color: #fff;
+  background-color: #3f3f3f;
 
   &::placeholder {
-    color: #999;
+    color: #7b7b7b;
     font-family: Monsterrat, sans-serif;
     font-weight: 200;
     font-size: clamp(12px, 2vw, 24px);
@@ -93,22 +94,22 @@ form {
 
 .bid-button {
   font-family: "Space Grotesk", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   height: clamp(30px, 4vw, 50px);
   border: 2px solid #0077ff;
   border-radius: 30px;
-  background: transparent;
-  margin-top: clamp(10px, 3vw, 40px);
+  background-color: #0077ff;
+  align-self: center;
+  margin-top: clamp(10px, 3vw, 30px);
   white-space: nowrap;
-  font-size: clamp(12px, 2vw, 20px);
+  font-size: clamp(12px, 2.5vw, 24px);
   color: #fff;
-  width: clamp(150px, 40vw, 450px);
-  max-width: 100%;
+  width: 400px;
   transition: background-color 0.3s ease;
   box-sizing: border-box;
 
   &:hover {
-    background-color: #0077ff;
+    background: transparent;
     cursor: pointer;
   }
 
@@ -121,7 +122,7 @@ form {
 
   &[disabled] {
     opacity: 0.6;
-    cursor: not-allowed;
+    background-color: #0077ff;
   }
 }
 
@@ -197,7 +198,7 @@ form {
 
 .contacts_text {
   font-family: "Monsterrat", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: clamp(8px, 2vw, 20px);
   line-height: 100%;
 }
@@ -214,7 +215,7 @@ form {
   position: relative;
   text-align: center;
   margin-left: clamp(35px, 4vw, 70px);
-  margin-top: clamp(200px, 30vw, 406px);
+  margin-top: clamp(200px, 20vw, 306px);
   width: clamp(100px, 26vw, 280px);
   padding: clamp(5px, 1vw, 10px);
   gap: clamp(0px, 0.5vw, 5px);
@@ -267,14 +268,19 @@ form {
     margin-left: 0;
   }
 
+  h2 {
+    font-size: clamp(20px, 3.5vw, 52px);
+  }
+
   .contacts_column-1 {
-    margin-top: clamp(40px, 11.5625vw, 111px);
-    margin-bottom: clamp(22px, 11.4583vw, 110px);
+    margin-top: 20px;
+    margin-bottom: clamp(27px, 2vw, 40px);
   }
 
   form {
-    width: clamp(100px, 46.875vw, 450px);
-    gap: clamp(5px, 1.0417vw, 10px);
+    width: clamp(100px, 36.875vw, 450px);
+    gap: clamp(10px, 2vw, 20px);
+    padding: 40px 29px 40px;
   }
 
   .text-field {
@@ -297,9 +303,9 @@ form {
   }
 
   .bid-button {
-    width: clamp(100px, 46.875vw, 450px);
+    width: clamp(100px, 36.875vw, 450px);
     height: clamp(30px, 5.2083vw, 50px);
-    margin-top: clamp(20px, 4.1667vw, 40px);
+    margin-top: clamp(10px, 3vw, 30px);
   }
 
   .error-message-container {
@@ -320,13 +326,13 @@ form {
   }
 
   .Danis-photo {
-    max-width: clamp(218px, 52.2917vw, 502px);
-    max-height: clamp(260px, 62.5vw, 600px);
+    max-width: clamp(327px, 78.43755vw, 753px);
+    max-height: clamp(690px, 123.75vw, 900px);
   }
 
   :host ::ng-deep .Danis-photo-internal {
-    max-width: clamp(218px, 52.2917vw, 502px);
-    max-height: clamp(260px, 62.5vw, 600px);
+    max-width: clamp(327px, 78.43755vw, 753px);
+    max-height: clamp(690px, 123.75vw, 900px);
   }
 
   .levitate-image {
@@ -351,7 +357,6 @@ form {
 }
 
 @media (max-width: 480px) {
-
   .contacts_column-1 {
     margin-top: 40px;
     margin-bottom: 22px;
@@ -360,6 +365,7 @@ form {
   form {
     width: clamp(100px, 40vw, 180px);
     gap: 10px;
+    padding: 10px;
   }
 
   .text-field {
@@ -383,10 +389,10 @@ form {
   }
 
   .bid-button {
-    width: clamp(100px, 50vw, 210px);
     height: 30px;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 12px;
+    width: clamp(100px, 50vw, 180px);
   }
 
   .error-message-container {
@@ -449,7 +455,7 @@ form {
     margin-left: clamp(60px, 14vw, 52px);
     padding: clamp(5px, 2.0833vw, 10px);
     height: clamp(10px, 3.9583vw, 19px);
-    margin-top: 180px;
+    margin-top: 150px;
   }
 
   .Danis_contacts {
@@ -469,9 +475,7 @@ form {
   .text-field {
     -webkit-appearance: none;
     appearance: none;
-    border-radius: 0 !important;
     border: none;
-    border-bottom: 2px solid #676767;
     padding: clamp(5px, 4.1667vw, 10px);
     box-sizing: border-box;
   }
@@ -479,11 +483,11 @@ form {
   .name_field,
   .phone_number_field {
     height: 30px;
-    border-radius: 0;
+    border-radius: 10px;
   }
 
   .comment_field {
     height: 90px;
-    border-radius: 0;
+    border-radius: 10px;
   }
 }
